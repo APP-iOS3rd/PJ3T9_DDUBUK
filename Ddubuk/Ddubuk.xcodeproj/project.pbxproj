@@ -12,6 +12,9 @@
 		0C2F8B3C2B57B548009AF236 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2F8B3B2B57B548009AF236 /* Item.swift */; };
 		0C2F8B3E2B57B54B009AF236 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C2F8B3D2B57B54B009AF236 /* Assets.xcassets */; };
 		0C2F8B412B57B54B009AF236 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C2F8B402B57B54B009AF236 /* Preview Assets.xcassets */; };
+		A499AEA52B58ECD900919D3B /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A499AEA42B58ECD900919D3B /* MapView.swift */; };
+		A499AEA72B58FABA00919D3B /* MapMarkerDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = A499AEA62B58FABA00919D3B /* MapMarkerDetail.swift */; };
+		A499AEAB2B5E828C00919D3B /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A499AEAA2B5E828C00919D3B /* MapViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +26,9 @@
 		0C2F8B402B57B54B009AF236 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		0C2F8B472B57B666009AF236 /* Ddubuk.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Ddubuk.entitlements; sourceTree = "<group>"; };
 		0C2F8B482B57B6E7009AF236 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		A499AEA42B58ECD900919D3B /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		A499AEA62B58FABA00919D3B /* MapMarkerDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapMarkerDetail.swift; sourceTree = "<group>"; };
+		A499AEAA2B5E828C00919D3B /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +61,7 @@
 		0C2F8B362B57B548009AF236 /* Ddubuk */ = {
 			isa = PBXGroup;
 			children = (
+				A499AEA82B5E3E3B00919D3B /* Map */,
 				0C2F8B482B57B6E7009AF236 /* Info.plist */,
 				0C2F8B472B57B666009AF236 /* Ddubuk.entitlements */,
 				0C2F8B372B57B548009AF236 /* DdubukApp.swift */,
@@ -72,6 +79,32 @@
 				0C2F8B402B57B54B009AF236 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		A499AEA32B58ECA300919D3B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A499AEA42B58ECD900919D3B /* MapView.swift */,
+				A499AEA62B58FABA00919D3B /* MapMarkerDetail.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A499AEA82B5E3E3B00919D3B /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				A499AEA92B5E3E5900919D3B /* ViewModel */,
+				A499AEA32B58ECA300919D3B /* View */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
+		A499AEA92B5E3E5900919D3B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				A499AEAA2B5E828C00919D3B /* MapViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -145,8 +178,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				0C2F8B3A2B57B548009AF236 /* ContentView.swift in Sources */,
+				A499AEA52B58ECD900919D3B /* MapView.swift in Sources */,
 				0C2F8B3C2B57B548009AF236 /* Item.swift in Sources */,
+				A499AEA72B58FABA00919D3B /* MapMarkerDetail.swift in Sources */,
 				0C2F8B382B57B548009AF236 /* DdubukApp.swift in Sources */,
+				A499AEAB2B5E828C00919D3B /* MapViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
