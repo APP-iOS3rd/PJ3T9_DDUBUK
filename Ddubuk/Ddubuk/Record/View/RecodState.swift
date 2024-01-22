@@ -11,6 +11,7 @@ import SwiftUI
 struct RecodState: View {
     // MARK: Binding
     @Binding var isRecording: Bool
+    @Binding var showBottom: Bool
     @Binding var realTime: Int
     @Binding var currentMeter: String
     @Binding var timerState: TimerState
@@ -39,7 +40,7 @@ struct RecodState: View {
                             
                             Spacer()
                             
-                            Text(currentMeter)
+                            Text(currentMeter != "이동 거리 0미터" ? "이동 거리 \(currentMeter)" : currentMeter)
                                 .foregroundColor(.black)
                                 .bold()
                             
@@ -71,17 +72,14 @@ struct RecodState: View {
                     
                 }, label: {
                     Image(systemName: timerState == .play ? "pause.circle" : "play.circle")
-                        .resizable()
-                        .frame(width: 40, height: 30)
-                        .foregroundColor(.black)
                 })
                 .foregroundColor(.blue)
                 .padding()
                 
                 // TODO:
                 Button("기록 저장") {
-                    timerState = .clear
-                    isRecording.toggle()
+                    timerState = .pause
+                    showBottom.toggle()
                 }
                 .buttonStyle(.borderedProminent)
                 .padding()

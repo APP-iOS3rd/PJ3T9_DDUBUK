@@ -17,6 +17,7 @@
 		56B0A24F2B5DF62B00A11DD6 /* RecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B0A24E2B5DF62B00A11DD6 /* RecordView.swift */; };
 		56B0A2512B5DF66700A11DD6 /* RecordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B0A2502B5DF66700A11DD6 /* RecordViewModel.swift */; };
 		56B0A2532B5DF6B400A11DD6 /* RecodState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B0A2522B5DF6B400A11DD6 /* RecodState.swift */; };
+		56B0A2592B5E0CA800A11DD6 /* RecordCompletionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B0A2582B5E0CA800A11DD6 /* RecordCompletionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		56B0A24E2B5DF62B00A11DD6 /* RecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordView.swift; sourceTree = "<group>"; };
 		56B0A2502B5DF66700A11DD6 /* RecordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewModel.swift; sourceTree = "<group>"; };
 		56B0A2522B5DF6B400A11DD6 /* RecodState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecodState.swift; sourceTree = "<group>"; };
+		56B0A2582B5E0CA800A11DD6 /* RecordCompletionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordCompletionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 				56B0A24E2B5DF62B00A11DD6 /* RecordView.swift */,
 				56B0A24A2B5DF4E600A11DD6 /* RecordMap.swift */,
 				56B0A2522B5DF6B400A11DD6 /* RecodState.swift */,
+				56B0A2582B5E0CA800A11DD6 /* RecordCompletionView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -189,6 +192,7 @@
 				56B0A24F2B5DF62B00A11DD6 /* RecordView.swift in Sources */,
 				0C2F8B3C2B57B548009AF236 /* Item.swift in Sources */,
 				56B0A24D2B5DF5E900A11DD6 /* Coordinator.swift in Sources */,
+				56B0A2592B5E0CA800A11DD6 /* RecordCompletionView.swift in Sources */,
 				56B0A24B2B5DF4E600A11DD6 /* RecordMap.swift in Sources */,
 				0C2F8B382B57B548009AF236 /* DdubukApp.swift in Sources */,
 			);

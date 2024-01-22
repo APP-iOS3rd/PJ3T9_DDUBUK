@@ -28,7 +28,7 @@ class RecordViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     
     @Published var isRecording: Bool = false // 기록
     @Published var recordingTime: Int = 0
-    @Published var recordingMeter: String = "현재 거리 0미터"
+    @Published var recordingMeter: String = "이동 거리 0미터"
     
     @Published var timerState: TimerState = .clear {
         didSet {
@@ -151,7 +151,7 @@ class RecordViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
         timerCancellable?.cancel()
         recordingTime = 0
         userLocations = []
-        recordingMeter = "현재 거리 0미터"
+        recordingMeter = "이동 거리 0미터"
     }
     
     
@@ -187,6 +187,6 @@ class RecordViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
             totalDistance += location1.distance(from: location2)
         }
         
-        recordingMeter = "이동 거리 \(String(format: "%.2f", totalDistance))미터"
+        recordingMeter = "\(String(format: "%.2f", totalDistance))미터"
     }
 }
