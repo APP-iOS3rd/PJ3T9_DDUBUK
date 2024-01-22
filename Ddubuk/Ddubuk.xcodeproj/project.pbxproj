@@ -12,6 +12,12 @@
 		0C2F8B3C2B57B548009AF236 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2F8B3B2B57B548009AF236 /* Item.swift */; };
 		0C2F8B3E2B57B54B009AF236 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C2F8B3D2B57B54B009AF236 /* Assets.xcassets */; };
 		0C2F8B412B57B54B009AF236 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C2F8B402B57B54B009AF236 /* Preview Assets.xcassets */; };
+		56B0A24B2B5DF4E600A11DD6 /* RecordMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B0A24A2B5DF4E600A11DD6 /* RecordMap.swift */; };
+		56B0A24D2B5DF5E900A11DD6 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B0A24C2B5DF5E900A11DD6 /* Coordinator.swift */; };
+		56B0A24F2B5DF62B00A11DD6 /* RecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B0A24E2B5DF62B00A11DD6 /* RecordView.swift */; };
+		56B0A2512B5DF66700A11DD6 /* RecordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B0A2502B5DF66700A11DD6 /* RecordViewModel.swift */; };
+		56B0A2532B5DF6B400A11DD6 /* RecodState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B0A2522B5DF6B400A11DD6 /* RecodState.swift */; };
+		56B0A2592B5E0CA800A11DD6 /* RecordCompletionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B0A2582B5E0CA800A11DD6 /* RecordCompletionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +29,12 @@
 		0C2F8B402B57B54B009AF236 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		0C2F8B472B57B666009AF236 /* Ddubuk.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Ddubuk.entitlements; sourceTree = "<group>"; };
 		0C2F8B482B57B6E7009AF236 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		56B0A24A2B5DF4E600A11DD6 /* RecordMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordMap.swift; sourceTree = "<group>"; };
+		56B0A24C2B5DF5E900A11DD6 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		56B0A24E2B5DF62B00A11DD6 /* RecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordView.swift; sourceTree = "<group>"; };
+		56B0A2502B5DF66700A11DD6 /* RecordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewModel.swift; sourceTree = "<group>"; };
+		56B0A2522B5DF6B400A11DD6 /* RecodState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecodState.swift; sourceTree = "<group>"; };
+		56B0A2582B5E0CA800A11DD6 /* RecordCompletionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordCompletionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +67,7 @@
 		0C2F8B362B57B548009AF236 /* Ddubuk */ = {
 			isa = PBXGroup;
 			children = (
+				56B0A2492B5DF30A00A11DD6 /* Record */,
 				0C2F8B482B57B6E7009AF236 /* Info.plist */,
 				0C2F8B472B57B666009AF236 /* Ddubuk.entitlements */,
 				0C2F8B372B57B548009AF236 /* DdubukApp.swift */,
@@ -72,6 +85,35 @@
 				0C2F8B402B57B54B009AF236 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		56B0A2492B5DF30A00A11DD6 /* Record */ = {
+			isa = PBXGroup;
+			children = (
+				56B0A2542B5DF6FB00A11DD6 /* View */,
+				56B0A2552B5DF71000A11DD6 /* ViewModel */,
+			);
+			path = Record;
+			sourceTree = "<group>";
+		};
+		56B0A2542B5DF6FB00A11DD6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				56B0A24E2B5DF62B00A11DD6 /* RecordView.swift */,
+				56B0A24A2B5DF4E600A11DD6 /* RecordMap.swift */,
+				56B0A2522B5DF6B400A11DD6 /* RecodState.swift */,
+				56B0A2582B5E0CA800A11DD6 /* RecordCompletionView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		56B0A2552B5DF71000A11DD6 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				56B0A2502B5DF66700A11DD6 /* RecordViewModel.swift */,
+				56B0A24C2B5DF5E900A11DD6 /* Coordinator.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -145,7 +187,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				0C2F8B3A2B57B548009AF236 /* ContentView.swift in Sources */,
+				56B0A2532B5DF6B400A11DD6 /* RecodState.swift in Sources */,
+				56B0A2512B5DF66700A11DD6 /* RecordViewModel.swift in Sources */,
+				56B0A24F2B5DF62B00A11DD6 /* RecordView.swift in Sources */,
 				0C2F8B3C2B57B548009AF236 /* Item.swift in Sources */,
+				56B0A24D2B5DF5E900A11DD6 /* Coordinator.swift in Sources */,
+				56B0A2592B5E0CA800A11DD6 /* RecordCompletionView.swift in Sources */,
+				56B0A24B2B5DF4E600A11DD6 /* RecordMap.swift in Sources */,
 				0C2F8B382B57B548009AF236 /* DdubukApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -281,7 +329,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Ddubuk/Preview Content\"";
-				DEVELOPMENT_TEAM = Y6QXM3Q994;
+				DEVELOPMENT_TEAM = 8T9KYF6LUJ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Ddubuk/Info.plist;
@@ -300,7 +348,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ios3.Ddubuk;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ios3.Ddubuk2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -317,7 +365,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Ddubuk/Preview Content\"";
-				DEVELOPMENT_TEAM = Y6QXM3Q994;
+				DEVELOPMENT_TEAM = 8T9KYF6LUJ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Ddubuk/Info.plist;
@@ -336,7 +384,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ios3.Ddubuk;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ios3.Ddubuk2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
