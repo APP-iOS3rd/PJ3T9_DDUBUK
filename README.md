@@ -47,7 +47,10 @@
 
 # 3.🧐발생한 이슈들 소개
 
-![대체 텍스트](https://raw.githubusercontent.com/PJ3T9_DDUBUK/Video/0115~0116/노션으로_일정관리.png)
+<p align="center">
+  <img src="https://raw.githubusercontent.com/APP-iOS3rd/PJ2T8_TrackUs/assets/144399406/c728dbac-6251-4557-aea0-2e289db14cc6" width="300" height="500">
+  <img src="https://raw.githubusercontent.com/APP-iOS3rd/PJ2T8_TrackUs/assets/144399406/c8603f47-449e-4316-8fc5-843eef94a346" width="300" height="500">
+</p>
 | Parts| Issue | Feedback |
 | --- | --- | --- |
 | 이슈1 | 2 | 3 |
