@@ -6,6 +6,7 @@
 |Leader|Member|Member|Member|
 |:-----------:|:-----------:|:-----------:|:------------:|
 |[조민식](https://github.com/mongsik98)|[김재완](https://github.com/jaewan0091)|[이경헌](https://github.com/BOLTB0X)|[박호건](https://github.com//ghrjs1998)|
+|<img src="https://avatars.githubusercontent.com/u/56242414?v=4" width="100">|<img src="https://avatars.githubusercontent.com/u/144413519?v=4" width="100">|<img src="https://avatars.githubusercontent.com/u/83914919?v=4" width="100">|<img src="https://avatars.githubusercontent.com/u/75073299?v=4" width="100">|
 
 
 #### 팀 링크
@@ -15,7 +16,7 @@
   
 #### 기술스택
 ```
-SwiftUI
+SwiftUI 20.0
 Mapkit
 Combine
 Health Kit
