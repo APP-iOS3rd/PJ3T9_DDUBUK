@@ -69,11 +69,11 @@ Firebasefirestore
 - 네이버 등은 자유도가 낮음 + 수도권지역은 업데이트가 빠르나 지방이나 이런 타지역은 업데이트가 느릴 수 있음 → 편집하기에는 MapKit이나 MapBox
 - 실습하는 것처럼 간단하게 토큰을받아서 띄어보기 를 해보는게 나을거같다 라는 피드백 수용
 
-| 비교 | MapKit | Makbox |
+| **비교** | MapKit | MapBox |
 | :---: | :---: | :---: |
-| 장점 | 문서가 잘나와있다. 관련 내용들이 많아서 찾기에 편하다 | api가져오는게 편하다|
-| 단점  | 기능 자체를 구현하는게 번거로울 수 있다 | 문서가 잘 안나와 있다 ( Exampleprotocol..) |
-- 결론 : 배우는 입장에서 깔끔한 문서와 관련 내용이 많고, 기초적인 소스들을 다뤄보는 경험을 가질 수 있는 MapKit을 채택
+| **장점** | 문서가 잘나와있다. 관련 내용들이 많아서 찾기에 편하다 | api가져오는게 편하다|
+| **단점** | 기능 자체를 구현하는게 번거로울 수 있다 | 문서가 잘 안나와 있다 ( Exampleprotocol..) |
+- 결론 : 배우는 입장에서 깔끔한 문서와 관련 내용이 많고, 기초적인 소스들을 다뤄보는 경험을 가질 수 있는 **MapKit**을 채택
 
 ## Moment 3. 서버의 중요성(멘토링 수용부분)
 - 우리 앱은 경로에 대한 부분을 저장하고 커뮤니티등에 공유가 되는게 주기능
@@ -85,12 +85,21 @@ Firebasefirestore
   
 
 # 3. 테스트 시연영상
-- 테스트 영상1 
-[![테스트 시연영상1](https://i.ytimg.com/vi/SE9IWchExiU/maxresdefault.jpg)](https://youtu.be/SE9IWchExiU?si=qRKBFko8vCakHKXb)
-- 테스트 영상2
-[![테스트 시연영상2](https://i.ytimg.com/vi/SE9IWchExiU/maxresdefault.jpg)](https://youtu.be/SE9IWchExiU?si=qRKBFko8vCakHKXb)
 
 
+
+| 테스트 영상1 | 테스트 영상2 |
+|:--:|:--:|
+| [![테스트 시연영상1](https://i.ytimg.com/vi/SE9IWchExiU/maxresdefault.jpg)](https://youtu.be/SE9IWchExiU?si=qRKBFko8vCakHKXb) | [![테스트 시연영상2](https://i.ytimg.com/vi/SE9IWchExiU/maxresdefault.jpg)](https://youtu.be/SE9IWchExiU?si=qRKBFko8vCakHKXb) |
+
+| 테스트 영상3 | 테스트 영상4 |
+|:--:|:--:|
+| [![테스트 시연영상1](https://i.ytimg.com/vi/SE9IWchExiU/maxresdefault.jpg)](https://youtu.be/SE9IWchExiU?si=qRKBFko8vCakHKXb) | [![테스트 시연영상2](https://i.ytimg.com/vi/SE9IWchExiU/maxresdefault.jpg)](https://youtu.be/SE9IWchExiU?si=qRKBFko8vCakHKXb) |
+
+
+|서버 DB 연동 데이터구조 예시|
+|:--:|
+|<img src="https://github.com/APP-iOS3rd/PJ3T9_DDUBUK/assets/144413519/792ab284-b5e5-4cbe-acb7-caf3fc8719bf" width="">|
 
 
 
