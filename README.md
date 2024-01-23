@@ -16,7 +16,7 @@
   
 #### 기술스택
 ```
-SwiftUI 20.0
+SwiftUI
 Mapkit
 Combine
 Health Kit
