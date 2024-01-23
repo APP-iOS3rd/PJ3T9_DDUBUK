@@ -13,7 +13,15 @@
 - [📒 Notion](https://likelion.notion.site/2b296139752544f38f0e85734e3448a5)
 - [📱 Figma](https://www.figma.com/file/DIAZVRUZaqLVnWy93wGgo7/DDUBUK_뚜벅-team-library?type=design&node-id=0-1&mode=design&t=RcdJ12lBuBEpC0lI-0)
   
-
+#### 기술스택
+```
+SwiftUI
+Mapkit
+Combine
+Health Kit
+Core Motion
+Firebasefirestore
+```
 
 
 ## 📋목차
@@ -52,27 +60,29 @@
 
 # 2. 발생한 이슈들 소개
 
-<p align="center">
-  <img src="https://i.stack.imgur.com/6PrCM.png" width="300" height="500">
-  <img src="https://raw.githubusercontent.com/PJ3T9_DDUBUK/Video/0115~0116/노션으로_일정관리" width="300" height="500">
-</p>
+## Moment 1. 메인화면의 검색기능 - 유료?
+- 메인화면 와이어프레임을 짜던중 유료/무료 회원에 대한 Benefit을 어떻게 줄지 논의
+- 검색이라는 기능 모든유저가 다쓸수 있는 부분인지.. 아니면 대부분의 기능은 유료?  
+ → 원하는 산책경로를 다운받아야 하는 경우에 일부 경로들만 오픈하고 나머지 테마는 잠금방식채택하기로 결정( 유료테마제공하는 식으로 구성예정 )
 
-| Parts| Issue | Feedback |
-| --- | --- | --- |
-| 이슈1 | 2 | 3 |
-| 이슈2  | 5 | 6 |
-| 이슈3 | 8 | 9 |
-| 서버뷰 | ㅇㅇㅇ | title3 |
-| --- | --- | --- |
-| 1 | 2 | 3 |
-| 4 | 5 | 6 |
-| 7 | 8 | 9 |
-| 기능뷰 | ㅇㅇㅇ | title3 |
-| --- | --- | --- |
-| 1 | 2 | 3 |
-| 4 | 5 | 6 |
-| 7 | 8 | 9 |
+## Moment 2. Map Kit을 고른 과정
+- 네이버 등은 자유도가 낮음 + 수도권지역은 업데이트가 빠르나 지방이나 이런 타지역은 업데이트가 느릴 수 있음 → 편집하기에는 MapKit이나 MapBox
+- 실습하는 것처럼 간단하게 토큰을받아서 띄어보기 를 해보는게 나을거같다 라는 피드백 수용
 
+| 비교 | MapKit | Makbox |
+| :---: | :---: | :---: |
+| 장점 | 문서가 잘나와있다. 관련 내용들이 많아서 찾기에 편하다 | api가져오는게 편하다|
+| 단점  | 기능 자체를 구현하는게 번거로울 수 있다 | 문서가 잘 안나와 있다 ( Exampleprotocol..) |
+- 결론 : 배우는 입장에서 깔끔한 문서와 관련 내용이 많고, 기초적인 소스들을 다뤄보는 경험을 가질 수 있는 MapKit을 채택
+
+## Moment 3. 서버의 중요성(멘토링 수용부분)
+- 우리 앱은 경로에 대한 부분을 저장하고 커뮤니티등에 공유가 되는게 주기능
+- 즉, 위치를 찍는것보단 서버통신전달받는게 제일 중요한 부분이 됨 
+- 그래서 좌표값을 받아오는 것보단 서버에서 받아서 그리는 것을 우선순위로 보고 서버구현을 우선적으로 진행시도 
+- 팀원 4명이 RecordView 1명, MapView1명, Firebase2명 배치 
+- 서버부분은 db설계 → 파이어스토어로 하고 → 나중에 데이터설계 공부해서 서버연동할 것임 → 
+현재는 한사람용으로 만들고 → 이후 발전방향: 여러사람 → 컬렉션에 어떤 키를 넣을것인지에 대한 방안 탐구 
+  
 
 # 3. 테스트 시연영상
 - 테스트 영상1 
@@ -128,12 +138,64 @@ Corelocation의 지원 메소드를 이용하여 요청을 거리 10m으로 지�
 
 ```
 
+### Case4. 데이터 전송 방식
+기록을 마치면 경로를 이어서 만들면되는데, 
+
+내 위치가 이동한경로중에 위치가 여러개 찍힐건데
+
+이걸 어떤식으로 읽느냐가 고민해야될 기술이다 
+
+나중에 다른 사람에게 공유한다고 했을때 서버에 한번에 보내는게 좋을거 같다.
+
+그걸 실시간으로 위치 경도 정보를 초단위나 분단위로 계속 서버나 이런곳에 보내려면 
+
+네트워크 유지가 계속 되어야하는데 이러면 베터리소모/ 최적화의 어려움등이 있음 
+
+추천) 
+
+→ 코어, 스위프트데이타에 산책기록을 저장 → 점들을 이어서 공유할떄(서버에 이떄 올려주는식)
+
 ### Case4. 산책로를 선으로 잇는 방법 모색
 경로를 그릴 시 위도 경도 값을 polyline으로 이어 그리게 되었는데,  
 
  확대시 자연스러운 선보다 각이 지는 경로가 되어 좀 더 자연스럽게 선을 이을 수 있는 방법을 고민 중   
 
 MKdirection 방법으로 해결해나갈 예정
+자료는 두 위치간의 경로를 계산하는 예시.  
+ * 비동기적으로 실행되며, 경로 계산이 완료되면 클로저가 호출되는데,  
+이 클로저 내에서는 경로의 총 거리, 예상 이동 시간, 그리고 경로를 나타내는 polyline을 출력
+```swift
+import MapKit
+
+let sourceCoordinates = CLLocationCoordinate2D(latitude: 37.7749, longitude: -122.4194) 
+let destinationCoordinates = CLLocationCoordinate2D(latitude: 34.0522, longitude: -118.2437) 
+
+let sourcePlacemark = MKPlacemark(coordinate: sourceCoordinates)
+let destinationPlacemark = MKPlacemark(coordinate: destinationCoordinates)
+
+let sourceItem = MKMapItem(placemark: sourcePlacemark)
+let destinationItem = MKMapItem(placemark: destinationPlacemark)
+
+let directionRequest = MKDirections.Request()
+directionRequest.source = sourceItem
+directionRequest.destination = destinationItem
+directionRequest.transportType = .automobile // or .walking, .transit
+
+let directions = MKDirections(request: directionRequest)
+directions.calculate { (response, error) in
+    guard let response = response else {
+        if let error = error {
+            print("Error: \(error)")
+        }
+        return
+    }
+    
+    let route = response.routes[0]
+    print(route.distance) 
+    print(route.expectedTravelTime) 
+    print(route.polyline) 
+}
+```
 
 ### Case5. 주소가 뜨지 않는 문제
 위도 경도 위치 정보를 주소 값으로 변환하여 뷰에 띄우려는 작업 
@@ -141,9 +203,31 @@ MKdirection 방법으로 해결해나갈 예정
 <u>변환은 되지만 **마커 클릭시 주소가 뜨지 않는** 문제</u>로 
  
 데이터 구조를 바꿔 비동기로 처리될 수 있도록 해결중
+reverseGeocodeLocation 메소드를 사용하여 주소 정보를 가져오는 식으로 방안모색중  
+아니면 MKMapViewDelegate의 mapView() 매소드를 구현, 마커뷰를 커스텀설정할지 논의중
 
+```swift
+import MapKit
+
+let geocoder = CLGeocoder()
+let location = CLLocation(latitude: latitude, longitude: longitude) 
+
+geocoder.reverseGeocodeLocation(location) { (placemarks, error) in
+    if let error = error {
+        print("Geocoding error: \(error)")
+        return
+    }
+    
+    if let placemark = placemarks?.first {
+        let marker = MKPointAnnotation()
+        marker.title = placemark.name
+        marker.subtitle = placemark.locality
+        marker.coordinate = location.coordinate
+        mapView.addAnnotation(marker)
+    }
+}
+```
 ## 향후 발전 계획
-
 - 각 뷰에 대해서 각자 맡은 부분만 진행하다보니 통합하는 시간이 부족, 통합후 테스트 배포 준비할예정
 - Mapkit에 대한 높은 이해도를 바탕으로 정확도 높은 기록앱을 만들 것임
 - Firebase기반으로 하는 서버를 구축해서 커뮤니티 기능을 제공할 예정
