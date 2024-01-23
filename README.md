@@ -47,7 +47,7 @@
 
 # 3.🧐발생한 이슈들 소개
 
-![대체 텍스트](https://raw.githubusercontent.com/PJ3T9_DDUBUK/Video/0115~0116/노션으로일정관리.png)
+![대체 텍스트](https://raw.githubusercontent.com/PJ3T9_DDUBUK/Video/0115~0116/노션으로_일정관리.png)
 | Parts| Issue | Feedback |
 | --- | --- | --- |
 | 이슈1 | 2 | 3 |
