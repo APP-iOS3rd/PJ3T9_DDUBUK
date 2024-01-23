@@ -89,13 +89,24 @@ Firebasefirestore
 
 
 
-| 테스트 영상1 | 테스트 영상2 |
-|:--:|:--:|
-| [![테스트 시연영상1](https://i.ytimg.com/vi/SE9IWchExiU/maxresdefault.jpg)](https://youtu.be/SE9IWchExiU?si=qRKBFko8vCakHKXb) | [![테스트 시연영상2](https://i.ytimg.com/vi/SE9IWchExiU/maxresdefault.jpg)](https://youtu.be/SE9IWchExiU?si=qRKBFko8vCakHKXb) |
 
-| 테스트 영상3 | 테스트 영상4 |
+
+| 내 이동경로 표시, 액티브상태로 이동 | 기록버튼추가, 좌표틔임테스트 |
 |:--:|:--:|
-| [![테스트 시연영상1](https://i.ytimg.com/vi/SE9IWchExiU/maxresdefault.jpg)](https://youtu.be/SE9IWchExiU?si=qRKBFko8vCakHKXb) | [![테스트 시연영상2](https://i.ytimg.com/vi/SE9IWchExiU/maxresdefault.jpg)](https://youtu.be/SE9IWchExiU?si=qRKBFko8vCakHKXb) |
+| [![새로운 테스트 영상](https://img.youtube.com/vi/RReHp636qNs/maxresdefault.jpg)](https://youtube.com/shorts/RReHp636qNs?feature=share) | [![새로운 테스트 영상2](https://img.youtube.com/vi/GypngpOws0I/maxresdefault.jpg)](https://youtube.com/shorts/GypngpOws0I?feature=share) |
+
+| 백그라운드 상태로 이동 | 기록관련 컴포넌트 추가 |
+|:--:|:--:|
+| [![새로운 테스트 영상](https://img.youtube.com/vi/1I0z1UL0zpA/maxresdefault.jpg)](https://youtube.com/shorts/1I0z1UL0zpA?feature=share) | [![새로운 테스트 영상2](https://img.youtube.com/vi/8-0VcFxzGAY/maxresdefault.jpg)](https://youtube.com/shorts/8-0VcFxzGAY?feature=share) |
+
+| Marker테스트 | 버튼 테스트 |
+|:--:|:--:|
+| [![새로운 테스트 영상1](https://img.youtube.com/vi/AYr3rHr-fEE/maxresdefault.jpg)](https://youtube.com/shorts/AYr3rHr-fEE?feature=share) | [![새로운 테스트 영상2](https://img.youtube.com/vi/G92JhbyIQME/maxresdefault.jpg)](https://youtu.be/G92JhbyIQME) |
+
+
+
+
+
 
 
 |서버 DB 연동 데이터구조 예시|
