@@ -15,7 +15,7 @@
     
 #### 팀 링크
 
-- [📒 Notion](https://likelion.notion.site/2b296139752544f38f0e85734e3448a5](https://www.notion.so/0ed8dfeb7125419ca9d8bd596e37e483?v=d5d5ac2dce8b4db8b2656f52b057bd6e&p=6d1f3215b80d4478b25a6358a41019b6&pm=s))
+- [📒 Notion](https://www.notion.so/0ed8dfeb7125419ca9d8bd596e37e483?v=d5d5ac2dce8b4db8b2656f52b057bd6e&p=6d1f3215b80d4478b25a6358a41019b6&pm=s)
 - [📱 Figma](https://www.figma.com/file/DIAZVRUZaqLVnWy93wGgo7/DDUBUK_뚜벅-team-library?type=design&node-id=0-1&mode=design&t=RcdJ12lBuBEpC0lI-0)
 
 
