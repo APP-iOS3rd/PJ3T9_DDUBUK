@@ -119,7 +119,7 @@ Firebasefirestore
 | Marker테스트 | 버튼 테스트 |
 |:--:|:--:|
 | [![새로운 테스트 영상1](https://img.youtube.com/vi/AYr3rHr-fEE/maxresdefault.jpg)](https://youtube.com/shorts/AYr3rHr-fEE?feature=share) | [![새로운 테스트 영상2](https://img.youtube.com/vi/G92JhbyIQME/maxresdefault.jpg)](https://youtu.be/G92JhbyIQME) |
-(추후 썸네일 변경예정)
+(추후 썸네일 변경예정) |  (추후 썸네일 변경예정)
 
   
 
