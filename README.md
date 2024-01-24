@@ -10,13 +10,15 @@
 |<img src="https://avatars.githubusercontent.com/u/56242414?v=4" width="100">|<img src="https://avatars.githubusercontent.com/u/144413519?v=4" width="100">|<img src="https://avatars.githubusercontent.com/u/83914919?v=4" width="100">|<img src="https://avatars.githubusercontent.com/u/75073299?v=4" width="100">|
 
 
-  
+
+
+    
 #### 팀 링크
 
 - [📒 Notion](https://likelion.notion.site/2b296139752544f38f0e85734e3448a5)
 - [📱 Figma](https://www.figma.com/file/DIAZVRUZaqLVnWy93wGgo7/DDUBUK_뚜벅-team-library?type=design&node-id=0-1&mode=design&t=RcdJ12lBuBEpC0lI-0)
 
-    
+
 #### 기술스택
 ```
 SwiftUI
@@ -59,7 +61,8 @@ Firebasefirestore
 만보기 기능을 제공합니다.
 - **커뮤니티 기능**: 사용자들은 산책로에 대한 후기와 경험을 나누며 소통할 수 있는 커뮤니티 기능이 탑재되어 있습니다.
 
-  
+
+    
 ## * 기대효과
 - "DDUBUK : 뚜벅" 앱을 통해 사용자들은 건강을 증진하고, 다양한 테마의 산책로를 통해 여유로운 시간을 즐길 수 있습니다. 
 - 더불어 커뮤니티를 통한 소통은 다양한 산책 경험을 공유하고, 함께 걸어가는 즐거움을 찾을 수 있는 기회를 제공합니다. 👣🌿
@@ -67,6 +70,7 @@ Firebasefirestore
 
    
 
+   
 #  2. 발생한 이슈들 소개
 
 ##  Moment 1. 메인화면의 검색기능 - 유료?
@@ -85,7 +89,8 @@ Firebasefirestore
 | **단점** | 기능 자체를 구현하는게 번거로울 수 있다 | 문서가 잘 안나와 있다 ( Exampleprotocol..) |
 - 결론 : 배우는 입장에서 깔끔한 문서와 관련 내용이 많고, 기초적인 소스들을 다뤄보는 경험을 가질 수 있는 **MapKit**을 채택
 
-  
+
+    
 ##  Moment 3. 서버의 중요성(멘토링 수용부분)
 - 우리 앱은 경로에 대한 부분을 저장하고 커뮤니티등에 공유가 되는게 주기능
 - 즉, 위치를 찍는것보단 서버통신전달받는게 제일 중요한 부분이 됨 
@@ -95,7 +100,8 @@ Firebasefirestore
 현재는 한사람용으로 만들고 → 이후 발전방향: 여러사람 → 컬렉션에 어떤 키를 넣을것인지에 대한 방안 탐구 
   
 
-  
+
+
 #   3. 테스트 시연영상
 
 
@@ -113,7 +119,7 @@ Firebasefirestore
 | Marker테스트 | 버튼 테스트 |
 |:--:|:--:|
 | [![새로운 테스트 영상1](https://img.youtube.com/vi/AYr3rHr-fEE/maxresdefault.jpg)](https://youtube.com/shorts/AYr3rHr-fEE?feature=share) | [![새로운 테스트 영상2](https://img.youtube.com/vi/G92JhbyIQME/maxresdefault.jpg)](https://youtu.be/G92JhbyIQME) |
-
+(추후 썸네일 변경예정)
 
   
 
