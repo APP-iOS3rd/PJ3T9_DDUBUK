@@ -23,7 +23,7 @@ SwiftUI
 Mapkit
 Combine
 Health Kit
-Core Motion
+Core Location
 Firebasefirestore
 ```
 
