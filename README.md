@@ -121,11 +121,7 @@ Firebasefirestore
 | [![새로운 테스트 영상1](https://img.youtube.com/vi/AYr3rHr-fEE/maxresdefault.jpg)](https://youtube.com/shorts/AYr3rHr-fEE?feature=share) | [![새로운 테스트 영상2](https://img.youtube.com/vi/G92JhbyIQME/maxresdefault.jpg)](https://youtu.be/G92JhbyIQME) |
 (추후 썸네일 변경예정) |  (추후 썸네일 변경예정)
 
-| Marker테스트 | 버튼 테스트 |
-|:--:|:--:|
-| [![새로운 테스트 영상1](https://github.com/APP-iOS3rd/PJ3T9_DDUBUK/blob/main/Video/0123/05_실기기테스트_firebaseDB연동_1.gif?raw=true) | [![새로운 테스트 영상2](https://img.youtube.com/vi/G92JhbyIQME/maxresdefault.jpg)](https://youtu.be/G92JhbyIQME) |
-(추후 썸네일 변경예정) |  (추후 썸네일 변경예정)
-  
+
 
 |서버 DB 연동 데이터구조 예시|
 |:--:|
