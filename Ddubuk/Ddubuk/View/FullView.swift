@@ -27,7 +27,9 @@ struct FullView: View {
         images: ["images-1", "images-2", "images-3", "images-4"]
     )
 
-    var exploreViewRoutes: [String] = ["Route A", "Route B", "Route C"]
+
+    var exploreViewRoutes: [String] = ["Route A", "Route B", "Route C"] // ExploreView에서 사용한 더미 데이터
+
 
     var body: some View {
         ScrollView {
@@ -37,7 +39,7 @@ struct FullView: View {
     
                     Spacer().frame(height: 20)
                     
-                    
+
                     ForEach(exploreViewRoutes, id: \.self) { route in
                         ListingView(route: route, showEllipsis: true)
                             .frame(height: 300)

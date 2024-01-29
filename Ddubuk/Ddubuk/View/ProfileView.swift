@@ -27,7 +27,7 @@ struct ProfileView: View {
         walkCount: 11,
         followers: 50,
         following: 124,
-        imageURL: "photo.fill", 
+        imageURL: "photo.fill",
         walkRoutes: ["Route A", "Route B", "Route C"],
         instagramID: "sisi"
     )

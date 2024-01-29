@@ -12,7 +12,9 @@ struct SettingView: View {
         NavigationView {
             List {
                 Section {
-                    NavigationLink(destination: PaswordChangeView()) {
+
+                    NavigationLink(destination: PasswordChangeView()) {
+
                         Text("비밀번호 변경")
                     }
                 }

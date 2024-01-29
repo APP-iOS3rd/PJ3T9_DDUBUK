@@ -78,7 +78,7 @@ struct ListingView: View {
                                 title: Text(""),
                                 buttons: [
                                     .destructive(Text("삭제")) {
-                        
+
                                     },
                                     .cancel()
                                 ]
