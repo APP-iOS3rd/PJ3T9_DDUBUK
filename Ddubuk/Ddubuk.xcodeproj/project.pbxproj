@@ -12,9 +12,6 @@
 		0C2F8B3C2B57B548009AF236 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2F8B3B2B57B548009AF236 /* Item.swift */; };
 		0C2F8B3E2B57B54B009AF236 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C2F8B3D2B57B54B009AF236 /* Assets.xcassets */; };
 		0C2F8B412B57B54B009AF236 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C2F8B402B57B54B009AF236 /* Preview Assets.xcassets */; };
-		A499AEA52B58ECD900919D3B /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A499AEA42B58ECD900919D3B /* MapView.swift */; };
-		A499AEA72B58FABA00919D3B /* MapMarkerDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = A499AEA62B58FABA00919D3B /* MapMarkerDetail.swift */; };
-		A499AEAB2B5E828C00919D3B /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A499AEAA2B5E828C00919D3B /* MapViewModel.swift */; };
 
 		4E7A12FA2B5E50710020DA7E /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7A12F92B5E50710020DA7E /* SearchView.swift */; };
 		4E7A12FC2B5E509F0020DA7E /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7A12FB2B5E509F0020DA7E /* Main.swift */; };
@@ -46,9 +43,6 @@
 		0C2F8B402B57B54B009AF236 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		0C2F8B472B57B666009AF236 /* Ddubuk.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Ddubuk.entitlements; sourceTree = "<group>"; };
 		0C2F8B482B57B6E7009AF236 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		A499AEA42B58ECD900919D3B /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
-		A499AEA62B58FABA00919D3B /* MapMarkerDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapMarkerDetail.swift; sourceTree = "<group>"; };
-		A499AEAA2B5E828C00919D3B /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 
 		4E7A12F92B5E50710020DA7E /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		4E7A12FB2B5E509F0020DA7E /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
@@ -101,7 +95,6 @@
 		0C2F8B362B57B548009AF236 /* Ddubuk */ = {
 			isa = PBXGroup;
 			children = (
-				A499AEA82B5E3E3B00919D3B /* Map */,
 
 				4E7A12FD2B5E50A80020DA7E /* View */,
 
@@ -126,28 +119,6 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		A499AEA32B58ECA300919D3B /* View */ = {
-			isa = PBXGroup;
-			children = (
-				A499AEA42B58ECD900919D3B /* MapView.swift */,
-				A499AEA62B58FABA00919D3B /* MapMarkerDetail.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		A499AEA82B5E3E3B00919D3B /* Map */ = {
-			isa = PBXGroup;
-			children = (
-				A499AEA92B5E3E5900919D3B /* ViewModel */,
-				A499AEA32B58ECA300919D3B /* View */,
-			);
-			path = Map;
-			sourceTree = "<group>";
-		};
-		A499AEA92B5E3E5900919D3B /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				A499AEAA2B5E828C00919D3B /* MapViewModel.swift */,
 
 		4E7A12FD2B5E50A80020DA7E /* View */ = {
 			isa = PBXGroup;
@@ -195,6 +166,7 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -274,9 +246,6 @@
 				4E7A12FA2B5E50710020DA7E /* SearchView.swift in Sources */,
 				4E923F782B67389400A548C5 /* PaswordChangeView.swift in Sources */,
 				0C2F8B3A2B57B548009AF236 /* ContentView.swift in Sources */,
-				A499AEA52B58ECD900919D3B /* MapView.swift in Sources */,
-				0C2F8B3C2B57B548009AF236 /* Item.swift in Sources */,
-				A499AEA72B58FABA00919D3B /* MapMarkerDetail.swift in Sources */,
 
 				4E7A13032B5E51410020DA7E /* RecordView.swift in Sources */,
 				4ECC4D9A2B5E8FBA00465E94 /* FullView.swift in Sources */,
@@ -291,7 +260,6 @@
 				56B0A2592B5E0CA800A11DD6 /* RecordCompletionView.swift in Sources */,
 				56B0A24B2B5DF4E600A11DD6 /* RecordMap.swift in Sources */,
 				0C2F8B382B57B548009AF236 /* DdubukApp.swift in Sources */,
-				A499AEAB2B5E828C00919D3B /* MapViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
