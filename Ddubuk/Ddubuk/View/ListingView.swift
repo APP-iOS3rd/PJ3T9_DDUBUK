@@ -78,7 +78,7 @@ struct ListingView: View {
                                 title: Text(""),
                                 buttons: [
                                     .destructive(Text("삭제")) {
-                                        // "삭제" 버튼이 눌렸을 때 수행할 동작 추가
+
                                     },
                                     .cancel()
                                 ]
