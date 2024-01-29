@@ -12,6 +12,12 @@
 		0C2F8B3C2B57B548009AF236 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2F8B3B2B57B548009AF236 /* Item.swift */; };
 		0C2F8B3E2B57B54B009AF236 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C2F8B3D2B57B54B009AF236 /* Assets.xcassets */; };
 		0C2F8B412B57B54B009AF236 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C2F8B402B57B54B009AF236 /* Preview Assets.xcassets */; };
+		4E6AD78A2B67899E00F0F596 /* FullView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6AD7892B67899E00F0F596 /* FullView.swift */; };
+		4E6AD78C2B6789B000F0F596 /* ListingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6AD78B2B6789B000F0F596 /* ListingView.swift */; };
+		4E6AD78E2B678F9300F0F596 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6AD78D2B678F9300F0F596 /* ProfileView.swift */; };
+		4E6AD7902B678FAB00F0F596 /* BookMarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6AD78F2B678FAB00F0F596 /* BookMarkView.swift */; };
+		4E6AD7922B678FB500F0F596 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6AD7912B678FB500F0F596 /* SettingView.swift */; };
+		4E6AD7942B678FC900F0F596 /* PasswordChageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6AD7932B678FC900F0F596 /* PasswordChageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +29,12 @@
 		0C2F8B402B57B54B009AF236 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		0C2F8B472B57B666009AF236 /* Ddubuk.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Ddubuk.entitlements; sourceTree = "<group>"; };
 		0C2F8B482B57B6E7009AF236 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		4E6AD7892B67899E00F0F596 /* FullView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullView.swift; sourceTree = "<group>"; };
+		4E6AD78B2B6789B000F0F596 /* ListingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingView.swift; sourceTree = "<group>"; };
+		4E6AD78D2B678F9300F0F596 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		4E6AD78F2B678FAB00F0F596 /* BookMarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkView.swift; sourceTree = "<group>"; };
+		4E6AD7912B678FB500F0F596 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
+		4E6AD7932B678FC900F0F596 /* PasswordChageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordChageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +67,7 @@
 		0C2F8B362B57B548009AF236 /* Ddubuk */ = {
 			isa = PBXGroup;
 			children = (
+				4E6AD7882B67895700F0F596 /* View */,
 				0C2F8B482B57B6E7009AF236 /* Info.plist */,
 				0C2F8B472B57B666009AF236 /* Ddubuk.entitlements */,
 				0C2F8B372B57B548009AF236 /* DdubukApp.swift */,
@@ -72,6 +85,19 @@
 				0C2F8B402B57B54B009AF236 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		4E6AD7882B67895700F0F596 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4E6AD7892B67899E00F0F596 /* FullView.swift */,
+				4E6AD78B2B6789B000F0F596 /* ListingView.swift */,
+				4E6AD78D2B678F9300F0F596 /* ProfileView.swift */,
+				4E6AD78F2B678FAB00F0F596 /* BookMarkView.swift */,
+				4E6AD7912B678FB500F0F596 /* SettingView.swift */,
+				4E6AD7932B678FC900F0F596 /* PasswordChageView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -144,9 +170,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E6AD7942B678FC900F0F596 /* PasswordChageView.swift in Sources */,
 				0C2F8B3A2B57B548009AF236 /* ContentView.swift in Sources */,
+				4E6AD7902B678FAB00F0F596 /* BookMarkView.swift in Sources */,
+				4E6AD78C2B6789B000F0F596 /* ListingView.swift in Sources */,
 				0C2F8B3C2B57B548009AF236 /* Item.swift in Sources */,
 				0C2F8B382B57B548009AF236 /* DdubukApp.swift in Sources */,
+				4E6AD7922B678FB500F0F596 /* SettingView.swift in Sources */,
+				4E6AD78E2B678F9300F0F596 /* ProfileView.swift in Sources */,
+				4E6AD78A2B67899E00F0F596 /* FullView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
