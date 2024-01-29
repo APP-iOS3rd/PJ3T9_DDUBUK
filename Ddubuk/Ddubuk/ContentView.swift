@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct ContentView: View {
-
     var body: some View {
         TabView {
             MapView()
@@ -17,9 +16,7 @@ struct ContentView: View {
     }
 
    
+//     var body: some View {
+//         Main()
+    }
 }
-
-//#Preview {
-//    ContentView()
-//        .modelContainer(for: Item.self, inMemory: true)
-//}
