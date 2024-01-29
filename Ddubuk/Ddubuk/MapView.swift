@@ -4,70 +4,88 @@
 //
 //  Created by 김재완 on 2024/01/23.
 //
-
-import MapKit
 import SwiftUI
+import MapKit
 
-struct MapView: UIViewRepresentable {
-    @ObservedObject var locationManager = LocationManager()
-    @State var userLocation = CLLocationCoordinate2D()
 
-    func makeUIView(context: Context) -> MKMapView {
-        let mapView = MKMapView(frame: .zero)
+class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
+    var mapView: MKMapView!
+    var locationManager: CLLocationManager!
+    var locations: [CLLocation] = []
+
+    var route: Route? {
+        didSet {
+            drawRoute()
+        }
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        mapView = MKMapView()
+        mapView.delegate = self
         mapView.showsUserLocation = true
-        return mapView
+        view = mapView
+
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
     }
 
-    func updateUIView(_ uiView: MKMapView, context: Context) {
-        uiView.centerCoordinate = locationManager.lastLocation?.coordinate ?? CLLocationCoordinate2D()
-        let annotation = MKPointAnnotation()
-        annotation.coordinate = uiView.centerCoordinate
-        uiView.addAnnotation(annotation)
+    func drawRoute() {
+        guard let route = route else { return }
+        
+        // 기존의 경로를 제거합니다.
+        mapView.removeOverlays(mapView.overlays)
+        
+        // 새로운 경로를 그립니다.
+        let coordinates = route.coordinates.map { CLLocationCoordinate2D(latitude: $0.latitude, longitude: $0.longitude) }
+        let polyline = MKPolyline(coordinates: coordinates, count: coordinates.count)
+        mapView.addOverlay(polyline)
+        
+        // 경로가 있는 영역을 확대하여 보여줍니다.
+        mapView.setVisibleMapRect(polyline.boundingMapRect, animated: true)
     }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.last {
+            self.locations.append(location)
+            let region = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: 1000, longitudinalMeters: 1000)
+            mapView.setRegion(region, animated: true)
 
-    func makeCoordinator() -> Coordinator {
-        Coordinator(self)
-    }
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = location.coordinate
+            mapView.addAnnotation(annotation)
 
-    class Coordinator: NSObject, MKMapViewDelegate {
-        var parent: MapView
-
-        init(_ parent: MapView) {
-            self.parent = parent
+            let polyline = MKPolyline(coordinates: self.locations.map { $0.coordinate }, count: self.locations.count)
+            mapView.addOverlay(polyline)
         }
-
-        func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-            let annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "User")
-            annotationView.image = UIImage(named: "locationIcon")
-            let pulseEffect = PulsingEffect(pulseCount: 1, radius: 100, position: annotationView.center)
-            annotationView.layer.insertSublayer(pulseEffect, below: annotationView.layer)
-            return annotationView
-        }
     }
+
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        if overlay is MKPolyline {
+            let renderer = MKPolylineRenderer(overlay: overlay)
+            renderer.strokeColor = .blue
+            renderer.lineWidth = 2
+            return renderer
+        }
+        return MKOverlayRenderer()
+    }
+
 }
 
-struct PulsingEffect: CAAnimationGroup {
-    init(pulseCount: Float, radius: CGFloat, position: CGPoint) {
-        super.init()
-
-        duration = 1.0
-        repeatCount = pulseCount
-
-        let scaleAnimation = CABasicAnimation(keyPath: "transform.scale.xy")
-        scaleAnimation.fromValue = NSNumber(value: 0)
-        scaleAnimation.toValue = NSNumber(value: 1)
-        scaleAnimation.duration = duration
-
-        let opacityAnimation = CAKeyframeAnimation(keyPath: "opacity")
-        opacityAnimation.duration = duration
-        opacityAnimation.values = [0.4, 0.8, 0]
-        opacityAnimation.keyTimes = [0, 0.2, 1]
-
-        animations = [scaleAnimation, opacityAnimation]
+struct MapView: UIViewControllerRepresentable {
+    @Binding var route: Route?
+    
+    func makeUIViewController(context: Context) -> MapViewController {
+        let mapViewController = MapViewController()
+        mapViewController.route = route
+        return mapViewController
     }
 
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    func updateUIViewController(_ uiViewController: MapViewController, context: Context) {
+        uiViewController.route = route
     }
 }
-
