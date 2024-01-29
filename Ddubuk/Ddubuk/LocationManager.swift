@@ -37,17 +37,15 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     
     private var coordinates: [[String: Any]] = []
 
-        private func saveLocation(_ location: CLLocation) {
-            guard !self.information.isEmpty else { return }
-            
-            let newCoordinateData: [String: Any] = [
-                "latitude": location.coordinate.latitude,
-                "longitude": location.coordinate.longitude,
-                "timestamp": Timestamp(date: Date()).dateValue()
-            ]
-            
-            coordinates.append(newCoordinateData)
-        }
+    private func saveLocation(_ location: CLLocation) {
+        let newCoordinateData: [String: Any] = [
+            "latitude": location.coordinate.latitude,
+            "longitude": location.coordinate.longitude,
+            "timestamp": Timestamp(date: Date()).dateValue()
+        ]
+        
+        coordinates.append(newCoordinateData)
+    }
     
     
     func startTimer() {
@@ -65,13 +63,17 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         self.timer = nil
         self.locationManager.stopUpdatingLocation()
         
-        if !self.information.isEmpty {
+        if !self.information.isEmpty && !coordinates.isEmpty {
             let docData: [String: Any] = [
                 "information": self.information,
                 "coordinates": coordinates
             ]
             let route = Route(from: docData)
             FireStoreManager.shared.addRoute(docName: self.information, route: route)
+            
+            // Firebase에 저장한 후 초기화
+            coordinates = []
+            information = ""
         }
     }
     
