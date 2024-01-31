@@ -12,7 +12,6 @@
 		0C2F8B3C2B57B548009AF236 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2F8B3B2B57B548009AF236 /* Item.swift */; };
 		0C2F8B3E2B57B54B009AF236 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C2F8B3D2B57B54B009AF236 /* Assets.xcassets */; };
 		0C2F8B412B57B54B009AF236 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C2F8B402B57B54B009AF236 /* Preview Assets.xcassets */; };
-
 		4E6AD7962B6790D400F0F596 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6AD7952B6790D400F0F596 /* ProfileView.swift */; };
 		4E6AD7982B6790F100F0F596 /* ListingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6AD7972B6790F100F0F596 /* ListingView.swift */; };
 		4E6AD79A2B67911C00F0F596 /* FullView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6AD7992B67911C00F0F596 /* FullView.swift */; };
@@ -29,7 +28,7 @@
 		4E6AD7B62B67943100F0F596 /* RecordCompletionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6AD7B52B67943100F0F596 /* RecordCompletionView.swift */; };
 		4E6AD7BA2B67947400F0F596 /* RecordMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6AD7B92B67947400F0F596 /* RecordMap.swift */; };
 		4E6AD7BC2B67948B00F0F596 /* RecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6AD7BB2B67948B00F0F596 /* RecordView.swift */; };
-
+		4E6AD7C02B68CADF00F0F596 /* RecordCompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6AD7BF2B68CADF00F0F596 /* RecordCompleteView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,7 +40,6 @@
 		0C2F8B402B57B54B009AF236 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		0C2F8B472B57B666009AF236 /* Ddubuk.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Ddubuk.entitlements; sourceTree = "<group>"; };
 		0C2F8B482B57B6E7009AF236 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-
 		4E6AD7952B6790D400F0F596 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		4E6AD7972B6790F100F0F596 /* ListingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingView.swift; sourceTree = "<group>"; };
 		4E6AD7992B67911C00F0F596 /* FullView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullView.swift; sourceTree = "<group>"; };
@@ -58,7 +56,7 @@
 		4E6AD7B52B67943100F0F596 /* RecordCompletionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordCompletionView.swift; sourceTree = "<group>"; };
 		4E6AD7B92B67947400F0F596 /* RecordMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordMap.swift; sourceTree = "<group>"; };
 		4E6AD7BB2B67948B00F0F596 /* RecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordView.swift; sourceTree = "<group>"; };
-
+		4E6AD7BF2B68CADF00F0F596 /* RecordCompleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordCompleteView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,10 +89,8 @@
 		0C2F8B362B57B548009AF236 /* Ddubuk */ = {
 			isa = PBXGroup;
 			children = (
-
 				4E6AD7AC2B67936B00F0F596 /* Record */,
 				4E6AD7A12B6791D700F0F596 /* View */,
-
 				0C2F8B482B57B6E7009AF236 /* Info.plist */,
 				0C2F8B472B57B666009AF236 /* Ddubuk.entitlements */,
 				0C2F8B372B57B548009AF236 /* DdubukApp.swift */,
@@ -114,7 +110,6 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-
 		4E6AD7A12B6791D700F0F596 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -128,12 +123,11 @@
 				4E6AD79F2B67915A00F0F596 /* PasswordChangeView.swift */,
 				4E6AD7992B67911C00F0F596 /* FullView.swift */,
 				4E6AD7972B6790F100F0F596 /* ListingView.swift */,
-
+				4E6AD7BF2B68CADF00F0F596 /* RecordCompleteView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
 		};
-
 		4E6AD7AC2B67936B00F0F596 /* Record */ = {
 			isa = PBXGroup;
 			children = (
@@ -163,7 +157,6 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -234,31 +227,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-
 				4E6AD7AB2B67926300F0F596 /* CommunityView.swift in Sources */,
 				4E6AD7962B6790D400F0F596 /* ProfileView.swift in Sources */,
+				4E6AD7C02B68CADF00F0F596 /* RecordCompleteView.swift in Sources */,
 				4E6AD7B02B6793A400F0F596 /* RecordState.swift in Sources */,
 				4E6AD7BA2B67947400F0F596 /* RecordMap.swift in Sources */,
 				4E6AD79C2B67913C00F0F596 /* BookMarkView.swift in Sources */,
 				4E6AD7982B6790F100F0F596 /* ListingView.swift in Sources */,
 				4E6AD7A92B67925700F0F596 /* MapView.swift in Sources */,
 				4E6AD7A32B67921100F0F596 /* MainView.swift in Sources */,
-
 				0C2F8B3A2B57B548009AF236 /* ContentView.swift in Sources */,
-				4E6AD7902B678FAB00F0F596 /* BookMarkView.swift in Sources */,
-				4E6AD78C2B6789B000F0F596 /* ListingView.swift in Sources */,
 				0C2F8B3C2B57B548009AF236 /* Item.swift in Sources */,
 				4E6AD7B42B67941600F0F596 /* Coordinator.swift in Sources */,
 				4E6AD79E2B67914800F0F596 /* SettingView.swift in Sources */,
 				4E6AD7BC2B67948B00F0F596 /* RecordView.swift in Sources */,
 				4E6AD7B22B6793ED00F0F596 /* RecordViewModel.swift in Sources */,
 				0C2F8B382B57B548009AF236 /* DdubukApp.swift in Sources */,
-
 				4E6AD79A2B67911C00F0F596 /* FullView.swift in Sources */,
 				4E6AD7B62B67943100F0F596 /* RecordCompletionView.swift in Sources */,
 				4E6AD7A02B67915A00F0F596 /* PasswordChangeView.swift in Sources */,
 				4E6AD7A52B67923800F0F596 /* SearchView.swift in Sources */,
-
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
