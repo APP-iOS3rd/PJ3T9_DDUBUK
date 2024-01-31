@@ -17,7 +17,7 @@ struct expandedView: View {
                 .foregroundColor(.primary)//optional
                 .lineLimit(2)//optional
                 .expandButton(TextSet(text: "더보기", font: .body, color: .blue))//optional
-                .collapseButton(TextSet(text: "줄이기", font: .body, color: .blue))//optional
+                .collapseButton(TextSet(text: "간략히", font: .body, color: .blue))//optional
                 .expandAnimation(.easeOut)//optional
                 .padding(.horizontal, 24)//optional
                 .background(.gray)
