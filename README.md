@@ -122,9 +122,7 @@ Firebasefirestore
 
 
 
-|서버 DB 연동 데이터구조 예시|
-|:--:|
-|<img src="https://github.com/APP-iOS3rd/PJ3T9_DDUBUK/assets/144413519/792ab284-b5e5-4cbe-acb7-caf3fc8719bf" width="">|
+
 
 
   
