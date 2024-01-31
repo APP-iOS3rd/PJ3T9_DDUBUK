@@ -386,9 +386,9 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Ddubuk/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "사용자의 카메라를 받아오려고 합니다";
-				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "사용자의 위치를 받아오려고 합니다";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "위치 확인을 위해 권한이 필요합니다.";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "사용자의 위치를 받아오려고 합니다";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "사용자의 위치를 받아오려고 합니다";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "위치 확인을 위해 권한이 필요합니다.";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "사용자의 사진을 가져오려고 합니다";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -422,9 +422,9 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Ddubuk/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "사용자의 카메라를 받아오려고 합니다";
-				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "사용자의 위치를 받아오려고 합니다";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "위치 확인을 위해 권한이 필요합니다.";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "사용자의 위치를 받아오려고 합니다";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "사용자의 위치를 받아오려고 합니다";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "위치 확인을 위해 권한이 필요합니다.";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "사용자의 사진을 가져오려고 합니다";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
