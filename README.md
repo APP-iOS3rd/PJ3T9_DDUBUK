@@ -24,7 +24,6 @@
 SwiftUI
 Mapkit
 Combine
-Health Kit
 Core Location
 Firebasefirestore
 ```
