@@ -20,7 +20,6 @@
 		4E6AD7A02B67915A00F0F596 /* PasswordChangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6AD79F2B67915A00F0F596 /* PasswordChangeView.swift */; };
 		4E6AD7A32B67921100F0F596 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6AD7A22B67921100F0F596 /* MainView.swift */; };
 		4E6AD7A52B67923800F0F596 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6AD7A42B67923800F0F596 /* SearchView.swift */; };
-		4E6AD7A92B67925700F0F596 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6AD7A82B67925700F0F596 /* MapView.swift */; };
 		4E6AD7AB2B67926300F0F596 /* CommunityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6AD7AA2B67926300F0F596 /* CommunityView.swift */; };
 		4E6AD7B02B6793A400F0F596 /* RecordState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6AD7AF2B6793A400F0F596 /* RecordState.swift */; };
 		4E6AD7B22B6793ED00F0F596 /* RecordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6AD7B12B6793ED00F0F596 /* RecordViewModel.swift */; };
@@ -28,7 +27,14 @@
 		4E6AD7B62B67943100F0F596 /* RecordCompletionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6AD7B52B67943100F0F596 /* RecordCompletionView.swift */; };
 		4E6AD7BA2B67947400F0F596 /* RecordMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6AD7B92B67947400F0F596 /* RecordMap.swift */; };
 		4E6AD7BC2B67948B00F0F596 /* RecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6AD7BB2B67948B00F0F596 /* RecordView.swift */; };
+		A4E3BDFD2B688BF50007E38A /* DetailTrailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E3BDFC2B688BF50007E38A /* DetailTrailView.swift */; };
+		A4E3BE032B68CB340007E38A /* TrailInfoDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E3BE022B68CB340007E38A /* TrailInfoDummy.swift */; };
+		A4E3BE072B6A025E0007E38A /* expandedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E3BE062B6A025E0007E38A /* expandedView.swift */; };
+		A4E3BE0F2B6A05ED0007E38A /* ExpandableText in Frameworks */ = {isa = PBXBuildFile; productRef = A4E3BE0E2B6A05ED0007E38A /* ExpandableText */; };
+		A4E3BE112B6A1A740007E38A /* MapMakerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E3BE102B6A1A740007E38A /* MapMakerView.swift */; };
+		A4E3BE132B6A1BE40007E38A /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E3BE122B6A1BE40007E38A /* MapView.swift */; };
 		4E6AD7C02B68CADF00F0F596 /* RecordCompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6AD7BF2B68CADF00F0F596 /* RecordCompleteView.swift */; };
+
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,7 +54,6 @@
 		4E6AD79F2B67915A00F0F596 /* PasswordChangeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordChangeView.swift; sourceTree = "<group>"; };
 		4E6AD7A22B67921100F0F596 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		4E6AD7A42B67923800F0F596 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
-		4E6AD7A82B67925700F0F596 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		4E6AD7AA2B67926300F0F596 /* CommunityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityView.swift; sourceTree = "<group>"; };
 		4E6AD7AF2B6793A400F0F596 /* RecordState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordState.swift; sourceTree = "<group>"; };
 		4E6AD7B12B6793ED00F0F596 /* RecordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewModel.swift; sourceTree = "<group>"; };
@@ -56,6 +61,11 @@
 		4E6AD7B52B67943100F0F596 /* RecordCompletionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordCompletionView.swift; sourceTree = "<group>"; };
 		4E6AD7B92B67947400F0F596 /* RecordMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordMap.swift; sourceTree = "<group>"; };
 		4E6AD7BB2B67948B00F0F596 /* RecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordView.swift; sourceTree = "<group>"; };
+		A4E3BDFC2B688BF50007E38A /* DetailTrailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTrailView.swift; sourceTree = "<group>"; };
+		A4E3BE022B68CB340007E38A /* TrailInfoDummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrailInfoDummy.swift; sourceTree = "<group>"; };
+		A4E3BE062B6A025E0007E38A /* expandedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = expandedView.swift; sourceTree = "<group>"; };
+		A4E3BE102B6A1A740007E38A /* MapMakerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapMakerView.swift; sourceTree = "<group>"; };
+		A4E3BE122B6A1BE40007E38A /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		4E6AD7BF2B68CADF00F0F596 /* RecordCompleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordCompleteView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -64,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A4E3BE0F2B6A05ED0007E38A /* ExpandableText in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -89,6 +100,7 @@
 		0C2F8B362B57B548009AF236 /* Ddubuk */ = {
 			isa = PBXGroup;
 			children = (
+				A4E3BDFE2B68CACB0007E38A /* DetailTrail */,
 				4E6AD7AC2B67936B00F0F596 /* Record */,
 				4E6AD7A12B6791D700F0F596 /* View */,
 				0C2F8B482B57B6E7009AF236 /* Info.plist */,
@@ -115,7 +127,6 @@
 			children = (
 				4E6AD7A22B67921100F0F596 /* MainView.swift */,
 				4E6AD7AA2B67926300F0F596 /* CommunityView.swift */,
-				4E6AD7A82B67925700F0F596 /* MapView.swift */,
 				4E6AD7A42B67923800F0F596 /* SearchView.swift */,
 				4E6AD7952B6790D400F0F596 /* ProfileView.swift */,
 				4E6AD79B2B67913C00F0F596 /* BookMarkView.swift */,
@@ -123,6 +134,7 @@
 				4E6AD79F2B67915A00F0F596 /* PasswordChangeView.swift */,
 				4E6AD7992B67911C00F0F596 /* FullView.swift */,
 				4E6AD7972B6790F100F0F596 /* ListingView.swift */,
+				A4E3BE122B6A1BE40007E38A /* MapView.swift */,
 				4E6AD7BF2B68CADF00F0F596 /* RecordCompleteView.swift */,
 			);
 			path = View;
@@ -157,6 +169,33 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		A4E3BDFE2B68CACB0007E38A /* DetailTrail */ = {
+			isa = PBXGroup;
+			children = (
+				A4E3BE002B68CAF10007E38A /* ViewModel */,
+				A4E3BDFF2B68CAE50007E38A /* View */,
+			);
+			path = DetailTrail;
+			sourceTree = "<group>";
+		};
+		A4E3BDFF2B68CAE50007E38A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A4E3BDFC2B688BF50007E38A /* DetailTrailView.swift */,
+				A4E3BE062B6A025E0007E38A /* expandedView.swift */,
+				A4E3BE102B6A1A740007E38A /* MapMakerView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A4E3BE002B68CAF10007E38A /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				A4E3BE022B68CB340007E38A /* TrailInfoDummy.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -173,6 +212,9 @@
 			dependencies = (
 			);
 			name = Ddubuk;
+			packageProductDependencies = (
+				A4E3BE0E2B6A05ED0007E38A /* ExpandableText */,
+			);
 			productName = Ddubuk;
 			productReference = 0C2F8B342B57B548009AF236 /* Ddubuk.app */;
 			productType = "com.apple.product-type.application";
@@ -201,6 +243,9 @@
 				Base,
 			);
 			mainGroup = 0C2F8B2B2B57B548009AF236;
+			packageReferences = (
+				A4E3BE0D2B6A05ED0007E38A /* XCRemoteSwiftPackageReference "ExpandableText" */,
+			);
 			productRefGroup = 0C2F8B352B57B548009AF236 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -234,14 +279,18 @@
 				4E6AD7BA2B67947400F0F596 /* RecordMap.swift in Sources */,
 				4E6AD79C2B67913C00F0F596 /* BookMarkView.swift in Sources */,
 				4E6AD7982B6790F100F0F596 /* ListingView.swift in Sources */,
-				4E6AD7A92B67925700F0F596 /* MapView.swift in Sources */,
+				A4E3BE032B68CB340007E38A /* TrailInfoDummy.swift in Sources */,
 				4E6AD7A32B67921100F0F596 /* MainView.swift in Sources */,
+				A4E3BE112B6A1A740007E38A /* MapMakerView.swift in Sources */,
+				A4E3BE132B6A1BE40007E38A /* MapView.swift in Sources */,
 				0C2F8B3A2B57B548009AF236 /* ContentView.swift in Sources */,
 				0C2F8B3C2B57B548009AF236 /* Item.swift in Sources */,
 				4E6AD7B42B67941600F0F596 /* Coordinator.swift in Sources */,
 				4E6AD79E2B67914800F0F596 /* SettingView.swift in Sources */,
 				4E6AD7BC2B67948B00F0F596 /* RecordView.swift in Sources */,
 				4E6AD7B22B6793ED00F0F596 /* RecordViewModel.swift in Sources */,
+				A4E3BE072B6A025E0007E38A /* expandedView.swift in Sources */,
+				A4E3BDFD2B688BF50007E38A /* DetailTrailView.swift in Sources */,
 				0C2F8B382B57B548009AF236 /* DdubukApp.swift in Sources */,
 				4E6AD79A2B67911C00F0F596 /* FullView.swift in Sources */,
 				4E6AD7B62B67943100F0F596 /* RecordCompletionView.swift in Sources */,
@@ -466,6 +515,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A4E3BE0D2B6A05ED0007E38A /* XCRemoteSwiftPackageReference "ExpandableText" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/NuPlay/ExpandableText";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A4E3BE0E2B6A05ED0007E38A /* ExpandableText */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A4E3BE0D2B6A05ED0007E38A /* XCRemoteSwiftPackageReference "ExpandableText" */;
+			productName = ExpandableText;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 0C2F8B2C2B57B548009AF236 /* Project object */;
 }
