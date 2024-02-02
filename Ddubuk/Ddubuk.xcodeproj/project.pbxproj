@@ -35,6 +35,8 @@
 		A4E3BE132B6A1BE40007E38A /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E3BE122B6A1BE40007E38A /* MapView.swift */; };
 		4E6AD7C02B68CADF00F0F596 /* RecordCompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6AD7BF2B68CADF00F0F596 /* RecordCompleteView.swift */; };
 
+		4EF138A92B6B36A000C06A97 /* MainListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF138A82B6B36A000C06A97 /* MainListView.swift */; };
+
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,6 +69,7 @@
 		A4E3BE102B6A1A740007E38A /* MapMakerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapMakerView.swift; sourceTree = "<group>"; };
 		A4E3BE122B6A1BE40007E38A /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		4E6AD7BF2B68CADF00F0F596 /* RecordCompleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordCompleteView.swift; sourceTree = "<group>"; };
+		4EF138A82B6B36A000C06A97 /* MainListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +131,7 @@
 				4E6AD7A22B67921100F0F596 /* MainView.swift */,
 				4E6AD7AA2B67926300F0F596 /* CommunityView.swift */,
 				4E6AD7A42B67923800F0F596 /* SearchView.swift */,
+				4EF138A82B6B36A000C06A97 /* MainListView.swift */,
 				4E6AD7952B6790D400F0F596 /* ProfileView.swift */,
 				4E6AD79B2B67913C00F0F596 /* BookMarkView.swift */,
 				4E6AD79D2B67914800F0F596 /* SettingView.swift */,
@@ -276,6 +280,7 @@
 				4E6AD7962B6790D400F0F596 /* ProfileView.swift in Sources */,
 				4E6AD7C02B68CADF00F0F596 /* RecordCompleteView.swift in Sources */,
 				4E6AD7B02B6793A400F0F596 /* RecordState.swift in Sources */,
+				4EF138A92B6B36A000C06A97 /* MainListView.swift in Sources */,
 				4E6AD7BA2B67947400F0F596 /* RecordMap.swift in Sources */,
 				4E6AD79C2B67913C00F0F596 /* BookMarkView.swift in Sources */,
 				4E6AD7982B6790F100F0F596 /* ListingView.swift in Sources */,
@@ -435,9 +440,9 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Ddubuk/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "사용자의 카메라를 받아오려고 합니다";
-				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "사용자의 위치를 받아오려고 합니다";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "위치 확인을 위해 권한이 필요합니다.";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "사용자의 위치를 받아오려고 합니다";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "사용자의 위치를 받아오려고 합니다";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "위치 확인을 위해 권한이 필요합니다.";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "사용자의 사진을 가져오려고 합니다";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -471,9 +476,9 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Ddubuk/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "사용자의 카메라를 받아오려고 합니다";
-				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "사용자의 위치를 받아오려고 합니다";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "위치 확인을 위해 권한이 필요합니다.";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "사용자의 위치를 받아오려고 합니다";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "사용자의 위치를 받아오려고 합니다";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "위치 확인을 위해 권한이 필요합니다.";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "사용자의 사진을 가져오려고 합니다";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

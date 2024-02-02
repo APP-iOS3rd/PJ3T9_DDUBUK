@@ -46,8 +46,8 @@ struct ListingView: View {
                         .scaledToFill()
                 }
             }
-            .frame(height: 200)
-            .clipShape(RoundedRectangle(cornerRadius: 20))
+            .frame(height: 300)
+            .clipShape(RoundedRectangle(cornerRadius: 10))
             .tabViewStyle(.page)
 
             VStack(alignment: .leading, spacing: 8) {
