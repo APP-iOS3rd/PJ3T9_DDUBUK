@@ -7,8 +7,12 @@
 
 
 import SwiftUI
+import MapKit
 
 struct Main: View {
+    var route: Route
+    @EnvironmentObject var viewModel: RecordViewModel
+    
     var body: some View {
         TabView {
             NavigationView {
@@ -39,7 +43,8 @@ struct Main: View {
             }
 
             NavigationView {
-                MapView()
+                RecordMap(userLocations: viewModel.userLocations, isRecording:
+                            viewModel.isRecording, timerState: viewModel.timerState)
                     .navigationBarTitle("지도")
             }
             .tabItem {
@@ -59,6 +64,12 @@ struct Main: View {
     }
 }
 
-#Preview {
-    Main()
-}
+//#Preview {
+//    Main()
+//}
+
+
+
+//let exampleRoute = Route(title: "예시", coordinates: [], imageUrl: nil, address: nil, memo: "", types: [], duration: "0", distanceTraveled: 0.0)
+//            Main(route: exampleRoute) // Main 호출 시 route 전달
+//                .environmentObject(viewModel)

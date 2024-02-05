@@ -7,9 +7,15 @@
 
 import SwiftUI
 import SwiftData
+import Firebase
 
 @main
 struct DdubukApp: App {
+    
+    
+    init() {
+            FirebaseApp.configure()
+        }
 //    var sharedModelContainer: ModelContainer = {
 //        let schema = Schema([
 //            Item.self,
@@ -22,12 +28,15 @@ struct DdubukApp: App {
 //            fatalError("Could not create ModelContainer: \(error)")
 //        }
 //    }()
+    
+    var viewModel = RecordViewModel()
+
 
     var body: some Scene {
         WindowGroup {
-            Main()
-                
+            let exampleRoute = Route(title: "예시", coordinates: [], imageUrl: nil, address: nil, memo: "", types: [], duration: "0", distanceTraveled: 0.0)
+                       Main(route: exampleRoute) // Main 호출 시 route 전달
+                           .environmentObject(viewModel) 
         }
-//        .modelContainer(sharedModelContainer)
     }
 }
