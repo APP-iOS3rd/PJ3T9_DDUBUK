@@ -10,6 +10,7 @@ import MapKit
 
 // MARK: - Coordinator
 class Coordinator: NSObject, MKMapViewDelegate {
+    
     var mkView: RecordMap
     
     init(_ mkView: RecordMap) {
@@ -17,15 +18,14 @@ class Coordinator: NSObject, MKMapViewDelegate {
     }
     
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-        guard let polyline = overlay as? MKPolyline else {
-            return MKOverlayRenderer()
+        if let polyline = overlay as? MKPolyline {
+            
+            let renderer = MKPolylineRenderer(polyline: polyline)
+            renderer.strokeColor = .blue
+            renderer.lineWidth = 5.0
+            renderer.alpha = 1.0
+            return renderer
         }
-        
-        let renderer = MKPolylineRenderer(polyline: polyline)
-        renderer.strokeColor = .green
-        renderer.lineWidth = 5.0
-        renderer.alpha = 1.0
-        
-        return renderer
+        return MKOverlayRenderer()
     }
 }
