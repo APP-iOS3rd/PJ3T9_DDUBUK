@@ -35,10 +35,9 @@ struct FullView: View {
         ScrollView {
             VStack {
                 // 제목
-                VStack(alignment: .leading, spacing: 60) {
-    
-                    Spacer().frame(height: 20)
-                    
+                VStack(alignment: .leading, spacing: 200) {
+
+                    Spacer()
 
                     ForEach(exploreViewRoutes, id: \.self) { route in
                         ListingView(route: route, showEllipsis: true)
@@ -47,18 +46,6 @@ struct FullView: View {
                     }
                 }
                 .padding()
-
-                // 이미지 슬라이드쇼
-                TabView {
-                    ForEach(dummyData.images, id: \.self) { image in
-                        Image(image)
-                            .resizable()
-                            .scaledToFill()
-                            .frame(height: 200)
-                    }
-                }
-                .tabViewStyle(PageTabViewStyle())
-                .frame(height: 200)
             }
         }
         .navigationBarTitle("나의 산책로")
