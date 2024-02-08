@@ -33,7 +33,7 @@ struct ProfileView: View {
     )
 
     var body: some View {
-        NavigationView {
+        
             ScrollView(.vertical) {
                 VStack {
                     profileHeader(data: dummyData1)
@@ -46,7 +46,7 @@ struct ProfileView: View {
                                         .imageScale(.large)
                                         .foregroundColor(.primary)
             })
-        }
+        
     }
 
     private func profileHeader(data: UserProfile) -> some View {
