@@ -13,8 +13,6 @@ struct ProfileView: View {
         var username: String
         var bio: String
         var walkCount: Int
-        var followers: Int
-        var following: Int
         var imageURL: String
         var walkRoutes: [String]
         var instagramID: String
@@ -25,8 +23,6 @@ struct ProfileView: View {
         username: "H.Methew",
         bio: "안녕하세요 산책을 좋아하는 20대 남성입니다.",
         walkCount: 11,
-        followers: 50,
-        following: 124,
         imageURL: "photo.fill",
         walkRoutes: ["Route A", "Route B", "Route C"],
         instagramID: "sisi"
@@ -51,7 +47,7 @@ struct ProfileView: View {
 
     private func profileHeader(data: UserProfile) -> some View {
         VStack {
-            HStack {
+            
                 Image(systemName: data.imageURL)
                     .resizable()
                     .frame(width: 120, height: 120)
@@ -61,44 +57,18 @@ struct ProfileView: View {
                     .padding(.bottom, 20)
                     .padding()
 
-                Spacer()
-
-                VStack {
+            VStack {
+                    
+                    Text(data.username)
+                    .padding(.top, -30)
+                        .fontWeight(.bold)
+                
+                    
                     Text("산책수")
                         .fontWeight(.bold)
                     Text("\(data.walkCount)")
                         .fontWeight(.bold)
                 }
-
-                VStack {
-                    Text("팔로워")
-                        .fontWeight(.bold)
-                    Text("\(data.followers)")
-                        .fontWeight(.bold)
-                }
-
-                VStack {
-                    Text("팔로잉")
-                        .fontWeight(.bold)
-                    Text("\(data.following)")
-                        .fontWeight(.bold)
-                }
-                .padding()
-                Spacer()
-            }
-
-            HStack {
-                Text(data.username)
-                    .fontWeight(.bold)
-                    .padding()
-                Spacer()
-                VStack(alignment: .leading) {
-                    Text(data.bio)
-                    Text(data.instagramID)
-                }
-                .padding()
-            }
-            Spacer()
 
             VStack(spacing: 10) {
                 HStack(spacing: 190) {

@@ -57,6 +57,7 @@ struct ListingView: View {
                             .font(.headline)
                             .fontWeight(.bold)
                             .lineLimit(2)
+                            .foregroundColor(.primary)
                         Text(dummyData.date)
                             .font(.subheadline)
                             .foregroundColor(.secondary)
@@ -70,7 +71,7 @@ struct ListingView: View {
                         }) {
                             Image(systemName: "ellipsis")
                                 .font(.system(size: 20))
-                                .foregroundColor(.black)
+                                .foregroundColor(Color.primary)
                         }
                         .padding()
                         .actionSheet(isPresented: $showActionSheet) {
@@ -90,25 +91,31 @@ struct ListingView: View {
                 HStack {
                     VStack {
                         Text("코스 길이")
+                            .foregroundColor(Color.primary)
                         Text(dummyData.length)
+                            .foregroundColor(Color.primary)
                     }
 
                     Divider()
                         .frame(height: 50)
-                        .background(.black)
+                        .background(Color.primary)
 
                     VStack {
                         Text("걸은 시간")
+                            .foregroundColor(Color.primary)
                         Text(dummyData.duration)
+                            .foregroundColor(Color.primary)
                     }
 
                     Divider()
                         .frame(height: 50)
-                        .background(.black)
+                        .background(Color.primary)
 
                     VStack {
                         Text("걸음 수")
+                            .foregroundColor(Color.primary)
                         Text(dummyData.steps)
+                            .foregroundColor(Color.primary)
                     }
                 }
             }
@@ -121,7 +128,7 @@ struct ListingView: View {
         )
         .overlay(
             RoundedRectangle(cornerRadius: 20)
-                .stroke(Color.black, lineWidth: 1)
+                .stroke(Color.primary, lineWidth: 1)
         )
         .padding()
     }
