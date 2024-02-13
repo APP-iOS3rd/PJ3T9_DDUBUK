@@ -123,7 +123,7 @@ struct ListingView: View {
         }
         .background(
             RoundedRectangle(cornerRadius: 20)
-                .fill(Color.white)
+                .fill(Color(.systemBackground))
                 .shadow(radius: 5)
         )
         .overlay(
