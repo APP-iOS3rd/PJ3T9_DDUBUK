@@ -24,6 +24,8 @@ struct ProfileEdit: View {
     
     var body: some View {
         
+        Spacer()
+        
         VStack {
             if let image = image {
                 image
@@ -53,38 +55,63 @@ struct ProfileEdit: View {
         VStack(alignment: .leading, spacing: 16) {
             HStack {
                 Text("이름")
+                    .fontWeight(.bold)
+                    .font(.system(size: 20))
                 TextEditor(text: $name)
                     .padding()
-                    .frame(height: 40)
-                    .border(Color.black)
+                    .foregroundColor(Color.primary)
+                    .font(.system(size: 18))
+                    .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 50)
+                    .border(Color.primary, width: 1)
             }
             
-            HStack {
-                Text("이메일")
-                TextEditor(text: $email)
-                    .padding()
-                    .frame(height: 40)
-                    .border(Color.black)
-            }
-            
-            HStack {
-                Text("소개")
-                TextEditor(text: $introduce)
-                    .padding()
-                    .frame(height: 60)
-                    .border(Color.black)
-            }
-            
-            HStack {
-                Text("인스타 링크")
-                TextEditor(text: $instagramID)
-                    .padding()
-                    .frame(height: 40)
-                    .border(Color.black)
-            }
-            
+//            HStack {
+//                Text("이메일")
+//                    .fontWeight(.bold)
+//                    .font(.system(size: 20))
+//                TextEditor(text: $email)
+//                    .padding()
+//                    .foregroundColor(Color.primary)
+//                    .font(.system(size: 20))
+//                    .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 50)
+//                    .border(Color.primary, width: 1)
+//            }
+//            
+//            HStack {
+//                Text("소개")
+//                    .fontWeight(.bold)
+//                    .font(.system(size: 20))
+//                TextEditor(text: $introduce)
+//                    .padding()
+//                    .foregroundColor(Color.primary)
+//                    .font(.system(size: 15))
+//                    .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 120)
+//                    .border(Color.primary, width: 1)
+//            }
+//            
+//            HStack {
+//                Text("인스타 링크")
+//                    .fontWeight(.bold)
+//                    .font(.system(size: 20))
+//                TextEditor(text: $instagramID)
+//                    .padding()
+//                    .foregroundColor(Color.primary)
+//                    .font(.system(size: 18))
+//                    .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 50)
+//                    .border(Color.primary, width: 1)
+//            }
         }
         .padding()
+        
+        Spacer()
+
+        Button {
+            
+        } label: {
+            Text("저장버튼")
+                .foregroundColor(Color.primary)
+        }
+        
     }
 }
 

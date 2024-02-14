@@ -8,29 +8,7 @@
 import SwiftUI
 
 struct FullView: View {
-    // 더미 데이터
-    struct WalkRoute {
-        var title: String
-        var date: String
-        var length: String
-        var duration: String
-        var steps: String
-        var images: [String]
-    }
-
-    let dummyData: WalkRoute = WalkRoute(
-        title: "길지만 이것은 바로 산책로 제목입니다.",
-        date: "2024년 2월 12일",
-        length: "823m",
-        duration: "23분",
-        steps: "5920걸음",
-        images: ["images-1", "images-2", "images-3", "images-4"]
-    )
-
-
-    var exploreViewRoutes: [String] = ["Route A", "Route B", "Route C"] // ExploreView에서 사용한 더미 데이터
-
-
+    var exploreViewRoutes: [String] = ["Route A", "Route B", "Route C"]
     var body: some View {
         ScrollView {
             VStack {
