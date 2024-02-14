@@ -41,6 +41,7 @@
 		0C0FFE502B6CBAB1004BACF9 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C0FFE4F2B6CBAB1004BACF9 /* LocationManager.swift */; };
 		0C0FFE522B6CBE6D004BACF9 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C0FFE512B6CBE6D004BACF9 /* ImagePicker.swift */; };
 		0C0FFE552B6CBF51004BACF9 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C0FFE542B6CBF51004BACF9 /* MapViewController.swift */; };
+		0C2C3DA72B722C3D002493D3 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 0C2C3DA62B722C3D002493D3 /* SDWebImageSwiftUI */; };
 		0C2F8B382B57B548009AF236 /* DdubukApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2F8B372B57B548009AF236 /* DdubukApp.swift */; };
 		0C2F8B3A2B57B548009AF236 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2F8B392B57B548009AF236 /* ContentView.swift */; };
 		0C2F8B3C2B57B548009AF236 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2F8B3B2B57B548009AF236 /* Item.swift */; };
@@ -60,7 +61,6 @@
 		4E6AD7B02B6793A400F0F596 /* RecordState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6AD7AF2B6793A400F0F596 /* RecordState.swift */; };
 		4E6AD7B22B6793ED00F0F596 /* RecordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6AD7B12B6793ED00F0F596 /* RecordViewModel.swift */; };
 		4E6AD7B42B67941600F0F596 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6AD7B32B67941600F0F596 /* Coordinator.swift */; };
-		4E6AD7B62B67943100F0F596 /* RecordCompletionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6AD7B52B67943100F0F596 /* RecordCompletionView.swift */; };
 		4E6AD7BA2B67947400F0F596 /* RecordMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6AD7B92B67947400F0F596 /* RecordMap.swift */; };
 		4E6AD7BC2B67948B00F0F596 /* RecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6AD7BB2B67948B00F0F596 /* RecordView.swift */; };
 		4E6AD7C02B68CADF00F0F596 /* RecordCompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6AD7BF2B68CADF00F0F596 /* RecordCompleteView.swift */; };
@@ -102,7 +102,6 @@
 		4E6AD7AF2B6793A400F0F596 /* RecordState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordState.swift; sourceTree = "<group>"; };
 		4E6AD7B12B6793ED00F0F596 /* RecordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewModel.swift; sourceTree = "<group>"; };
 		4E6AD7B32B67941600F0F596 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
-		4E6AD7B52B67943100F0F596 /* RecordCompletionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordCompletionView.swift; sourceTree = "<group>"; };
 		4E6AD7B92B67947400F0F596 /* RecordMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordMap.swift; sourceTree = "<group>"; };
 		4E6AD7BB2B67948B00F0F596 /* RecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordView.swift; sourceTree = "<group>"; };
 		4E6AD7BF2B68CADF00F0F596 /* RecordCompleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordCompleteView.swift; sourceTree = "<group>"; };
@@ -143,6 +142,7 @@
 				0C0FFE422B6CB7E9004BACF9 /* FirebaseStorageCombine-Community in Frameworks */,
 				A4E3BE0F2B6A05ED0007E38A /* ExpandableText in Frameworks */,
 				0C0FFE1A2B6CB7E9004BACF9 /* FirebaseAuth in Frameworks */,
+				0C2C3DA72B722C3D002493D3 /* SDWebImageSwiftUI in Frameworks */,
 				0C0FFE242B6CB7E9004BACF9 /* FirebaseDynamicLinks in Frameworks */,
 				0C0FFE262B6CB7E9004BACF9 /* FirebaseFirestore in Frameworks */,
 				0C0FFE3E2B6CB7E9004BACF9 /* FirebaseRemoteConfigSwift in Frameworks */,
@@ -239,7 +239,6 @@
 				4E6AD79F2B67915A00F0F596 /* PasswordChangeView.swift */,
 				4E6AD7992B67911C00F0F596 /* FullView.swift */,
 				4E6AD7972B6790F100F0F596 /* ListingView.swift */,
-				4E6AD7BF2B68CADF00F0F596 /* RecordCompleteView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -257,9 +256,9 @@
 			isa = PBXGroup;
 			children = (
 				4E6AD7AF2B6793A400F0F596 /* RecordState.swift */,
-				4E6AD7B52B67943100F0F596 /* RecordCompletionView.swift */,
 				4E6AD7B92B67947400F0F596 /* RecordMap.swift */,
 				4E6AD7BB2B67948B00F0F596 /* RecordView.swift */,
+				4E6AD7BF2B68CADF00F0F596 /* RecordCompleteView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -345,6 +344,7 @@
 				0C0FFE3D2B6CB7E9004BACF9 /* FirebaseRemoteConfigSwift */,
 				0C0FFE3F2B6CB7E9004BACF9 /* FirebaseStorage */,
 				0C0FFE412B6CB7E9004BACF9 /* FirebaseStorageCombine-Community */,
+				0C2C3DA62B722C3D002493D3 /* SDWebImageSwiftUI */,
 			);
 			productName = Ddubuk;
 			productReference = 0C2F8B342B57B548009AF236 /* Ddubuk.app */;
@@ -377,6 +377,7 @@
 			packageReferences = (
 				A4E3BE0D2B6A05ED0007E38A /* XCRemoteSwiftPackageReference "ExpandableText" */,
 				0C0FFE0C2B6CB7E9004BACF9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				0C2C3DA52B722C3D002493D3 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 			);
 			productRefGroup = 0C2F8B352B57B548009AF236 /* Products */;
 			projectDirPath = "";
@@ -434,7 +435,6 @@
 				A4E3BDFD2B688BF50007E38A /* DetailTrailView.swift in Sources */,
 				0C2F8B382B57B548009AF236 /* DdubukApp.swift in Sources */,
 				4E6AD79A2B67911C00F0F596 /* FullView.swift in Sources */,
-				4E6AD7B62B67943100F0F596 /* RecordCompletionView.swift in Sources */,
 				4E6AD7A02B67915A00F0F596 /* PasswordChangeView.swift in Sources */,
 				4E6AD7A52B67923800F0F596 /* SearchView.swift in Sources */,
 			);
@@ -666,6 +666,14 @@
 				minimumVersion = 10.20.0;
 			};
 		};
+		0C2C3DA52B722C3D002493D3 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.2.6;
+			};
+		};
 		A4E3BE0D2B6A05ED0007E38A /* XCRemoteSwiftPackageReference "ExpandableText" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/NuPlay/ExpandableText";
@@ -811,6 +819,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 0C0FFE0C2B6CB7E9004BACF9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = "FirebaseStorageCombine-Community";
+		};
+		0C2C3DA62B722C3D002493D3 /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0C2C3DA52B722C3D002493D3 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
 		};
 		A4E3BE0E2B6A05ED0007E38A /* ExpandableText */ = {
 			isa = XCSwiftPackageProductDependency;

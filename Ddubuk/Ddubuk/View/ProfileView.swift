@@ -6,8 +6,28 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 struct ProfileView: View {
+    
+    @ObservedObject var routes = FireStoreManager.shared
+    
+    @State private var isWalkRoutesExpanded = false
+    @State private var isSavedListExpanded = false
+    
+    // Route 타입의 더미 데이터 생성
+    let dummyRoute = Route(
+        title: "길지만 이것은 바로 산책로 제목입니다.",
+        coordinates: [Coordinate(latitude: 37.5665, longitude: 126.9780, timestamp: Date())],
+        imageUrls: ["images-1", "images-2"],
+        address: "어딘가의 주소",
+        memo: "산책로 메모",
+        types: [WalkingType.A],
+        duration: 0,
+        distanceTraveled: 823,
+        recordedDate: Date() // 현재 날짜와 시간
+    )
+    
     // 더미 데이터 모델
     struct UserProfile {
         var username: String
@@ -31,6 +51,8 @@ struct ProfileView: View {
         walkRoutes: ["Route A", "Route B", "Route C"],
         instagramID: "sisi"
     )
+    
+    
 
     var body: some View {
         NavigationView {
@@ -98,8 +120,13 @@ struct ProfileView: View {
                 }
                 .padding()
             }
+            
+            
             Spacer()
-
+           
+            
+            
+            
             VStack(spacing: 10) {
                 HStack(spacing: 190) {
                     Text("나의 산책로")
@@ -110,44 +137,52 @@ struct ProfileView: View {
                 }
                 .padding()
                 ScrollView(.horizontal) {
-                    LazyHStack(spacing: 10) {
-                        ForEach(data.walkRoutes, id: \.self) { route in
-                            ListingView(route: route, showEllipsis: false)
-                                .frame(width: 300, height: 520)
-                                .clipShape(RoundedRectangle(cornerRadius: 10))
+                    LazyHStack(spacing: 20) { // 간격을 20으로 조정
+                        ForEach(routes.routes, id: \.self) { route in
+                            VStack(alignment: .center) {
+                                ListingView(route: route, showEllipsis: false)
+                                    .frame(width: 250, height: 350)
+                            }
+                        }
+                    }
+                    .padding(.horizontal, 15) // 좌우 패딩을 15로 조정
+                    .accentColor(.primary)
+                    .onAppear {
+                        routes.fetchRoutes()
+                    }
+                }
+                
+                Divider()
+                    .frame(height: 2)
+                    .background(.black)
+                
+                VStack(spacing: 10) {
+                    HStack(spacing: 190) {
+                        Text("저장목록")
+                        NavigationLink(destination: BookMarkView()) {
+                            Text("전체보기")
+                                .foregroundColor(.primary)
                         }
                     }
                     .padding()
-                }
-            }
-            
-            Divider()
-                .frame(height: 3)
-                .background(.black)
-            
-            VStack(spacing: 10) {
-                HStack(spacing: 190) {
-                    Text("저장목록")
-                    NavigationLink(destination: BookMarkView()) {
-                        Text("전체보기")
-                            .foregroundColor(.primary)
-                    }
-                }
-                .padding()
-                ScrollView(.horizontal) {
-                    LazyHStack(spacing: 10) {
-                        ForEach(data.walkRoutes, id: \.self) { route in
-                            ListingView(route: "route", showEllipsis: false)
-                                .frame(width: 300, height: 520)
-                                .clipShape(RoundedRectangle(cornerRadius: 10))
+                    ScrollView(.horizontal) {
+                        LazyHStack(spacing: 20) { // 간격을 20으로 조정
+                            ForEach(routes.routes, id: \.self) { route in
+                                VStack(alignment: .center) {
+                                    ListingView(route: route, showEllipsis: false)
+                                        .frame(width: 250, height: 350)
+                                }
+                            }
                         }
+                        .padding(.horizontal, 15) // 좌우 패딩을 15로 조정
+                        
                     }
-                    .padding()
                 }
             }
         }
     }
 }
+
 
 #Preview {
     ProfileView()

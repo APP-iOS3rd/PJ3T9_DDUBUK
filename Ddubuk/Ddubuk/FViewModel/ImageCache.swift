@@ -6,13 +6,38 @@
 //
 
 import SwiftUI
+import Combine
 
-struct ImageCache: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+class ImageLoader: ObservableObject {
+    private var cache = NSCache<NSString, UIImage>()
+    @Published var image: UIImage?
+    
+    func loadImage(from urlString: String) {
+        if let cachedImage = cache.object(forKey: NSString(string: urlString)) {
+            self.image = cachedImage
+            return
+        }
+        
+        guard let url = URL(string: urlString) else {
+            self.image = nil
+            return
+        }
+        
+        URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
+            guard let data = data, let image = UIImage(data: data) else {
+                DispatchQueue.main.async {
+                    self?.image = nil
+                }
+                return
+            }
+            
+            self?.cache.setObject(image, forKey: NSString(string: urlString))
+            DispatchQueue.main.async {
+                self?.image = image
+            }
+        }.resume()
     }
 }
 
-#Preview {
-    ImageCache()
-}
+
+

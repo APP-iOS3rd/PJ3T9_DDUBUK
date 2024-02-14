@@ -15,16 +15,7 @@ struct CommunityView: View {
     @ObservedObject var routes = FireStoreManager.shared
     @StateObject var locationManager = LocationManager()
     
-    @State var address: String = ""
-    @State var latitude: String = ""
-    @State var longitude: String = ""
     @State var currentLocationDescription: String = "Not Available"
-    @State var timerStart: Date = Date()
-    @State var timerString: String = "00:00"
-    @State var timer: Timer? = nil
-    @State var elapsedTime: Int = 0
-    @State var selectedRoute: Route? = nil
-    @State private var isRecordCompleteViewPresented = false
     
     var body: some View {
         NavigationView {

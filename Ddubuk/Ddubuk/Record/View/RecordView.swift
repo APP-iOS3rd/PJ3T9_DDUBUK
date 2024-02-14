@@ -10,15 +10,12 @@ import Firebase
 
 // MARK: - RecordView
 struct RecordView: View {
-//    // MARK: Environment
-//    @Environment(\.scenePhase) var scenePhase
-//    
-//    // MARK: Object
-//    @StateObject private var viewModel = RecordViewModel()
-//    
-//    // MARK: State
+    // MARK: Environment
+  
+    // MARK: Object
+
+    // MARK: State
     @State private var showBottom: Bool = false
-//    @State private var isGoSaveView: Bool = false
 
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     @EnvironmentObject var viewModel: RecordViewModel
@@ -56,31 +53,12 @@ struct RecordView: View {
                     print("위치 업데이트 중지")
                 }
                 .ignoresSafeArea()
-                
-                //                // Test
-                //                    .onChange(of: scenePhase) { phase in
-                //                        switch phase {
-                //                        case .active:
-                //                            print("Active")
-                //                        case .inactive:
-                //                            print("Inactive")
-                //                        case .background:
-                //                            print("Background")
-                //                        default:
-                //                            print("scenePhase err")
-                //                        }
-                //                    }
-                //                
-                //                // Map 정보창
+            
                 RecordState(
                     isRecording: $viewModel.isRecording,
                     showBottom: $showBottom,
-                    //                    realTime: $viewModel.recordingTime,
                     currentMeter: $viewModel.recordingMeter
-                    //                    timerState: $viewModel.timerState,
-                    //                    startTimer: { viewModel.startTimer() },
-                    //                    pauseTimer: { viewModel.pauseTimer() },
-                    //                    cancleTimer: { viewModel.clearTimer() }
+                    
                 )
                 
                 
@@ -90,15 +68,16 @@ struct RecordView: View {
                 let route = Route(
                     title: "", // RecordCompleteView에서 설정
                     coordinates: locationManager.tempCoordinates, // 실제 좌표 데이터
-                    imageUrl: nil, // RecordCompleteView에서 이미지 업로드 후 설정
+                    imageUrls: [], // RecordCompleteView에서 이미지 업로드 후 설정
                     address: nil, // RecordCompleteView에서 주소 설정
                     memo: "", // RecordCompleteView에서 설정
                     types: [], // RecordCompleteView에서 설정
-                    duration: timerString, // 타이머 정보
-                    distanceTraveled: locationManager.distanceTraveled // 이동 거리 정보
+                    duration: elapsedTime,// 타이머 정보
+                    distanceTraveled: locationManager.distanceTraveled, // 이동 거리 정보
+                    recordedDate: Date()
                 )
                 RecordCompleteView(
-                    timerString: timerString,
+                    elapsedTime: elapsedTime,
                     distanceTraveled: locationManager.distanceTraveled,
                     coordinates: locationManager.tempCoordinates, // 실제 좌표 데이터
                     route: route,
@@ -113,19 +92,6 @@ struct RecordView: View {
             VStack(alignment: .center, spacing: 0) {
                 Spacer()
                 HStack(alignment: .center, spacing: 0) {
-//                    Spacer()
-//                    
-//                    Text(viewModel.recordingTime.asTimestamp)
-//                        .bold()
-//                        //.foregroundColor(.black)
-//                    
-//                    Spacer()
-//
-//                    Text(viewModel.recordingMeter)
-//                        .bold()
-//                        //.foregroundColor(.black)
-//                    
-//                    Spacer()
                     Text("이동 시간: \(timerString)")
                         .padding()
                     Spacer()
@@ -153,6 +119,3 @@ struct RecordView: View {
     } // body
 }
 
-//#Preview {
-//    RecordView()
-//}
