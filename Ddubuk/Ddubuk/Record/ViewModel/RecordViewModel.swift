@@ -131,6 +131,12 @@ class RecordViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
         return
     }
     
+    // 실시간 경로 선 위치 보여주기
+    func updateUserLocations(with newCoordinate: Coordinate) {
+            let clLocation = CLLocationCoordinate2D(latitude: newCoordinate.latitude, longitude: newCoordinate.longitude)
+            userLocations.append(clLocation)
+        }
+    
     // MARK: - startTimer
     func startTimer() {
         timerCancellable = Timer.publish(every: 1.0, on: .main, in: .common)
