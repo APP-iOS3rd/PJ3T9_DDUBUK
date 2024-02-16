@@ -7,18 +7,20 @@
 
 import Foundation
 
-struct Route: Codable, Hashable {
-//    let id = UUID()
+struct Route: Codable, Hashable, Identifiable {
+    let id = UUID()
     var title: String
     var coordinates: [Coordinate]
-    var imageUrl: String?
+    var imageUrls: [String]
     var address: String?
     var memo: String
     var types: [WalkingType]
-    var duration:  String
+    var duration:  Int
     var distanceTraveled: Double
+    var recordedDate: Date
     
     enum CodingKeys: String, CodingKey {
-        case title, coordinates, imageUrl, address, memo, types, duration, distanceTraveled
+        case title, coordinates, imageUrls, address, memo, types, duration, distanceTraveled, recordedDate
     }
+    
 }

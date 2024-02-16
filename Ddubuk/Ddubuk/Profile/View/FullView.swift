@@ -8,29 +8,24 @@
 import SwiftUI
 
 struct FullView: View {
-    // 더미 데이터
-    struct WalkRoute {
-        var title: String
-        var date: String
-        var length: String
-        var duration: String
-        var steps: String
-        var images: [String]
-    }
-
-    let dummyData: WalkRoute = WalkRoute(
+    
+    @ObservedObject var routes = FireStoreManager.shared
+    
+    // Route 타입의 더미 데이터 생성
+    let dummyRoute = Route(
         title: "길지만 이것은 바로 산책로 제목입니다.",
-        date: "2024년 2월 12일",
-        length: "823m",
-        duration: "23분",
-        steps: "5920걸음",
-        images: ["images-1", "images-2", "images-3", "images-4"]
+        coordinates: [Coordinate(latitude: 37.5665, longitude: 126.9780, timestamp: Date())],
+        imageUrls: ["images-1", "images-2"],
+        address: "어딘가의 주소",
+        memo: "산책로 메모",
+        types: [WalkingType.A],
+        duration: 0,
+        distanceTraveled: 823,
+        recordedDate: Date() // 현재 날짜와 시간
     )
-
-
-    var exploreViewRoutes: [String] = ["Route A", "Route B", "Route C"] // ExploreView에서 사용한 더미 데이터
-
-
+    
+    var exploreViewRoutes: [String] = ["Route A", "Route B", "Route C"]
+    
     var body: some View {
         ScrollView {
             VStack {
@@ -39,7 +34,7 @@ struct FullView: View {
 
                     Spacer()
 
-                    ForEach(exploreViewRoutes, id: \.self) { route in
+                    ForEach(routes.routes, id: \.self) { route in
                         ListingView(route: route, showEllipsis: true)
                             .frame(height: 300)
                             .padding(.bottom, 10)

@@ -24,14 +24,14 @@ struct Main: View {
                 Text("검색")
             }
 
-            NavigationView {
-                CommunityView()
-                    .navigationBarTitle("커뮤니티")
-            }
-            .tabItem {
-                Image(systemName: "person.3")
-                Text("커뮤니티")
-            }
+//            NavigationView {
+//                CommunityView()
+//                    .navigationBarTitle("커뮤니티")
+//            }
+//            .tabItem {
+//                Image(systemName: "person.3")
+//                Text("커뮤니티")
+//            }
 
             NavigationView {
                 RecordView()

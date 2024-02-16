@@ -46,6 +46,8 @@
 		0C2F8B3C2B57B548009AF236 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2F8B3B2B57B548009AF236 /* Item.swift */; };
 		0C2F8B3E2B57B54B009AF236 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C2F8B3D2B57B54B009AF236 /* Assets.xcassets */; };
 		0C2F8B412B57B54B009AF236 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C2F8B402B57B54B009AF236 /* Preview Assets.xcassets */; };
+		0C3C5C3E2B7EEAA800030A2E /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 0C3C5C3D2B7EEAA800030A2E /* SDWebImageSwiftUI */; };
+		0C3C5C402B7EEAB800030A2E /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 0C3C5C3F2B7EEAB800030A2E /* SDWebImageSwiftUI */; };
 		0C8D75BE2B70C309004B2784 /* CommunityDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8D75BD2B70C309004B2784 /* CommunityDetailView.swift */; };
 		4E6AD7962B6790D400F0F596 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6AD7952B6790D400F0F596 /* ProfileView.swift */; };
 		4E6AD7982B6790F100F0F596 /* ListingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6AD7972B6790F100F0F596 /* ListingView.swift */; };
@@ -63,8 +65,8 @@
 		4E6AD7BC2B67948B00F0F596 /* RecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6AD7BB2B67948B00F0F596 /* RecordView.swift */; };
 		4E6AD7C02B68CADF00F0F596 /* RecordCompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6AD7BF2B68CADF00F0F596 /* RecordCompleteView.swift */; };
 		4EF138A92B6B36A000C06A97 /* MainListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF138A82B6B36A000C06A97 /* MainListView.swift */; };
+		4EF138EA2B734A0D00C06A97 /* ProfileEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF138E92B734A0D00C06A97 /* ProfileEdit.swift */; };
 		A4D1A92C2B71EC8600746262 /* TagLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D1A92B2B71EC8600746262 /* TagLayout.swift */; };
-		A4D1A92E2B7208E800746262 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A4D1A92D2B7208E700746262 /* GoogleService-Info.plist */; };
 		A4D1A9302B72157200746262 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = A4D1A92F2B72157200746262 /* FirebaseAnalytics */; };
 		A4D1A9322B72157200746262 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = A4D1A9312B72157200746262 /* FirebaseAnalyticsOnDeviceConversion */; };
 		A4D1A9342B72157200746262 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = A4D1A9332B72157200746262 /* FirebaseAnalyticsSwift */; };
@@ -100,6 +102,8 @@
 		A4E3BE112B6A1A740007E38A /* MapMakerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E3BE102B6A1A740007E38A /* MapMakerView.swift */; };
 		A4E3BE162B6C6FF20007E38A /* TagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E3BE152B6C6FF20007E38A /* TagView.swift */; };
 		A4E3BE1B2B6C70820007E38A /* TagViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E3BE1A2B6C70820007E38A /* TagViewModel.swift */; };
+		A4ECF9062B7EF8C4005BFFB7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A4ECF9052B7EF8C4005BFFB7 /* GoogleService-Info.plist */; };
+		A4ECF9082B7F015E005BFFB7 /* MapMarkerDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4ECF9072B7F015E005BFFB7 /* MapMarkerDetail.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -135,8 +139,8 @@
 		4E6AD7BB2B67948B00F0F596 /* RecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordView.swift; sourceTree = "<group>"; };
 		4E6AD7BF2B68CADF00F0F596 /* RecordCompleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordCompleteView.swift; sourceTree = "<group>"; };
 		4EF138A82B6B36A000C06A97 /* MainListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainListView.swift; sourceTree = "<group>"; };
+		4EF138E92B734A0D00C06A97 /* ProfileEdit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEdit.swift; sourceTree = "<group>"; };
 		A4D1A92B2B71EC8600746262 /* TagLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagLayout.swift; sourceTree = "<group>"; };
-		A4D1A92D2B7208E700746262 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A4D1A9762B7B01CD00746262 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		A4E3BDFC2B688BF50007E38A /* DetailTrailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTrailView.swift; sourceTree = "<group>"; };
 		A4E3BE022B68CB340007E38A /* TrailInfoDummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrailInfoDummy.swift; sourceTree = "<group>"; };
@@ -144,6 +148,8 @@
 		A4E3BE102B6A1A740007E38A /* MapMakerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapMakerView.swift; sourceTree = "<group>"; };
 		A4E3BE152B6C6FF20007E38A /* TagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagView.swift; sourceTree = "<group>"; };
 		A4E3BE1A2B6C70820007E38A /* TagViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagViewModel.swift; sourceTree = "<group>"; };
+		A4ECF9052B7EF8C4005BFFB7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		A4ECF9072B7F015E005BFFB7 /* MapMarkerDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapMarkerDetail.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +166,7 @@
 				A4D1A9442B72157200746262 /* FirebaseDatabaseSwift in Frameworks */,
 				A4D1A9342B72157200746262 /* FirebaseAnalyticsSwift in Frameworks */,
 				A4D1A9362B72157200746262 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
+				0C3C5C402B7EEAB800030A2E /* SDWebImageSwiftUI in Frameworks */,
 				0C0FFE282B6CB7E9004BACF9 /* FirebaseFirestoreCombine-Community in Frameworks */,
 				A4D1A9542B72157200746262 /* FirebaseInAppMessagingSwift-Beta in Frameworks */,
 				A4D1A9482B72157200746262 /* FirebaseFirestore in Frameworks */,
@@ -179,6 +186,7 @@
 				0C0FFE162B6CB7E9004BACF9 /* FirebaseAppCheck in Frameworks */,
 				0C0FFE3A2B6CB7E9004BACF9 /* FirebasePerformance in Frameworks */,
 				A4D1A93E2B72157200746262 /* FirebaseAuthCombine-Community in Frameworks */,
+				0C3C5C3E2B7EEAA800030A2E /* SDWebImageSwiftUI in Frameworks */,
 				A4D1A95C2B72157200746262 /* FirebasePerformance in Frameworks */,
 				0C0FFE302B6CB7E9004BACF9 /* FirebaseInAppMessaging-Beta in Frameworks */,
 				A4D1A9562B72157200746262 /* FirebaseInstallations in Frameworks */,
@@ -269,7 +277,7 @@
 				A4E3BDFE2B68CACB0007E38A /* DetailTrail */,
 				4E6AD7AC2B67936B00F0F596 /* Record */,
 				0C2F8B482B57B6E7009AF236 /* Info.plist */,
-				A4D1A92D2B7208E700746262 /* GoogleService-Info.plist */,
+				A4ECF9052B7EF8C4005BFFB7 /* GoogleService-Info.plist */,
 				0C2F8B472B57B666009AF236 /* Ddubuk.entitlements */,
 				0C2F8B372B57B548009AF236 /* DdubukApp.swift */,
 				0C2F8B392B57B548009AF236 /* ContentView.swift */,
@@ -384,6 +392,7 @@
 			children = (
 				4E6AD79D2B67914800F0F596 /* SettingView.swift */,
 				4E6AD79F2B67915A00F0F596 /* PasswordChangeView.swift */,
+				4EF138E92B734A0D00C06A97 /* ProfileEdit.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -443,6 +452,7 @@
 			isa = PBXGroup;
 			children = (
 				A4D1A9762B7B01CD00746262 /* MapView.swift */,
+				A4ECF9072B7F015E005BFFB7 /* MapMarkerDetail.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -579,6 +589,8 @@
 				A4D1A95F2B72157200746262 /* FirebaseRemoteConfigSwift */,
 				A4D1A9612B72157200746262 /* FirebaseStorage */,
 				A4D1A9632B72157200746262 /* FirebaseStorageCombine-Community */,
+				0C3C5C3D2B7EEAA800030A2E /* SDWebImageSwiftUI */,
+				0C3C5C3F2B7EEAB800030A2E /* SDWebImageSwiftUI */,
 			);
 			productName = Ddubuk;
 			productReference = 0C2F8B342B57B548009AF236 /* Ddubuk.app */;
@@ -611,6 +623,7 @@
 			packageReferences = (
 				A4E3BE0D2B6A05ED0007E38A /* XCRemoteSwiftPackageReference "ExpandableText" */,
 				0C0FFE0C2B6CB7E9004BACF9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				0C3C5C3C2B7EEAA800030A2E /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 			);
 			productRefGroup = 0C2F8B352B57B548009AF236 /* Products */;
 			projectDirPath = "";
@@ -627,7 +640,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0C2F8B412B57B54B009AF236 /* Preview Assets.xcassets in Resources */,
-				A4D1A92E2B7208E800746262 /* GoogleService-Info.plist in Resources */,
+				A4ECF9062B7EF8C4005BFFB7 /* GoogleService-Info.plist in Resources */,
 				0C2F8B3E2B57B54B009AF236 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -649,12 +662,14 @@
 				A4D1A9772B7B01CD00746262 /* MapView.swift in Sources */,
 				4E6AD79C2B67913C00F0F596 /* BookMarkView.swift in Sources */,
 				A4E3BE162B6C6FF20007E38A /* TagView.swift in Sources */,
+				4EF138EA2B734A0D00C06A97 /* ProfileEdit.swift in Sources */,
 				4E6AD7982B6790F100F0F596 /* ListingView.swift in Sources */,
 				A4E3BE032B68CB340007E38A /* TrailInfoDummy.swift in Sources */,
 				A4E3BE1B2B6C70820007E38A /* TagViewModel.swift in Sources */,
 				4E6AD7A32B67921100F0F596 /* MainView.swift in Sources */,
 				A4E3BE112B6A1A740007E38A /* MapMakerView.swift in Sources */,
 				0C2F8B3A2B57B548009AF236 /* ContentView.swift in Sources */,
+				A4ECF9082B7F015E005BFFB7 /* MapMarkerDetail.swift in Sources */,
 				0C8D75BE2B70C309004B2784 /* CommunityDetailView.swift in Sources */,
 				0C2F8B3C2B57B548009AF236 /* Item.swift in Sources */,
 				0C0FFE552B6CBF51004BACF9 /* MapViewController.swift in Sources */,
@@ -903,6 +918,14 @@
 				minimumVersion = 10.20.0;
 			};
 		};
+		0C3C5C3C2B7EEAA800030A2E /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.2.6;
+			};
+		};
 		A4E3BE0D2B6A05ED0007E38A /* XCRemoteSwiftPackageReference "ExpandableText" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/NuPlay/ExpandableText";
@@ -1048,6 +1071,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 0C0FFE0C2B6CB7E9004BACF9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = "FirebaseStorageCombine-Community";
+		};
+		0C3C5C3D2B7EEAA800030A2E /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0C3C5C3C2B7EEAA800030A2E /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
+		};
+		0C3C5C3F2B7EEAB800030A2E /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0C3C5C3C2B7EEAA800030A2E /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
 		};
 		A4D1A92F2B72157200746262 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
