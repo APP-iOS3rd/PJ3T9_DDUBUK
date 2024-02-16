@@ -48,7 +48,6 @@
 		0C2F8B412B57B54B009AF236 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C2F8B402B57B54B009AF236 /* Preview Assets.xcassets */; };
 		0C3C5C3E2B7EEAA800030A2E /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 0C3C5C3D2B7EEAA800030A2E /* SDWebImageSwiftUI */; };
 		0C3C5C402B7EEAB800030A2E /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 0C3C5C3F2B7EEAB800030A2E /* SDWebImageSwiftUI */; };
-		0C3C5C442B7EEC6D00030A2E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0C3C5C432B7EEC6D00030A2E /* GoogleService-Info.plist */; };
 		0C8D75BE2B70C309004B2784 /* CommunityDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8D75BD2B70C309004B2784 /* CommunityDetailView.swift */; };
 		4E6AD7962B6790D400F0F596 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6AD7952B6790D400F0F596 /* ProfileView.swift */; };
 		4E6AD7982B6790F100F0F596 /* ListingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6AD7972B6790F100F0F596 /* ListingView.swift */; };
@@ -95,6 +94,7 @@
 		A4D1A9602B72157200746262 /* FirebaseRemoteConfigSwift in Frameworks */ = {isa = PBXBuildFile; productRef = A4D1A95F2B72157200746262 /* FirebaseRemoteConfigSwift */; };
 		A4D1A9622B72157200746262 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = A4D1A9612B72157200746262 /* FirebaseStorage */; };
 		A4D1A9642B72157200746262 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = A4D1A9632B72157200746262 /* FirebaseStorageCombine-Community */; };
+		A4D1A9772B7B01CD00746262 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D1A9762B7B01CD00746262 /* MapView.swift */; };
 		A4E3BDFD2B688BF50007E38A /* DetailTrailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E3BDFC2B688BF50007E38A /* DetailTrailView.swift */; };
 		A4E3BE032B68CB340007E38A /* TrailInfoDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E3BE022B68CB340007E38A /* TrailInfoDummy.swift */; };
 		A4E3BE072B6A025E0007E38A /* expandedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E3BE062B6A025E0007E38A /* expandedView.swift */; };
@@ -102,6 +102,8 @@
 		A4E3BE112B6A1A740007E38A /* MapMakerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E3BE102B6A1A740007E38A /* MapMakerView.swift */; };
 		A4E3BE162B6C6FF20007E38A /* TagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E3BE152B6C6FF20007E38A /* TagView.swift */; };
 		A4E3BE1B2B6C70820007E38A /* TagViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E3BE1A2B6C70820007E38A /* TagViewModel.swift */; };
+		A4ECF9062B7EF8C4005BFFB7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A4ECF9052B7EF8C4005BFFB7 /* GoogleService-Info.plist */; };
+		A4ECF9082B7F015E005BFFB7 /* MapMarkerDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4ECF9072B7F015E005BFFB7 /* MapMarkerDetail.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -120,7 +122,6 @@
 		0C2F8B402B57B54B009AF236 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		0C2F8B472B57B666009AF236 /* Ddubuk.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Ddubuk.entitlements; sourceTree = "<group>"; };
 		0C2F8B482B57B6E7009AF236 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		0C3C5C432B7EEC6D00030A2E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Desktop/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0C8D75BD2B70C309004B2784 /* CommunityDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityDetailView.swift; sourceTree = "<group>"; };
 		4E6AD7952B6790D400F0F596 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		4E6AD7972B6790F100F0F596 /* ListingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingView.swift; sourceTree = "<group>"; };
@@ -140,12 +141,15 @@
 		4EF138A82B6B36A000C06A97 /* MainListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainListView.swift; sourceTree = "<group>"; };
 		4EF138E92B734A0D00C06A97 /* ProfileEdit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEdit.swift; sourceTree = "<group>"; };
 		A4D1A92B2B71EC8600746262 /* TagLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagLayout.swift; sourceTree = "<group>"; };
+		A4D1A9762B7B01CD00746262 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		A4E3BDFC2B688BF50007E38A /* DetailTrailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTrailView.swift; sourceTree = "<group>"; };
 		A4E3BE022B68CB340007E38A /* TrailInfoDummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrailInfoDummy.swift; sourceTree = "<group>"; };
 		A4E3BE062B6A025E0007E38A /* expandedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = expandedView.swift; sourceTree = "<group>"; };
 		A4E3BE102B6A1A740007E38A /* MapMakerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapMakerView.swift; sourceTree = "<group>"; };
 		A4E3BE152B6C6FF20007E38A /* TagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagView.swift; sourceTree = "<group>"; };
 		A4E3BE1A2B6C70820007E38A /* TagViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagViewModel.swift; sourceTree = "<group>"; };
+		A4ECF9052B7EF8C4005BFFB7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		A4ECF9072B7F015E005BFFB7 /* MapMarkerDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapMarkerDetail.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -263,6 +267,7 @@
 		0C2F8B362B57B548009AF236 /* Ddubuk */ = {
 			isa = PBXGroup;
 			children = (
+				A4D1A9722B7B002400746262 /* Map */,
 				A4D1A9712B72193000746262 /* Server */,
 				A4D1A96E2B72174700746262 /* Community */,
 				A4D1A96B2B72172800746262 /* Segtting */,
@@ -272,7 +277,7 @@
 				A4E3BDFE2B68CACB0007E38A /* DetailTrail */,
 				4E6AD7AC2B67936B00F0F596 /* Record */,
 				0C2F8B482B57B6E7009AF236 /* Info.plist */,
-				0C3C5C432B7EEC6D00030A2E /* GoogleService-Info.plist */,
+				A4ECF9052B7EF8C4005BFFB7 /* GoogleService-Info.plist */,
 				0C2F8B472B57B666009AF236 /* Ddubuk.entitlements */,
 				0C2F8B372B57B548009AF236 /* DdubukApp.swift */,
 				0C2F8B392B57B548009AF236 /* ContentView.swift */,
@@ -432,6 +437,31 @@
 				0C0FFE4C2B6CB9B2004BACF9 /* FViewModel */,
 			);
 			path = Server;
+			sourceTree = "<group>";
+		};
+		A4D1A9722B7B002400746262 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				A4D1A9742B7B003500746262 /* ViewModel */,
+				A4D1A9732B7B002F00746262 /* View */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
+		A4D1A9732B7B002F00746262 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A4D1A9762B7B01CD00746262 /* MapView.swift */,
+				A4ECF9072B7F015E005BFFB7 /* MapMarkerDetail.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A4D1A9742B7B003500746262 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		A4E3BDFE2B68CACB0007E38A /* DetailTrail */ = {
@@ -610,8 +640,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				0C2F8B412B57B54B009AF236 /* Preview Assets.xcassets in Resources */,
+				A4ECF9062B7EF8C4005BFFB7 /* GoogleService-Info.plist in Resources */,
 				0C2F8B3E2B57B54B009AF236 /* Assets.xcassets in Resources */,
-				0C3C5C442B7EEC6D00030A2E /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -629,6 +659,7 @@
 				4E6AD7B02B6793A400F0F596 /* RecordState.swift in Sources */,
 				4EF138A92B6B36A000C06A97 /* MainListView.swift in Sources */,
 				4E6AD7BA2B67947400F0F596 /* RecordMap.swift in Sources */,
+				A4D1A9772B7B01CD00746262 /* MapView.swift in Sources */,
 				4E6AD79C2B67913C00F0F596 /* BookMarkView.swift in Sources */,
 				A4E3BE162B6C6FF20007E38A /* TagView.swift in Sources */,
 				4EF138EA2B734A0D00C06A97 /* ProfileEdit.swift in Sources */,
@@ -638,6 +669,7 @@
 				4E6AD7A32B67921100F0F596 /* MainView.swift in Sources */,
 				A4E3BE112B6A1A740007E38A /* MapMakerView.swift in Sources */,
 				0C2F8B3A2B57B548009AF236 /* ContentView.swift in Sources */,
+				A4ECF9082B7F015E005BFFB7 /* MapMarkerDetail.swift in Sources */,
 				0C8D75BE2B70C309004B2784 /* CommunityDetailView.swift in Sources */,
 				0C2F8B3C2B57B548009AF236 /* Item.swift in Sources */,
 				0C0FFE552B6CBF51004BACF9 /* MapViewController.swift in Sources */,
@@ -789,7 +821,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Ddubuk/Ddubuk.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"Ddubuk/Preview Content\"";
 				DEVELOPMENT_TEAM = Y6QXM3Q994;
 				ENABLE_PREVIEWS = YES;
@@ -809,7 +841,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.01;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ios3.Ddubuk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -825,7 +857,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Ddubuk/Ddubuk.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"Ddubuk/Preview Content\"";
 				DEVELOPMENT_TEAM = Y6QXM3Q994;
 				ENABLE_PREVIEWS = YES;
@@ -845,7 +877,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.01;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ios3.Ddubuk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

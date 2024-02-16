@@ -3,6 +3,8 @@
 **/.DS_Store
 **/._.DS_Store
 
+*.plist
+
 *.xcconfig
 
 # Created by https://www.toptal.com/developers/gitignore/api/swift,swiftpackagemanager,xcode,firebase,macos,cocoapods

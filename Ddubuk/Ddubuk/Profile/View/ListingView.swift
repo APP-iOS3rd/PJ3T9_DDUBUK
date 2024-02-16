@@ -38,7 +38,7 @@ struct ListingView: View {
         
         GeometryReader { geometry in
             VStack(spacing: 10) {
-                NavigationLink(destination: CommunityDetailView(route: route)) {
+                NavigationLink(destination: DetailTrailView(route: route)) {
                     VStack(alignment: .leading) {
                         if let firstImageUrl = route.imageUrls.first, let url = URL(string: firstImageUrl) {
                                 WebImage(url: url)
