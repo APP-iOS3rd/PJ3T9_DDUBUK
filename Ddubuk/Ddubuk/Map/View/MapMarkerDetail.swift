@@ -16,7 +16,7 @@ struct MapMarkerDetail: View {
     
     var body: some View {
         VStack {
-            NavigationLink(destination: CommunityDetailView(route: seletedResult))
+            NavigationLink(destination: DetailTrailView(route: seletedResult))
             {
                 HStack {
                     if let firstImageUrl = seletedResult.imageUrls.first, let url = URL(string: firstImageUrl) {
