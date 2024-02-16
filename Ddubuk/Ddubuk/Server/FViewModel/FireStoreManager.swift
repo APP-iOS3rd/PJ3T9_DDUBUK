@@ -18,13 +18,33 @@ class FireStoreManager: ObservableObject {
     private let db = Firestore.firestore()
     
     func fetchRoutes() {
-        db.collection("routes").getDocuments { [weak self] (querySnapshot, error) in
+        db.collection("routes").getDocuments { (snapshot, error) in
             if let error = error {
-                print("문서 가져오는 중 오류: \(error)")
+                // Firestore로부터 문서를 가져오는 데 실패한 경우
+                print("Firestore 문서 가져오기 오류: \(error.localizedDescription)")
             } else {
-                self?.routes = querySnapshot?.documents.compactMap { document in
-                    try? document.data(as: Route.self)
-                } ?? []
+                guard let snapshot = snapshot else {
+                    // 스냅샷이 nil인 경우
+                    print("Firestore에서 스냅샷을 가져올 수 없음")
+                    return
+                }
+                
+                self.routes = snapshot.documents.compactMap { doc -> Route? in
+                    do {
+                        return try doc.data(as: Route.self)
+                    } catch let decodingError {
+                        // 문서를 Route로 디코딩하는 데 실패한 경우
+                        print("문서 디코딩 오류: \(decodingError)")
+                        // 문서 ID와 실패한 문서의 원본 데이터를 로깅
+                        print("문서 ID: \(doc.documentID), 데이터: \(doc.data())")
+                        return nil
+                    }
+                }
+                
+                if self.routes.isEmpty && !snapshot.documents.isEmpty {
+                    // Firestore에 문서는 있지만, Route로 변환된 것이 하나도 없는 경우
+                    print("모든 문서가 디코딩에 실패했습니다. 모델과 Firestore의 데이터 구조를 확인하세요.")
+                }
             }
         }
     }
@@ -47,16 +67,17 @@ class FireStoreManager: ObservableObject {
                     "timestamp": Timestamp(date: coordinate.timestamp)
                 ]
             },
-            "imageUrl": route.imageUrl ?? "",
+            "imageUrls": route.imageUrls,
             "address": route.address ?? "",
             "memo": route.memo,
             "types": route.types.map { $0.rawValue },
             "duration": route.duration,
-            "distanceTraveled": route.distanceTraveled
+            "distanceTraveled": route.distanceTraveled,
+            "recordedDate": Timestamp(date: route.recordedDate)
         ]
            
-           db.collection("routes").document(documentName ?? UUID().uuidString).setData(routeData) { error in
-               completion(error)
+        db.collection("routes").document(documentName ?? UUID().uuidString).setData(routeData) { error in
+                   completion(error)
            }
        }
     

@@ -16,14 +16,15 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     @Published var durationString: String = ""
     @Published var distanceTraveled: Double = 0
     @Published var tempDistanceTraveled: Double = 0
+    @Published var elapsedTime: Int = 0
     
     private let locationManager = CLLocationManager()
     private var lastLocation: CLLocation?
     private var isUpdatingLocation = false
     private var timer: Timer? = nil
     private let interval: TimeInterval = 5.0 // 5 seconds
-    private var startTime: Date?
     private var endTime: Date?
+    public var startTime: Date?
     public var title: String = ""
     public var address: String? = nil
     public var memo: String = ""
@@ -34,6 +35,8 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     // 임시 경로 데이터 저장
     var tempCoordinates: [Coordinate] = []
     var tempDurationString: String = ""
+    
+    var recordViewModel: RecordViewModel?
     
     override init() {
         super.init()
@@ -68,6 +71,13 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
             // 필요한 처리를 한 후에 currentLocation 업데이트
             self.currentLocation = temp
             self.saveLocation(location)
+        
+        if let viewModel = recordViewModel {
+                    DispatchQueue.main.async {
+                        let clLocation = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+                        viewModel.userLocations.append(clLocation)
+                    }
+                }
         }
     
     public var coordinates: [Coordinate] = []
@@ -81,7 +91,11 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         coordinates.append(newCoordinate)
     }
     
+    
+    
     func resumeLocationUpdates() {
+        print("위치 업데이트 재개 및 타이머 재시작")
+        print("\(durationString)")
         guard !isUpdatingLocation else { return }
         isUpdatingLocation = true
         locationManager.startUpdatingLocation()
@@ -91,6 +105,8 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
 //        }
     }
     func startTimer() {
+        print("타이머 시작")
+        print("\(durationString)")
         guard !isUpdatingLocation else { return }
         isUpdatingLocation = true
         startTime = Date() // 타이머 시작 시간을 기록
@@ -100,6 +116,8 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     }
     
     func stopTimer() {
+        print("타이머 중지")
+        print("\(durationString)")
             guard isUpdatingLocation, let startTime = self.startTime else { return }
             isUpdatingLocation = false
             endTime = Date() // 타이머 종료 시간을 기록
@@ -114,6 +132,8 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
             
             // 임시 이동 거리 저장
             self.tempDistanceTraveled = self.distanceTraveled
+        
+            self.elapsedTime = Int(endTime!.timeIntervalSince(startTime)) // 업데이트
         }
     
     
@@ -180,5 +200,11 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         } else {
             completion("위치 정보가 없습니다.")
         }
+    }
+}
+extension LocationManager {
+    func convertCoordinateToCLLocation(coordinate: Coordinate?) -> CLLocation? {
+        guard let coordinate = coordinate else { return nil }
+        return CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
     }
 }
