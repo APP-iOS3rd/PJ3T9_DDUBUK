@@ -8,6 +8,7 @@
 import Foundation
 
 struct Route: Codable, Hashable {
+//    let id = UUID()
     var title: String
     var coordinates: [Coordinate]
     var imageUrl: String?

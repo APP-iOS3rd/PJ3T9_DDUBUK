@@ -129,6 +129,8 @@ struct RecordCompleteView: View {
                         .padding(.leading, -8)
                     }
                     
+                    TagView()
+                    
                     Text("사진")
                     
                     Button(action: {
