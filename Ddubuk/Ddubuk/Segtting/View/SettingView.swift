@@ -52,7 +52,7 @@ struct SettingView: View {
             }
 
             Section(header: Text("내 앱 및 미디어").font(.headline).padding(.leading, -10)) {
-                Text("언어")
+                    Text("언어")
                 Button {
                     openAppSettings()
                 } label: {
@@ -67,6 +67,7 @@ struct SettingView: View {
                     showAlert.toggle()
                 } label: {
                     Text("문의하기")
+                        .foregroundColor(Color.primary)
                 }
                 .alert(isPresented: $showAlert) {
                     Alert(
