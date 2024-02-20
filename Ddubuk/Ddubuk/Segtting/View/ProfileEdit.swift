@@ -109,7 +109,10 @@ struct ProfileEdit: View {
             
         } label: {
             Text("저장버튼")
+                .padding()
                 .foregroundColor(Color.primary)
+                .background(Color.green)
+                .cornerRadius(10)
         }
         
     }

@@ -36,7 +36,7 @@ struct ProfileView: View {
                 }
                 .padding()
             }
-            .navigationBarTitle("프로필")
+            .navigationBarTitle("프로필관리")
             .navigationBarItems(trailing: NavigationLink(destination: SettingView()) {
                 Image(systemName: "gearshape.fill")
                                         .imageScale(.large)

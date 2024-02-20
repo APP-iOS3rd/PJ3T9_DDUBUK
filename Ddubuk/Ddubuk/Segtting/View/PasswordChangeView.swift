@@ -13,26 +13,46 @@ struct PasswordChangeView: View {
     @State private var repeatPassword: String = ""
     @State private var alertMessage: String?
     @State private var showAlert: Bool = false
+    @ObservedObject private var authViewModel = AuthViewModel()
 
     var body: some View {
-        VStack {
+        VStack(spacing: 32) {
+            Text("비밀번호 변경")
+            
             Spacer()
 
-            TextField("현재 비밀번호를 입력해주세요.", text: $currentPassword)
-                .padding()
-
+            SecureField("현재 비밀번호를 입력해주세요.", text: $currentPassword)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+            
             TextField("새 비밀번호를 입력해주세요.", text: $newPassword)
-                .padding()
+                .textFieldStyle(RoundedBorderTextFieldStyle())
 
             TextField("비밀번호를 다시 입력해주세요.", text: $repeatPassword)
-                .padding()
+                .textFieldStyle(RoundedBorderTextFieldStyle())
 
             Spacer()
 
             Button {
-                changePassword()
-            } label: {
-                Text("확인")
+                authViewModel.changePassword(currentPassword: currentPassword, newPassword: newPassword) { result in
+                    switch result {
+                    case .success:
+                        alertMessage = "비밀번호가 성공적으로 변경되었습니다."
+                    case let .failure(error):
+                        if currentPassword.isEmpty || newPassword.isEmpty || repeatPassword.isEmpty {
+                            alertMessage = "모든 필드를 입력하세요."
+                        } else if newPassword != repeatPassword {
+                            alertMessage = "새 비밀번호가 일치하지 않습니다."
+                        } else if currentPassword == newPassword {
+                            alertMessage = "새 비밀번호가 이전 비밀번호랑 일치합니다."
+                        } else {
+                            // 성공적으로 변경되었을 때
+                            alertMessage = "비밀번호가 성공적으로 변경되었습니다."
+                        }
+                        showAlert = true
+                    }
+                }
+                        } label: {
+                Text("비밀번호 변경")
                     .padding()
                     .frame(width: 200)
                     .foregroundColor(.white)
@@ -48,18 +68,6 @@ struct PasswordChangeView: View {
         .padding()
     }
 
-    func changePassword() {
-        if currentPassword.isEmpty || newPassword.isEmpty || repeatPassword.isEmpty {
-            alertMessage = "모든 필드를 입력하세요."
-            showAlert = true
-        } else if newPassword != repeatPassword {
-            alertMessage = "새 비밀번호가 일치하지 않습니다."
-            showAlert = true
-        } else {
-            alertMessage = "비밀번호가 성공적으로 변경되었습니다."
-            showAlert = true
-        }
-    }
 }
 
 #Preview {
