@@ -43,8 +43,7 @@ struct Main: View {
             }
 
             NavigationView {
-                RecordMap(userLocations: viewModel.userLocations, isRecording:
-                            viewModel.isRecording, timerState: viewModel.timerState)
+                MapView()
                     .navigationBarTitle("지도")
             }
             .tabItem {

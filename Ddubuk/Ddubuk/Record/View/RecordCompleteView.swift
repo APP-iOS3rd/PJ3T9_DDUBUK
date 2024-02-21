@@ -157,8 +157,11 @@ struct RecordCompleteView: View {
                         .padding(.leading, -16)
                     }
                     
+
+                    TagView()
+         
                     Text("사진(최대 9장)")
-                        .fontWeight(.bold)
+                                        .fontWeight(.bold)
                     
                     LazyVGrid(columns: columns, spacing: 10) {
                         ForEach(inputImages.indices, id: \.self) { index in
