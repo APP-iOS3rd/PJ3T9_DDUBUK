@@ -130,6 +130,8 @@
 		0C3C5C462B7F202E00030A2E /* HealthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthManager.swift; sourceTree = "<group>"; };
 		0C3C5C482B7F39A000030A2E /* TimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewModel.swift; sourceTree = "<group>"; };
 		0C8D75BD2B70C309004B2784 /* CommunityDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityDetailView.swift; sourceTree = "<group>"; };
+		0CA301542B862F1100B95F28 /* NotoSansKR-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Bold.ttf"; sourceTree = "<group>"; };
+		0CA301552B862F1A00B95F28 /* NotoSansKR-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Medium.ttf"; sourceTree = "<group>"; };
 		0CAF798C2B830E8B004B6D92 /* StopwatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopwatchView.swift; sourceTree = "<group>"; };
 		0CAF798E2B831095004B6D92 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		0CAF79922B831130004B6D92 /* Stopwatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stopwatch.swift; sourceTree = "<group>"; };
@@ -280,6 +282,8 @@
 			isa = PBXGroup;
 			children = (
 				0C3C5C452B7F1F5B00030A2E /* DdubukDebug.entitlements */,
+				0CA301542B862F1100B95F28 /* NotoSansKR-Bold.ttf */,
+				0CA301552B862F1A00B95F28 /* NotoSansKR-Medium.ttf */,
 				A4D1A9712B72193000746262 /* Server */,
 				A4D1A96E2B72174700746262 /* Community */,
 				A4D1A96B2B72172800746262 /* Segtting */,
