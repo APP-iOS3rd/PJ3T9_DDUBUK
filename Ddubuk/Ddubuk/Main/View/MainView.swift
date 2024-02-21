@@ -25,7 +25,7 @@ struct Main: View {
             }
 
 //            NavigationView {
-//                CommunityView()
+//                StopwatchView()
 //                    .navigationBarTitle("커뮤니티")
 //            }
 //            .tabItem {
@@ -60,7 +60,7 @@ struct Main: View {
                 Image(systemName: "person.fill")
                 Text("프로필")
             }
-        }
+        }.background(Color.white)
     }
 }
 

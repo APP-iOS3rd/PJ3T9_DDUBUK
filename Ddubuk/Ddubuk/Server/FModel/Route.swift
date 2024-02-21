@@ -18,9 +18,10 @@ struct Route: Codable, Hashable {
     var duration:  Int
     var distanceTraveled: Double
     var recordedDate: Date
+    var stepsCount: Int
     
     enum CodingKeys: String, CodingKey {
-        case title, coordinates, imageUrls, address, memo, types, duration, distanceTraveled, recordedDate
+        case title, coordinates, imageUrls, address, memo, types, duration, distanceTraveled, recordedDate, stepsCount
     }
     
 }
