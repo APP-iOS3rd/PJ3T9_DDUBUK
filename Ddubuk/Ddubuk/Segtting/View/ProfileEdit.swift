@@ -45,11 +45,12 @@ struct ProfileEdit: View {
             } label: {
                 Text("프로필 사진 변경")
             }
-            .sheet(isPresented: $showImagePicker, onDismiss: {
-                loadImage()
-            }) {
-                ImagePicker(image: $selectedUIImage)
-            }
+//            .sheet(isPresented: $showImagePicker, onDismiss: {
+//                loadImage()
+//            })
+//            {
+//                ImagePicker(image: $selectedUIImage)
+//            }
         }
         
         VStack(alignment: .leading, spacing: 16) {
@@ -76,7 +77,7 @@ struct ProfileEdit: View {
 //                    .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 50)
 //                    .border(Color.primary, width: 1)
 //            }
-//            
+//
 //            HStack {
 //                Text("소개")
 //                    .fontWeight(.bold)
@@ -88,7 +89,7 @@ struct ProfileEdit: View {
 //                    .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 120)
 //                    .border(Color.primary, width: 1)
 //            }
-//            
+//
 //            HStack {
 //                Text("인스타 링크")
 //                    .fontWeight(.bold)
@@ -109,10 +110,7 @@ struct ProfileEdit: View {
             
         } label: {
             Text("저장버튼")
-                .padding()
                 .foregroundColor(Color.primary)
-                .background(Color.green)
-                .cornerRadius(10)
         }
         
     }
