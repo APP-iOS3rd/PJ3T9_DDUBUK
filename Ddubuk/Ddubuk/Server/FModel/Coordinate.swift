@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct Coordinate: Codable, Hashable {
+struct Coordinate: Codable, Hashable{
+    
     var latitude: Double
     var longitude: Double
     var timestamp: Date

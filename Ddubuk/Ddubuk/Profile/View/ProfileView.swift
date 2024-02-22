@@ -6,8 +6,12 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 struct ProfileView: View {
+    
+    @ObservedObject var routes = FireStoreManager.shared
+    
     // 더미 데이터 모델
     struct UserProfile {
         var username: String
@@ -17,7 +21,7 @@ struct ProfileView: View {
         var walkRoutes: [String]
         var instagramID: String
     }
-
+    
     // 더미 데이터
     let dummyData1: UserProfile = UserProfile(
         username: "H.Methew",
@@ -27,49 +31,63 @@ struct ProfileView: View {
         walkRoutes: ["Route A", "Route B", "Route C"],
         instagramID: "sisi"
     )
-
+    
     var body: some View {
         
-            ScrollView(.vertical) {
-                VStack {
-                    profileHeader(data: dummyData1)
-                }
-                .padding()
+        ScrollView(.vertical) {
+            VStack {
+                profileHeader(data: dummyData1)
             }
+<<<<<<< HEAD
             .navigationBarTitle("프로필관리")
             .navigationBarItems(trailing: NavigationLink(destination: SettingView()) {
                 Image(systemName: "gearshape.fill")
                                         .imageScale(.large)
                                         .foregroundColor(.primary)
             })
+=======
+            .padding()
+        }
+        .navigationBarTitle("프로필")
+        .navigationBarItems(trailing: NavigationLink(destination: SettingView()) {
+            Image(systemName: "gearshape.fill")
+                .imageScale(.large)
+                .foregroundColor(.primary)
+        })
+>>>>>>> DEVELOP
         
     }
-
+    
     private func profileHeader(data: UserProfile) -> some View {
         VStack {
             
-                Image(systemName: data.imageURL)
-                    .resizable()
-                    .frame(width: 120, height: 120)
-                    .clipShape(Circle())
-                    .overlay(Circle().stroke(Color.white, lineWidth: 4))
-                    .shadow(radius: 5)
-                    .padding(.bottom, 20)
-                    .padding()
-
+            Image(systemName: data.imageURL)
+                .resizable()
+                .frame(width: 120, height: 120)
+                .clipShape(Circle())
+                .overlay(Circle().stroke(Color.white, lineWidth: 4))
+                .shadow(radius: 5)
+                .padding(.bottom, 20)
+                .padding()
+            
             VStack {
-                    
-                    Text(data.username)
-                    .padding(.top, -30)
-                        .fontWeight(.bold)
                 
-                    
-                    Text("산책수")
-                        .fontWeight(.bold)
-                    Text("\(data.walkCount)")
-                        .fontWeight(.bold)
-                }
-
+                Text(data.username)
+                    .padding(.top, -30)
+                    .fontWeight(.bold)
+                
+                
+                Text("산책수")
+                    .fontWeight(.bold)
+                Image(systemName: "arrowtriangle.left.fill")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 100, height: 100)
+                    .foregroundColor(.init(red: 155, green: 188, blue: 14))
+                Text("\(data.walkCount)")
+                    .fontWeight(.bold)
+            }
+            
             VStack(spacing: 10) {
                 HStack(spacing: 190) {
                     Text("나의 산책로")
@@ -80,39 +98,48 @@ struct ProfileView: View {
                 }
                 .padding()
                 ScrollView(.horizontal) {
-                    LazyHStack(spacing: 10) {
-                        ForEach(data.walkRoutes, id: \.self) { route in
-                            ListingView(route: route, showEllipsis: false)
-                                .frame(width: 300, height: 520)
-                                .clipShape(RoundedRectangle(cornerRadius: 10))
+                    LazyHStack(spacing: 20) { // 간격을 20으로 조정
+                        ForEach(routes.routes, id: \.self) { route in
+                            VStack(alignment: .center) {
+                                ListingView(route: route, showEllipsis: false)
+                                    .frame(width: 250, height: 350)
+//                                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                            }
+                        }
+                    }
+                    .padding(.horizontal, 15) // 좌우 패딩을 15로 조정
+                    .accentColor(.primary)
+                    .onAppear {
+                        routes.fetchRoutes()
+                    }
+                }
+                
+                Divider()
+                    .frame(height: 3)
+                    .background(.black)
+                
+                VStack(spacing: 10) {
+                    HStack(spacing: 190) {
+                        Text("저장목록")
+                        NavigationLink(destination: BookMarkView()) {
+                            Text("전체보기")
+                                .foregroundColor(.primary)
                         }
                     }
                     .padding()
-                }
-            }
-            
-            Divider()
-                .frame(height: 3)
-                .background(.black)
-            
-            VStack(spacing: 10) {
-                HStack(spacing: 190) {
-                    Text("저장목록")
-                    NavigationLink(destination: BookMarkView()) {
-                        Text("전체보기")
-                            .foregroundColor(.primary)
-                    }
-                }
-                .padding()
-                ScrollView(.horizontal) {
-                    LazyHStack(spacing: 10) {
-                        ForEach(data.walkRoutes, id: \.self) { route in
-                            ListingView(route: "route", showEllipsis: false)
-                                .frame(width: 300, height: 520)
-                                .clipShape(RoundedRectangle(cornerRadius: 10))
+                    ScrollView(.horizontal) {
+                        LazyHStack(spacing: 20) { // 간격을 20으로 조정
+                            ForEach(routes.routes, id: \.self) { route in
+                                VStack(alignment: .center) {
+                                    ListingView(route: route, showEllipsis: false)
+                                        .frame(width: 250, height: 350)
+//                                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                                }
+                            }
                         }
+                        .padding(.horizontal, 15) // 좌우 패딩을 15로 조정
+                        .accentColor(.primary)
                     }
-                    .padding()
                 }
             }
         }
