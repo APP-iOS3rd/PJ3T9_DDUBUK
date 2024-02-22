@@ -38,6 +38,14 @@ struct ProfileView: View {
             VStack {
                 profileHeader(data: dummyData1)
             }
+<<<<<<< HEAD
+            .navigationBarTitle("프로필관리")
+            .navigationBarItems(trailing: NavigationLink(destination: SettingView()) {
+                Image(systemName: "gearshape.fill")
+                                        .imageScale(.large)
+                                        .foregroundColor(.primary)
+            })
+=======
             .padding()
         }
         .navigationBarTitle("프로필")
@@ -46,6 +54,7 @@ struct ProfileView: View {
                 .imageScale(.large)
                 .foregroundColor(.primary)
         })
+>>>>>>> DEVELOP
         
     }
     

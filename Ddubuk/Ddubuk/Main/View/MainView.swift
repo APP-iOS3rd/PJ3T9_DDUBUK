@@ -13,6 +13,8 @@ struct Main: View {
     var route: Route
     @EnvironmentObject var viewModel: RecordViewModel
     
+
+    
     var body: some View {
         TabView {
             NavigationView {
