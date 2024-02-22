@@ -32,7 +32,8 @@ struct ListingView: View {
         types: [WalkingType.A], // WalkingType에 따라 변경
         duration: 30,
         distanceTraveled: 1.5,
-        recordedDate: Date()
+        recordedDate: Date(),
+        stepsCount: 0
     )
     var body: some View {
         
@@ -71,6 +72,7 @@ struct ListingView: View {
                         
                         Text(route.memo)
                             .font(.subheadline)
+                            .lineLimit(1)
                             .foregroundColor(.secondary)
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .padding(.leading, 10)
@@ -117,7 +119,8 @@ struct ListingView: View {
             types: [WalkingType.A], // WalkingType에 따라 변경
             duration: 0,
             distanceTraveled: 1.5,
-            recordedDate: Date()
+            recordedDate: Date(),
+            stepsCount: 0
         ), showEllipsis: false) // ExploreView에서는 ellipsis 표시
     }
 

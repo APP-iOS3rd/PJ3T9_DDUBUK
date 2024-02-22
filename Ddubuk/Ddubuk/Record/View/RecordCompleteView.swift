@@ -15,7 +15,7 @@ enum ActiveAlert {
 
 struct RecordCompleteView: View {
     
-    var elapsedTime: Int
+    var duration: Int
     var distanceTraveled: Double
     var coordinates: [Coordinate]
     @Binding var route: Route
@@ -27,6 +27,9 @@ struct RecordCompleteView: View {
     @State private var activeAlert: ActiveAlert = .saveConfirmation
     @State private var showAlert: Bool = false
     
+    @StateObject var stopwatchViewModel = StopwatchViewViewModel.shared
+    
+    @ObservedObject var healthManager: HealthManager
     
     @ObservedObject var locationManager: LocationManager
     @State var title: String = ""
@@ -37,6 +40,9 @@ struct RecordCompleteView: View {
     @State private var selectedTypes: [WalkingType] = []
     @State private var editingImageIndex: Int? = nil
     
+    var walkStartTime: Date // 산책 시작 시간
+    var walkEndTime: Date // 산책 종료 시간
+    @State private var stepsCount: Int = 0
     
     @Environment(\.presentationMode) var presentationMode
     
@@ -79,12 +85,12 @@ struct RecordCompleteView: View {
                         Text(route.address ?? "주소 정보 없음")
                             .padding(.top, 5)
                     }
-                        // 타입 표시 추가
-                        HStack{
-                            ForEach(route.types, id: \.self) { type in
-                                Text(type.rawValue)
-                            }
+                    // 타입 표시 추가
+                    HStack{
+                        ForEach(route.types, id: \.self) { type in
+                            Text(type.rawValue)
                         }
+                    }
                     
                     
                     VStack {
@@ -113,9 +119,9 @@ struct RecordCompleteView: View {
                         }
                         
                         VStack {
-                            Text("걸음수-더미")
+                            Text("걸음수")
                                 .fontWeight(.bold)
-                            Text("10,000")
+                            Text("\(stepsCount)")
                         }
                         
                         VStack {
@@ -123,7 +129,7 @@ struct RecordCompleteView: View {
                                 .fontWeight(.bold)
                             //                            Text("\(dummyData.totalTime)")
                             //                                .fontWeight(.bold)
-                            Text("\(formatTime(self.elapsedTime))")
+                            Text("\(formatTime(duration))")
                             
                         }
                         Spacer()
@@ -156,47 +162,46 @@ struct RecordCompleteView: View {
          
                     Text("사진(최대 9장)")
                                         .fontWeight(.bold)
-
                     
                     LazyVGrid(columns: columns, spacing: 10) {
-                                        ForEach(inputImages.indices, id: \.self) { index in
-                                            Button(action: {
-                                                self.editingImageIndex = index // 수정할 이미지의 인덱스 설정
-                                                self.showingImagePicker = true // 이미지 피커 표시
-                                            }) {
-                                                Image(uiImage: inputImages[index])
-                                                    .resizable()
-                                                    .scaledToFill()
-                                                    .frame(minWidth: 0, maxWidth: .infinity, minHeight: 100, maxHeight: 100)
-                                                    .cornerRadius(10)
-                                                    .clipped()
-                                            }
-                                            .background(Color(UIColor.systemGray5))
-                                            .cornerRadius(10)
-                                        }
-                                        
-                                        if inputImages.count < 9 {
-                                            Button(action: {
-                                                self.editingImageIndex = nil // 새 이미지 추가 모드
-                                                self.showingImagePicker = true
-                                            }) {
-                                                Rectangle()
-                                                    .foregroundColor(Color.gray)
-                                                    .frame(minWidth: 0, maxWidth: .infinity, minHeight: 100, maxHeight: 100)
-                                                    .cornerRadius(10)
-                                                    .overlay(
-                                                        Image(systemName: "plus")
-                                                            .foregroundColor(.white)
-                                                    )
-                                            }
-                                            .background(Color(UIColor.systemGray5))
-                                            .cornerRadius(10)
-                                        }
-                                    }
-                                    .padding(.top, 10)
-                                    .sheet(isPresented: $showingImagePicker) {
-                                        ImagePicker(images: $inputImages, editingIndex: $editingImageIndex)
-                                    }
+                        ForEach(inputImages.indices, id: \.self) { index in
+                            Button(action: {
+                                self.editingImageIndex = index // 수정할 이미지의 인덱스 설정
+                                self.showingImagePicker = true // 이미지 피커 표시
+                            }) {
+                                Image(uiImage: inputImages[index])
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(minWidth: 0, maxWidth: .infinity, minHeight: 100, maxHeight: 100)
+                                    .cornerRadius(10)
+                                    .clipped()
+                            }
+                            .background(Color(UIColor.systemGray5))
+                            .cornerRadius(10)
+                        }
+                        
+                        if inputImages.count < 9 {
+                            Button(action: {
+                                self.editingImageIndex = nil // 새 이미지 추가 모드
+                                self.showingImagePicker = true
+                            }) {
+                                Rectangle()
+                                    .foregroundColor(Color.gray)
+                                    .frame(minWidth: 0, maxWidth: .infinity, minHeight: 100, maxHeight: 100)
+                                    .cornerRadius(10)
+                                    .overlay(
+                                        Image(systemName: "plus")
+                                            .foregroundColor(.white)
+                                    )
+                            }
+                            .background(Color(UIColor.systemGray5))
+                            .cornerRadius(10)
+                        }
+                    }
+                    .padding(.top, 10)
+                    .sheet(isPresented: $showingImagePicker) {
+                        ImagePicker(images: $inputImages, editingIndex: $editingImageIndex)
+                    }
                     
                 }
                 .padding()
@@ -226,7 +231,6 @@ struct RecordCompleteView: View {
                         return Alert(
                             title: Text("저장하시겠습니까?"),
                             primaryButton: .default(Text("저장하기")) {
-                                // 여기에 실제 저장 로직을 넣습니다.
                                 self.saveRoute()
                             },
                             secondaryButton: .cancel()
@@ -235,10 +239,10 @@ struct RecordCompleteView: View {
                         return Alert(title: Text("경고"), message: Text("저장할 데이터가 없습니다."), dismissButton: .default(Text("확인")))
                     }
                     if isSaving {
-                                    ProgressView("저장 중...")
-                                        .progressViewStyle(CircularProgressViewStyle())
-                                        .zIndex(1) // 다른 뷰 위에 표시되도록 z-index 설정
-                                }
+                        ProgressView("저장 중...")
+                            .progressViewStyle(CircularProgressViewStyle())
+                            .zIndex(1) // 다른 뷰 위에 표시되도록 z-index 설정
+                    }
                 }
                 
             }
@@ -265,8 +269,10 @@ struct RecordCompleteView: View {
                 }
             )
         }
+        .onAppear {
+            loadStepsData()
+        }
     }
-    
     func loadImage() {
         // 이미지 선택 후 처리 로직
     }
@@ -299,7 +305,7 @@ struct RecordCompleteView: View {
     func uploadImages(_ images: [UIImage], completion: @escaping (Result<[URL], Error>) -> Void) {
         var uploadedUrls = [URL]()
         let uploadGroup = DispatchGroup()
-
+        
         for image in images {
             uploadGroup.enter()
             uploadImage(image) { result in
@@ -312,7 +318,7 @@ struct RecordCompleteView: View {
                 uploadGroup.leave()
             }
         }
-
+        
         uploadGroup.notify(queue: .main) {
             if uploadedUrls.count == images.count {
                 completion(.success(uploadedUrls))
@@ -334,6 +340,8 @@ struct RecordCompleteView: View {
     
     func saveRouteToFirestore(route: Route) {
         // Firestore에 Route 객체를 저장
+        print("저장 전 duration 값: \(route.duration)")
+        
         FireStoreManager.shared.addRoute(route: route, documentName: route.title) { error in
             if let error = error {
                 print("Error adding route: \(error)")
@@ -341,6 +349,7 @@ struct RecordCompleteView: View {
                 // Firestore에 저장이 성공하면, 현재 저장된 데이터를 초기화
                 self.locationManager.resetData()
                 self.presentationMode.wrappedValue.dismiss()
+                print("Firestore에 저장된 duration 값: \(route.duration)")
             }
         }
     }
@@ -369,7 +378,8 @@ struct RecordCompleteView: View {
                             types: self.selectedTypes,
                             duration: self.route.duration,
                             distanceTraveled: self.route.distanceTraveled,
-                            recordedDate: Date() // 현재 날짜를 recordedDate로 설정
+                            recordedDate: Date() ,
+                            stepsCount: self.stepsCount
                         )
                         // Firestore에 Route 객체를 저장합니다.
                         self.saveRouteToFirestore(route: updatedRoute)
@@ -389,19 +399,37 @@ struct RecordCompleteView: View {
                     types: self.selectedTypes,
                     duration: self.route.duration,
                     distanceTraveled: self.route.distanceTraveled,
-                    recordedDate: Date() // 현재 날짜를 recordedDate로 설정
+                    recordedDate: Date(),
+                    stepsCount: self.stepsCount
                 )
+                print("\(updatedRoute)")
                 self.saveRouteToFirestore(route: updatedRoute)
                 print("No image selected")
+                
             }
         }
     }
     // 시간 포맷팅을 위한 함수
-        private func formatTime(_ seconds: Int) -> String {
-            let minutes = seconds / 60
-            let seconds = seconds % 60
-            return String(format: "%02d:%02d", minutes, seconds)
+    private func formatTime(_ seconds: Int) -> String {
+        let minutes = seconds / 60
+        let seconds = seconds % 60
+        return String(format: "%02d:%02d", minutes, seconds)
+    }
+    
+    // 걸음수 데이터를 읽는 함수
+    func loadStepsData() {
+        healthManager.readStepCount(startDate: walkStartTime, endDate: walkEndTime) { steps, error in
+            DispatchQueue.main.async {
+            // 임의로 걸음수 데이터 생성 
+//            stepsCount = 1
+                if let error = error {
+                    print("걸음수 조회 실패: \(error.localizedDescription)")
+                } else {
+                    self.stepsCount = Int(steps)
+                }
+            }
         }
+    }
 }
 
 //#Preview {

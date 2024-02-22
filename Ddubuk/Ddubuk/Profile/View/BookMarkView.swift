@@ -20,7 +20,8 @@ struct BookMarkView: View {
         types: [WalkingType.A],
         duration: 0,
         distanceTraveled: 823,
-        recordedDate: Date() // 현재 날짜와 시간
+        recordedDate: Date(),
+        stepsCount: 0
     )
     
     var exploreViewRoutes: [String] = ["Route A", "Route B", "Route C"]

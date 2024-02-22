@@ -111,7 +111,8 @@ struct RecordView: View {
                                 types: [], // RecordCompleteView에서 설정
                                 duration: elapsedTime, // 타이머 정보
                                 distanceTraveled: locationManager.distanceTraveled, // 이동 거리 정보
-                                recordedDate: Date() // 기록 날짜
+                                recordedDate: Date(), // 기록 날짜
+                                stepsCount: 0
                             )
                             // RecordCompleteView로 넘어가기 전에 isRecordCompleteViewPresented 상태를 변경합니다.
                             self.isRecordCompleteViewPresented = true
