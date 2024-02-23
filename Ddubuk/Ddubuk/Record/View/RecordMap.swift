@@ -14,7 +14,6 @@ struct RecordMap: UIViewRepresentable {
     var userLocations: [CLLocationCoordinate2D]
     var isRecording: Bool
     var timerState: TimerState
-    
     var route: Route?
     var locationManager: LocationManager?
 
