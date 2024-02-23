@@ -1,15 +1,7 @@
-//
-//  SearchView.swift
-//  Ddubuk
-//
-//  Created by 박호건 on 1/22/24.
-//
-
 import SwiftUI
 
 struct SearchView: View {
     @State private var title: String = ""
-    
     
     var body: some View {
         ScrollView {
@@ -19,7 +11,9 @@ struct SearchView: View {
                     
                     VStack(alignment: .leading, spacing: 2) {
                         TextField("산책하는 지역명을 검색해주세요", text: $title)
-                            
+                            .onTapGesture {
+                                endEditing()
+                            }
                     }
                     
                     Spacer()
@@ -28,7 +22,7 @@ struct SearchView: View {
                         
                     } label: {
                         Image(systemName: "line.3.horizontal.decrease.circle")
-                            .foregroundColor(.black)
+                            .foregroundColor(Color.primary)
                     }
 
                 }
@@ -60,6 +54,13 @@ struct SearchView: View {
             }
         }
         .padding()
+        .onTapGesture {
+            endEditing()
+        }
+    }
+
+    private func endEditing() {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
 }
 

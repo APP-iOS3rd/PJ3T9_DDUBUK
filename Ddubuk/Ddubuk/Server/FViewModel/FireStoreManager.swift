@@ -73,7 +73,8 @@ class FireStoreManager: ObservableObject {
             "types": route.types.map { $0.rawValue },
             "duration": route.duration,
             "distanceTraveled": route.distanceTraveled,
-            "recordedDate": Timestamp(date: route.recordedDate)
+            "recordedDate": Timestamp(date: route.recordedDate),
+            "stepsCount": route.stepsCount
         ]
            
         db.collection("routes").document(documentName ?? UUID().uuidString).setData(routeData) { error in

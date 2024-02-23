@@ -70,6 +70,11 @@ struct ProfileView: View {
                 
                 Text("산책수")
                     .fontWeight(.bold)
+                Image(systemName: "arrowtriangle.left.fill")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 100, height: 100)
+                    .foregroundColor(.init(red: 155, green: 188, blue: 14))
                 Text("\(data.walkCount)")
                     .fontWeight(.bold)
             }

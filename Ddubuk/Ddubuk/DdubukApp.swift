@@ -31,7 +31,8 @@ struct DdubukApp: App {
                 types: [],
                 duration: 0,
                 distanceTraveled: 0.0,
-                recordedDate: Date()
+                recordedDate: Date(),
+                stepsCount: 0
                 )
                        Main(route: exampleRoute) // Main 호출 시 route 전달
                            .environmentObject(viewModel)
