@@ -38,19 +38,25 @@ struct MapMarkerDetail: View {
                             .background(Color(UIColor.systemGray5))
                     }
 
-                    
-                    Spacer()
-                    
+                                    
                     VStack {
                         Text(seletedResult.title)
-                            .font(.system(size: 30, weight: .bold))
+                            .font(.custom("NotoSansKR-Bold", size: 16))
+                            .foregroundStyle(Color.black)
+                        
                         Text(seletedResult.address ?? "")
-                            .font(.system(size: 10))
+                            .font(.custom("NotoSansKR-Medium", size: 13))
+                            .foregroundStyle(Color.black)
+                            .opacity(0.5)
                         HStack {
                             Text("\(seletedResult.distanceTraveled, specifier: "%.2f")M")
-                                .font(.system(size: 10))
+                                .font(.custom("NotoSansKR-Medium", size: 13))
+                                .foregroundStyle(Color.black)
+                                .opacity(0.5)
                             Text(formatDuration(seletedResult.duration))
-                                .font(.system(size: 10))
+                                .font(.custom("NotoSansKR-Medium", size: 13))
+                                .foregroundStyle(Color.black)
+                                .opacity(0.5)
                         }
                     }
                 }

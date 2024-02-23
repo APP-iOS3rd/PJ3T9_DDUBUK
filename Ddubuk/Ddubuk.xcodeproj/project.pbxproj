@@ -114,6 +114,8 @@
 		A4E3BE1B2B6C70820007E38A /* TagViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E3BE1A2B6C70820007E38A /* TagViewModel.swift */; };
 		A4ECF9062B7EF8C4005BFFB7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A4ECF9052B7EF8C4005BFFB7 /* GoogleService-Info.plist */; };
 		A4ECF9082B7F015E005BFFB7 /* MapMarkerDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4ECF9072B7F015E005BFFB7 /* MapMarkerDetail.swift */; };
+		A4FFA38A2B8911B7008E8D84 /* extension+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FFA3892B8911B7008E8D84 /* extension+.swift */; };
+		A4FFA38C2B8914D3008E8D84 /* CustomAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FFA38B2B8914D3008E8D84 /* CustomAnnotation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -173,6 +175,8 @@
 		A4E3BE1A2B6C70820007E38A /* TagViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagViewModel.swift; sourceTree = "<group>"; };
 		A4ECF9052B7EF8C4005BFFB7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A4ECF9072B7F015E005BFFB7 /* MapMarkerDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapMarkerDetail.swift; sourceTree = "<group>"; };
+		A4FFA3892B8911B7008E8D84 /* extension+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "extension+.swift"; sourceTree = "<group>"; };
+		A4FFA38B2B8914D3008E8D84 /* CustomAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CustomAnnotation.swift; path = Ddubuk/Extension/CustomAnnotation.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -295,6 +299,7 @@
 		0C2F8B362B57B548009AF236 /* Ddubuk */ = {
 			isa = PBXGroup;
 			children = (
+				A4FFA3882B8911A1008E8D84 /* Extension */,
 				0C3C5C452B7F1F5B00030A2E /* DdubukDebug.entitlements */,
 				0CA301542B862F1100B95F28 /* NotoSansKR-Bold.ttf */,
 				0CA301552B862F1A00B95F28 /* NotoSansKR-Medium.ttf */,
@@ -496,6 +501,7 @@
 		A4D1A9742B7B003500746262 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				A4FFA38B2B8914D3008E8D84 /* CustomAnnotation.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -551,6 +557,14 @@
 				A4E3BE1A2B6C70820007E38A /* TagViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		A4FFA3882B8911A1008E8D84 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				A4FFA3892B8911B7008E8D84 /* extension+.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -691,6 +705,7 @@
 				4E6AD7AB2B67926300F0F596 /* CommunityView.swift in Sources */,
 				4E6AD7962B6790D400F0F596 /* ProfileView.swift in Sources */,
 				0C0FFE502B6CBAB1004BACF9 /* LocationManager.swift in Sources */,
+				A4FFA38A2B8911B7008E8D84 /* extension+.swift in Sources */,
 				4E6AD7C02B68CADF00F0F596 /* RecordCompleteView.swift in Sources */,
 				4E6AD7B02B6793A400F0F596 /* RecordState.swift in Sources */,
 				4EF138A92B6B36A000C06A97 /* MainListView.swift in Sources */,
@@ -714,6 +729,7 @@
 				0CAF798D2B830E8B004B6D92 /* StopwatchView.swift in Sources */,
 				0C0FFE552B6CBF51004BACF9 /* MapViewController.swift in Sources */,
 				0C3C5C472B7F202E00030A2E /* HealthManager.swift in Sources */,
+				A4FFA38C2B8914D3008E8D84 /* CustomAnnotation.swift in Sources */,
 				0C0FFE482B6CB94C004BACF9 /* Coordinate.swift in Sources */,
 				0C0FFE4A2B6CB977004BACF9 /* WalkingType.swift in Sources */,
 				4E6AD7B42B67941600F0F596 /* Coordinator.swift in Sources */,

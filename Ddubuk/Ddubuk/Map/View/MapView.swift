@@ -13,6 +13,7 @@ import Firebase
 struct MapView: View {
     
     @ObservedObject var routes = FireStoreManager.shared
+    @State private var currentPosition: CLLocationCoordinate2D?
     @State private var selection: UUID?
     @State private var position: MapCameraPosition = .automatic
     @StateObject var locationManager = LocationManager()
@@ -21,10 +22,21 @@ struct MapView: View {
     var body: some View {
         ZStack {
             //
-            Map(initialPosition: position, selection: $selection) {
+            Map(position: $position, selection: $selection) {
+//                if let currentPosition = currentPosition {
+//                    Marker("marker", coordinate: currentPosition)
+//                }
                 ForEach(routes.routes) { location in
-                    Marker("", coordinate: CLLocationCoordinate2D(latitude: location.coordinates[0].latitude, longitude: location.coordinates[0].longitude))
-                        .tint(.blue)
+//                    Marker("", image: "mapmarker",coordinate: CLLocationCoordinate2D(latitude: location.coordinates[0].latitude, longitude: location.coordinates[0].longitude))
+//                        .tint(Color.MainColor)
+                    Annotation("", coordinate: CLLocationCoordinate2D(latitude: location.coordinates[0].latitude, longitude: location.coordinates[0].longitude)) {
+                        Image("mapmarker")
+                            .resizable()
+                            .frame(width: 30, height: 30)
+                            
+                    }
+                    .tint(Color.MainColor)
+                
                     
                 }
                 
@@ -39,29 +51,36 @@ struct MapView: View {
                     }
                 }
             }
-        }
-        VStack {
-            Spacer()
-            
-            if let selection {
-               
-                if let item = routes.routes.first(where: { $0.id == selection }) {
-                    RoundedRectangle(cornerRadius: 10)
-                        .padding([.bottom, .horizontal])
-                        .frame(width: 350, height: 150)
-                        .foregroundColor(.white)
-                        .overlay (
-                            MapMarkerDetail(seletedResult: item)
-                                .frame(height: 128)
-                        )
+            VStack {
+                Spacer()
+                
+                if let selection {
+                    
+                    if let item = routes.routes.first(where: { $0.id == selection }) {
+                        RoundedRectangle(cornerRadius: 10)
+                            .padding([.bottom, .horizontal])
+                            .frame(width: 360, height: 150)
+                            .foregroundColor(.white)
+                            .shadow(radius: 10)
+                            .overlay (
+                                MapMarkerDetail(seletedResult: item)
+                                    .frame(height: 150)
+                            )
+                    }
                 }
             }
         }
         .onAppear {
             routes.fetchRoutes()
+            locationManager.getCurrentLocation()
+        }
+        .onChange(of: locationManager.currentLocation) {
+            if let lat = locationManager.currentLocation?.latitude, let lon = locationManager.currentLocation?.longitude {
+                self.currentPosition = CLLocationCoordinate2D(latitude: lat, longitude: lon)
+                position = .item(MKMapItem(placemark: .init(coordinate: currentPosition!)))
+            }
         }
     }
-        
 }
 
 
