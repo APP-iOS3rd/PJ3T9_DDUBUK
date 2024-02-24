@@ -46,7 +46,6 @@ struct Main: View {
 
             NavigationView {
                 MapView()
-                    .navigationBarTitle("지도")
             }
             .tabItem {
                 Image(systemName: "map.fill")

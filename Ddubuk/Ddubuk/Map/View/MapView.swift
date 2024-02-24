@@ -58,13 +58,14 @@ struct MapView: View {
                     
                     if let item = routes.routes.first(where: { $0.id == selection }) {
                         RoundedRectangle(cornerRadius: 10)
-                            .padding([.bottom, .horizontal])
-                            .frame(width: 360, height: 150)
+                            .padding(.bottom)
+                            .frame(width: 360, height: 165)
                             .foregroundColor(.white)
                             .shadow(radius: 10)
                             .overlay (
                                 MapMarkerDetail(seletedResult: item)
-                                    .frame(height: 150)
+                                    .frame(width: 395,height: 182)
+                                    .padding(.bottom)
                             )
                     }
                 }

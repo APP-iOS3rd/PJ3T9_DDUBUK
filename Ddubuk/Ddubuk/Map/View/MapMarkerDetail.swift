@@ -23,11 +23,13 @@ struct MapMarkerDetail: View {
                             WebImage(url: url)
                             .resizable()
                             .indicator(.activity)
+                            .presentationCornerRadius(10)
                             .transition(.fade(duration: 0.5))
                             .scaledToFit()
-                            .padding(5)
-                            .frame(width: 150) // 너비에 맞춰 높이 조정
+//                            .padding(5)
+                            .frame(width: 130) // 너비에 맞춰 높이 조정
                             .background(Color(UIColor.systemGray5))
+                            .clipShape(RoundedRectangle(cornerRadius: 10))
                     } else {
                         Image(systemName: "photo")
                             .resizable()
@@ -40,14 +42,25 @@ struct MapMarkerDetail: View {
 
                                     
                     VStack {
-                        Text(seletedResult.title)
+                        Text("어린이대공원 - 벚꽃 나들이")
                             .font(.custom("NotoSansKR-Bold", size: 16))
+                            .bold()
                             .foregroundStyle(Color.black)
-                        
+                            .frame(width:200, height: 40, alignment: .leading)
+                            .padding(.leading, 20)
+                        Text("야경이 좋은 길")
+                            .font(.custom("NotoSansKR-Bold", size: 13))
+                            .foregroundStyle(Color.black)
+                            .frame(width:200 , height: 15, alignment: .topLeading)
+                            .padding(.leading, 20)
+
                         Text(seletedResult.address ?? "")
                             .font(.custom("NotoSansKR-Medium", size: 13))
                             .foregroundStyle(Color.black)
                             .opacity(0.5)
+                            .frame(width:200, height: 15, alignment: .topLeading)
+                            .padding(.leading, 20)
+
                         HStack {
                             Text("\(seletedResult.distanceTraveled, specifier: "%.2f")M")
                                 .font(.custom("NotoSansKR-Medium", size: 13))
@@ -58,6 +71,10 @@ struct MapMarkerDetail: View {
                                 .foregroundStyle(Color.black)
                                 .opacity(0.5)
                         }
+                        .frame(width:200 , alignment: .leading)
+                        .padding(.leading, 20)
+                        .padding(.bottom, 15)
+
                     }
                 }
                 .padding()
