@@ -23,11 +23,8 @@ struct Stopwatch: View {
 
     var body: some View {
         Text(formatTime(secondsElapsed))
-            .font(.largeTitle)
-            .padding()
-            .background(Color.black.opacity(0.75))
-            .foregroundColor(.white)
-            .cornerRadius(10)
+            .font(.system(size: 24))
+            .fontWeight(.bold)
     }
 }
 
