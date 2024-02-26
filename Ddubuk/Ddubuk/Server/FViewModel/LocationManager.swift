@@ -16,7 +16,7 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     @Published var durationString: String = ""
     @Published var distanceTraveled: Double = 0
     @Published var tempDistanceTraveled: Double = 0
-//    @Published var elapsedTime: Int = 0
+    //    @Published var elapsedTime: Int = 0
     
     private let locationManager = CLLocationManager()
     private var lastLocation: CLLocation?
@@ -49,36 +49,36 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-            guard let location = locations.last else { return }
-            
+        guard let location = locations.last else { return }
+        
         print("현재 위치: \(location.coordinate.latitude), \(location.coordinate.longitude)")
         
-            if let lastLocation = lastLocation {
-                let distance = location.distance(from: lastLocation)
-                distanceTraveled += distance
-            }
-            
-            lastLocation = location
-            
-            let newCoordinate = Coordinate(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude, timestamp: Date())
-            self.currentLocation = newCoordinate
-            self.saveLocation(location)
-            
-            // 임시로 현재 위치를 tempCoordinate에 저장
-            let temp = Coordinate(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude, timestamp: Date())
-            tempCoordinates.append(temp)
-            
-            // 필요한 처리를 한 후에 currentLocation 업데이트
-            self.currentLocation = temp
-            self.saveLocation(location)
+        if let lastLocation = lastLocation {
+            let distance = location.distance(from: lastLocation)
+            distanceTraveled += distance
+        }
+        
+        lastLocation = location
+        
+        let newCoordinate = Coordinate(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude, timestamp: Date())
+        self.currentLocation = newCoordinate
+        self.saveLocation(location)
+        
+        // 임시로 현재 위치를 tempCoordinate에 저장
+        let temp = Coordinate(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude, timestamp: Date())
+        tempCoordinates.append(temp)
+        
+        // 필요한 처리를 한 후에 currentLocation 업데이트
+        self.currentLocation = temp
+        self.saveLocation(location)
         
         if let viewModel = recordViewModel {
-                    DispatchQueue.main.async {
-                        let clLocation = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-                        viewModel.userLocations.append(clLocation)
-                    }
-                }
+            DispatchQueue.main.async {
+                let clLocation = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+                viewModel.userLocations.append(clLocation)
+            }
         }
+    }
     
     public var coordinates: [Coordinate] = []
     
@@ -106,43 +106,43 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         locationManager.startUpdatingLocation()
         
         // 필요한 경우 타이머 재설정
-//        self.timer = Timer.scheduledTimer(withTimeInterval: self.interval, repeats: true) { [weak self] _ in
-//            self?.locationManager.startUpdatingLocation()
-//        }
+        //        self.timer = Timer.scheduledTimer(withTimeInterval: self.interval, repeats: true) { [weak self] _ in
+        //            self?.locationManager.startUpdatingLocation()
+        //        }
     }
-//    func startTimer() {
-//        print("타이머 시작")
-//        print("\(durationString)")
-//        guard !isUpdatingLocation else { return }
-//        isUpdatingLocation = true
-//        startTime = Date() // 타이머 시작 시간을 기록
-//        self.timer = Timer.scheduledTimer(withTimeInterval: self.interval, repeats: true) { [weak self] _ in
-//            self?.locationManager.startUpdatingLocation()
-//        }
-//    }
-//    
-//    func stopTimer() {
-//        print("타이머 중지")
-//        print("\(durationString)")
-//            guard isUpdatingLocation, let startTime = self.startTime else { return }
-//            isUpdatingLocation = false
-//            endTime = Date() // 타이머 종료 시간을 기록
-//            self.timer?.invalidate()
-//            self.timer = nil
-//            self.locationManager.stopUpdatingLocation()
-//            
-//            let durationSeconds = Int(endTime!.timeIntervalSince(startTime))
-//            let minutes = durationSeconds / 60
-//            let seconds = durationSeconds % 60
-//            self.durationString = String(format: "%02d:%02d", minutes, seconds)
-//            
-//            // 임시 이동 거리 저장
-//            self.tempDistanceTraveled = self.distanceTraveled
-//        
-//            self.elapsedTime = Int(endTime!.timeIntervalSince(startTime)) // 업데이트
-//        }
-//    
-//    
+    //    func startTimer() {
+    //        print("타이머 시작")
+    //        print("\(durationString)")
+    //        guard !isUpdatingLocation else { return }
+    //        isUpdatingLocation = true
+    //        startTime = Date() // 타이머 시작 시간을 기록
+    //        self.timer = Timer.scheduledTimer(withTimeInterval: self.interval, repeats: true) { [weak self] _ in
+    //            self?.locationManager.startUpdatingLocation()
+    //        }
+    //    }
+    //
+    //    func stopTimer() {
+    //        print("타이머 중지")
+    //        print("\(durationString)")
+    //            guard isUpdatingLocation, let startTime = self.startTime else { return }
+    //            isUpdatingLocation = false
+    //            endTime = Date() // 타이머 종료 시간을 기록
+    //            self.timer?.invalidate()
+    //            self.timer = nil
+    //            self.locationManager.stopUpdatingLocation()
+    //
+    //            let durationSeconds = Int(endTime!.timeIntervalSince(startTime))
+    //            let minutes = durationSeconds / 60
+    //            let seconds = durationSeconds % 60
+    //            self.durationString = String(format: "%02d:%02d", minutes, seconds)
+    //
+    //            // 임시 이동 거리 저장
+    //            self.tempDistanceTraveled = self.distanceTraveled
+    //
+    //            self.elapsedTime = Int(endTime!.timeIntervalSince(startTime)) // 업데이트
+    //        }
+    //
+    //
     func updateTitle(title: String) {
         self.title = title
     }
@@ -160,6 +160,9 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         memo = ""
         durationString = ""
         tempDurationString = ""
+        currentLocation = nil
+        distanceTraveled = 0.0
+        tempDistanceTraveled = 0.0
         selectedTypes = []
         
         // 타이머 관련 프로퍼티 초기화
@@ -169,14 +172,14 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         self.endTime = nil
         self.isUpdatingLocation = false
     }
-//    
-//    func resetTimer() {
-//        self.timer?.invalidate()
-//        self.timer = nil
-//        self.startTime = nil
-//        self.endTime = nil
-//        self.durationString = "00:00"
-//    }
+    //
+    //    func resetTimer() {
+    //        self.timer?.invalidate()
+    //        self.timer = nil
+    //        self.startTime = nil
+    //        self.endTime = nil
+    //        self.durationString = "00:00"
+    //    }
     
     func changeToClLocation(latitude: Double?, longitude: Double?) -> CLLocation? {
         guard let latitude = latitude, let longitude = longitude else { return nil }
@@ -212,5 +215,14 @@ extension LocationManager {
     func convertCoordinateToCLLocation(coordinate: Coordinate?) -> CLLocation? {
         guard let coordinate = coordinate else { return nil }
         return CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
+    }
+}
+
+extension LocationManager {
+    func resetDistanceTraveled() {
+        // 이동 거리를 0으로 초기화합니다.
+        distanceTraveled = 0.0
+        // 임시 이동 거리도 0으로 초기화합니다.
+        tempDistanceTraveled = 0.0
     }
 }

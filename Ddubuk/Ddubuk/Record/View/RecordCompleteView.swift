@@ -44,6 +44,8 @@ struct RecordCompleteView: View {
     var walkEndTime: Date // 산책 종료 시간
     @State private var stepsCount: Int = 0
     
+    var deleteRecordingAction: (() -> Void)?
+    
     @Environment(\.presentationMode) var presentationMode
     
     let storage = Storage.storage()
@@ -61,89 +63,93 @@ struct RecordCompleteView: View {
                 )
                 .frame(height: 300)
                 Divider()
-                    .frame(minHeight: 3)
-                    .overlay(Color.black)
                     .padding(-9)
                 Spacer()
                 
                 VStack(alignment: .leading, spacing: 16) {
                     
                     
-                    HStack{
-                        Text("날짜:")
-                            .fontWeight(.bold)
-                        Spacer()
-                        Text("\(getCurrentDateTime())")
-                    }
-                    
-                    // 주소 정보를 표시하는 부분 추가
                     HStack {
-                        Text("주소:")
-                            .fontWeight(.bold)
-                            .padding(.top, 5)
-                        Spacer()
-                        Text(route.address ?? "주소 정보 없음")
-                            .padding(.top, 5)
-                    }
-                    // 타입 표시 추가
-                    HStack{
-                        ForEach(route.types, id: \.self) { type in
-                            Text(type.rawValue)
-                        }
-                    }
-                    
-                    
-                    VStack {
-                        HStack{
-                            Text("제목:")
-                                .fontWeight(.bold)
-                            TextField("제목을 입력해 주세요.", text: $title)
-                                .textFieldStyle(RoundedBorderTextFieldStyle())
-                            
-                            
-                        }
-                        HStack{
-                            Text("설명:")
-                                .fontWeight(.bold)
-                            TextField("산책설명", text: $memo)
-                                .textFieldStyle(RoundedBorderTextFieldStyle())
-                        }
-                    }
-                    
-                    HStack(alignment: .center, spacing: 30) {
+                        
+                        
                         Spacer()
                         VStack {
-                            Text("산책거리")
-                                .fontWeight(.bold)
-                            Text("\(route.distanceTraveled, specifier: "%.2f")M")
-                        }
-                        
-                        VStack {
-                            Text("걸음수")
-                                .fontWeight(.bold)
-                            Text("\(stepsCount)")
-                        }
-                        
-                        VStack {
-                            Text("총 시간")
-                                .fontWeight(.bold)
-                            //                            Text("\(dummyData.totalTime)")
-                            //                                .fontWeight(.bold)
                             Text("\(formatTime(duration))")
-                            
+                                .font(.system(size: 24))
+                                .fontWeight(.bold)
+                            Text("총 시간")
+                                .font(.system(size: 16))
+                        }
+                        Spacer()
+                        VStack {
+                            Text("\(route.distanceTraveled, specifier: "%.2f")M")
+                                .font(.system(size: 24))
+                                .fontWeight(.bold)
+                            Text("산책거리")
+                                .font(.system(size: 16))
+                        }
+                        Spacer()
+                        VStack {
+                            Text("\(stepsCount)걸음")
+                                .font(.system(size: 24))
+                                .fontWeight(.bold)
+                            Text("걸음수")
+                                .font(.system(size: 16))
                         }
                         Spacer()
                     }
                     
-                    Text("테마")
-                        .fontWeight(.bold)
+                    Divider()
+                        .foregroundColor(Color(UIColor.systemGray))
+                    
+                    VStack{
+                        Text("제목")
+                            .font(.system(size: 16))
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                        TextField("제목을 입력해 주세요.", text: $title)
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                            .cornerRadius(5)
+                            .border(Color.black, width: 1)
+                            .multilineTextAlignment(.leading)
+                    }
+                    
+                    
+                    //                    HStack{
+                    //                        Text("날짜:")
+                    //                            .fontWeight(.bold)
+                    //                        Spacer()
+                    //                        Text("\(getCurrentDateTime())")
+                    //                    }
+                    //
+                    //                    // 주소 정보를 표시하는 부분 추가
+                    //                    HStack {
+                    //                        Text("주소:")
+                    //                            .fontWeight(.bold)
+                    //                            .padding(.top, 5)
+                    //                        Spacer()
+                    //                        Text(route.address ?? "주소 정보 없음")
+                    //                            .padding(.top, 5)
+                    //                    }
+                    
+                    
+                    // 타입 표시 추가
+                    //                    HStack{
+                    //                        ForEach(route.types, id: \.self) { type in
+                    //                            Text(type.rawValue)
+                    //                        }
+                    //                    }
+                    
+                    Text("테마 (최대 5개 까지 선택)")
+                        .font(.system(size: 16))
+                        .frame(maxWidth: .infinity, alignment: .leading)
                     ScrollView(.horizontal) {
                         LazyHGrid(rows: [GridItem()]) {
                             ForEach(WalkingType.allCases, id: \.self) { type in
                                 Rectangle()
                                     .frame(width: 50, height: 20)
-                                    .foregroundColor(self.selectedTypes.contains(type) ? Color.blue : Color.gray)
                                     .cornerRadius(5)
+                                    .border(Color.black, width: 1)
+                                    .foregroundColor(self.selectedTypes.contains(type) ? Color("MainColor") : Color.white)
                                     .onTapGesture {
                                         if self.selectedTypes.contains(type) {
                                             self.selectedTypes.removeAll { $0 == type }
@@ -156,55 +162,67 @@ struct RecordCompleteView: View {
                         }
                         .padding(.leading, -16)
                     }
-                    
-
-                    TagView()
-         
-                    Text("사진(최대 9장)")
-                                        .fontWeight(.bold)
-                    
-                    LazyVGrid(columns: columns, spacing: 10) {
-                        ForEach(inputImages.indices, id: \.self) { index in
-                            Button(action: {
-                                self.editingImageIndex = index // 수정할 이미지의 인덱스 설정
-                                self.showingImagePicker = true // 이미지 피커 표시
-                            }) {
-                                Image(uiImage: inputImages[index])
-                                    .resizable()
-                                    .scaledToFill()
-                                    .frame(minWidth: 0, maxWidth: .infinity, minHeight: 100, maxHeight: 100)
-                                    .cornerRadius(10)
-                                    .clipped()
+                    VStack{
+                        Text("사진(최대 9장)")
+                            .font(.system(size: 16))
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                        LazyVGrid(columns: columns, spacing: 10) {
+                            // 이미지가 채워진 사각형 표시
+                            ForEach(inputImages.indices, id: \.self) { index in
+                                Button(action: {
+                                    self.editingImageIndex = index // 수정할 이미지의 인덱스 설정
+                                    self.showingImagePicker = true // 이미지 피커 표시
+                                }) {
+                                    Image(uiImage: inputImages[index])
+                                        .resizable()
+                                        .scaledToFill()
+                                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 100, maxHeight: 100)
+                                        .cornerRadius(10)
+                                        .clipped()
+                                }
+                                .background(Color(UIColor.systemGray5))
+                                .cornerRadius(10)
                             }
-                            .background(Color(UIColor.systemGray5))
-                            .cornerRadius(10)
+                            
+                            // 빈 사각형 표시 (최대 9개까지, 이미 채워진 사각형을 제외한 나머지)
+                            ForEach(inputImages.count..<9, id: \.self) { index in
+                                Button(action: {
+                                    self.editingImageIndex = nil // 새 이미지 추가 모드
+                                    self.showingImagePicker = true
+                                }) {
+                                    Rectangle()
+                                        .foregroundColor(Color.clear) // 내부를 투명하게 만듭니다.
+                                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 100, maxHeight: 100)
+                                        .cornerRadius(5)
+                                        .overlay(
+                                            RoundedRectangle(cornerRadius: 5)
+                                                .stroke(Color.gray, lineWidth: 1)
+                                        )
+                                        .overlay(
+                                            index == inputImages.count ? Image(systemName: "plus").foregroundColor(.black).fontWeight(.bold) : nil
+                                        )
+                                }
+                                .background(Color.white)
+                                .cornerRadius(5)
+                            }
                         }
-                        
-                        if inputImages.count < 9 {
-                            Button(action: {
-                                self.editingImageIndex = nil // 새 이미지 추가 모드
-                                self.showingImagePicker = true
-                            }) {
-                                Rectangle()
-                                    .foregroundColor(Color.gray)
-                                    .frame(minWidth: 0, maxWidth: .infinity, minHeight: 100, maxHeight: 100)
-                                    .cornerRadius(10)
-                                    .overlay(
-                                        Image(systemName: "plus")
-                                            .foregroundColor(.white)
-                                    )
-                            }
-                            .background(Color(UIColor.systemGray5))
-                            .cornerRadius(10)
+                        .sheet(isPresented: $showingImagePicker) {
+                            ImagePicker(images: $inputImages, editingIndex: $editingImageIndex)
                         }
                     }
-                    .padding(.top, 10)
-                    .sheet(isPresented: $showingImagePicker) {
-                        ImagePicker(images: $inputImages, editingIndex: $editingImageIndex)
-                    }
                     
+                    VStack{
+                        Text("메모")
+                            .font(.system(size: 16))
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                        TextField("산책로에 대한 설명을 적어주세요", text: $memo)
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                            .cornerRadius(5)
+                            .border(Color.black, width: 1)
+                            .multilineTextAlignment(.leading)
+                    }
                 }
-                .padding()
+                .padding(24)
                 
                 Spacer()
                 
@@ -217,20 +235,22 @@ struct RecordCompleteView: View {
                         self.showAlert = true
                     }
                 }) {
-                    Text("산책로 저장하기")
+                    Text("Save")
                         .fontWeight(.bold)
+                        .font(.system(size: 16))
                         .padding()
-                        .frame(width: 200, height: 50)
-                        .background(Color.indigo)
-                        .foregroundColor(Color.white)
+                        .frame(width: 380, height: 40)
+                        .background(Color("MainColor"))
+                        .foregroundColor(Color.black)
                         .cornerRadius(15)
+                        .shadow(radius: 5)
                 }
                 .alert(isPresented: $showAlert) {
                     switch activeAlert {
                     case .saveConfirmation:
                         return Alert(
-                            title: Text("저장하시겠습니까?"),
-                            primaryButton: .default(Text("저장하기")) {
+                            title: Text("기록을 완료하시겠습니까?"),
+                            primaryButton: .default(Text("기록하기")) {
                                 self.saveRoute()
                             },
                             secondaryButton: .cancel()
@@ -254,19 +274,20 @@ struct RecordCompleteView: View {
                 Image(systemName: "x.circle.fill")
                     .foregroundColor(.red)
             }
+                .foregroundColor(.red)
                 .alert(isPresented: $WarningAlertPresented) {
                     Alert(
-                        title: Text("경고"),
-                        message: Text("이 활동 기록을 정말로 삭제하시겠습니까?"),
-                        primaryButton: .destructive(Text("삭제하기")) {
-                            // LocationManager의 resetData 함수 호출
-                            self.locationManager.resetData()
-                            // 이전 화면으로 돌아가기
-                            self.presentationMode.wrappedValue.dismiss()
+                        title: Text("삭제 확인"),
+                        message: Text("이 기록을 완전히 지우시겠습니까?"),
+                        primaryButton: .destructive(Text("삭제")) {
+                            // 삭제 로직 실행
+                            deleteRecordingAction?()
+                            presentationMode.wrappedValue.dismiss()
                         },
-                        secondaryButton: .default(Text("취소"))
+                        secondaryButton: .cancel()
                     )
                 }
+                                
             )
         }
         .onAppear {
@@ -420,8 +441,8 @@ struct RecordCompleteView: View {
     func loadStepsData() {
         healthManager.readStepCount(startDate: walkStartTime, endDate: walkEndTime) { steps, error in
             DispatchQueue.main.async {
-            // 임의로 걸음수 데이터 생성 
-//            stepsCount = 1
+                // 임의로 걸음수 데이터 생성
+                //            stepsCount = 1
                 if let error = error {
                     print("걸음수 조회 실패: \(error.localizedDescription)")
                 } else {
@@ -430,6 +451,15 @@ struct RecordCompleteView: View {
             }
         }
     }
+    
+    //    private func deleteRecording() {
+    //            // locationManager 및 기타 상태 초기화 로직
+    //            locationManager.resetData()
+    //            // 기타 필요한 상태 변수 초기화...
+    //
+    //            // 이전 화면으로 돌아가기
+    //            presentationMode.wrappedValue.dismiss()
+    //        }
 }
 
 //#Preview {

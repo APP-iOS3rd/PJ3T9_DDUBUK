@@ -20,12 +20,15 @@ struct CustomButton: View {
                     Image(systemName: systemImage)
                         .font(.headline)
                     Text(title)
+                        .font(.system(size: 16))
                         .fontWeight(.semibold)
                 }
-                .padding()
-                .foregroundColor(.white)
+                .padding(.vertical, 10)
+                .padding(.horizontal, 22)
+                .foregroundColor(.black)
                 .background(isDisabled ? Color.gray : color)
-                .cornerRadius(40)
+                .cornerRadius(20)
+                .shadow(radius: 5)
             }
             .disabled(isDisabled)
         }

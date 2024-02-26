@@ -10,6 +10,10 @@ import CoreLocation
 import FirebaseFirestore
 import FirebaseFirestoreSwift
 
+enum RecordActiveAlert {
+    case deleteTracking, saveRecording
+}
+
 // MARK: - PathRecodState
 struct RecordState: View {
     // MARK: Binding
@@ -23,6 +27,15 @@ struct RecordState: View {
     @StateObject var stopwatchViewModel = StopwatchViewViewModel.shared
     @StateObject var healthManager = HealthManager()
     @State private var walkStartTime: Date?
+    
+    @State private var overlayHeight: CGFloat = 170 // 오버레이 뷰의 높이 상태 변수
+    @State private var showDetailedInfo = false // 상세 정보 표시 여부 상태 변수
+    @State private var isDeleteTrackingEnabled: Bool = false // "Delete tracking" 버튼 활성화 상태 제어 변수
+    @State private var isStartPressed: Bool = false // "Start" 버튼이 눌렸는지 여부
+    @State private var showingDeleteAlert = false
+    @State private var showingSaveAlert = false
+    
+    @GestureState private var dragAmount = CGSize.zero // 드래그 양을 추적하는 상태 변수
     
     @State var route: Route = Route(
         title: "아름다운 산책로",
@@ -40,43 +53,188 @@ struct RecordState: View {
     // MARK: - View
     var body: some View {
         VStack(alignment: .center, spacing: 0) {
+            
             Spacer()
             
-            RoundedRectangle(cornerRadius: 1)
-                .frame(width: 270, height: 84)
-                .foregroundColor(Color.white.opacity(0.8))
+            RoundedRectangle(cornerRadius: 16)
+                .frame(width: 392, height: overlayHeight)
+                .foregroundColor(Color.white.opacity(0.95))
+                .shadow(radius: 8)
                 .overlay(
                     VStack(alignment: .center, spacing: 0) {
-                        Spacer()
-                        
-                        // Stopwatch를 표시합니다.
-                        Stopwatch(secondsElapsed: stopwatchViewModel.secondsElapsed)
-                        
-                        Spacer()
-                        
-                        // CustomButton을 사용하여 타이머 제어 버튼을 표시합니다.
-                        HStack(spacing: 20) {
-                            CustomButton(title: "산책 시작", systemImage: "play.fill", color: .green, isDisabled: stopwatchViewModel.isActive) {
-                                stopwatchViewModel.activeStopWatch()
-                                isRecording = true
-                                self.walkStartTime = Date()
+                        if showDetailedInfo {
+                            
+                            Rectangle()
+                                .frame(width: 24, height: 5)
+                                .foregroundColor(Color(UIColor.systemGray5))
+                            
+                                .padding(8)
+                            Spacer()
+                            
+                            HStack {
+                                Spacer()
+                                Stopwatch(secondsElapsed: stopwatchViewModel.secondsElapsed)
+                                Spacer()
+                                Text("\(locationManager.distanceTraveled, specifier: "%.2f")m")
+                                    .font(.system(size: 24))
+                                    .fontWeight(.bold)
+                                Spacer()
+                                Button(action: {
+                                    showDetailedInfo = false
+                                    overlayHeight = 240 // 오버레이 높이 증가
+                                }) {
+                                    Image(systemName: "arrow.up")
+                                        .foregroundColor(.black)
+                                        .padding(15)
+                                        .background(Color(UIColor.systemGray6))
+                                        .clipShape(Circle())
+                                        .shadow(radius: 5)
+                                }
+                                //
+                                
+                                Spacer()
                             }
                             
-                            CustomButton(title: stopwatchViewModel.isPause ? "산책 재개" : "산책 일시정지", systemImage: stopwatchViewModel.isPause ? "play.fill" : "pause.fill", color: .yellow, isDisabled: !stopwatchViewModel.isActive) {
-                                stopwatchViewModel.toggleStopWatch()
-                                isRecording = !stopwatchViewModel.isPause
-                            }
+                            .gesture(
+                                DragGesture()
+                                    .onEnded({ value in
+                                        // 드래그가 끝났을 때 실행할 코드
+                                        if value.translation.height < 0 {
+                                            // 위로 드래그할 때 상세 정보 숨기고 기본 정보 및 커스텀 버튼 표시
+                                            withAnimation {
+                                                showDetailedInfo = false // 상세 정보 숨김
+                                                overlayHeight = 240 // 오버레이 뷰의 높이를 기본 높이로 설정
+                                            }
+                                        }
+                                    })
+                            )
                             
-                            CustomButton(title: "산책 종료", systemImage: "stop.fill", color: .red, isDisabled: !stopwatchViewModel.isActive) {
-                                stopwatchViewModel.completeTask()
-                                saveRecording() // 산책 기록을 저장합니다.
-                                isRecording = false
+                        } else {
+                            // 기본 정보를 표시하는 뷰
+                            Rectangle()
+                                .frame(width: 24, height: 5)
+                                .foregroundColor(Color(UIColor.systemGray))
+                                .padding(5)
+                            Spacer()
+                            HStack{
+                                Spacer()
+                                VStack {
+                                    Stopwatch(secondsElapsed: stopwatchViewModel.secondsElapsed)
+                                    Text("시간")
+                                        .font(.subheadline)
+                                    
+                                }
+                                Spacer()
+                                VStack{
+                                    Text("\(locationManager.distanceTraveled, specifier: "%.2f")m")
+                                        .font(.system(size: 24))
+                                        .fontWeight(.bold)
+                                    Text("거리")
+                                        .font(.subheadline)
+                                }
+                                Spacer()
+                                VStack{
+                                    Text("\(route.stepsCount)")
+                                        .font(.system(size: 24))
+                                        .fontWeight(.bold)
+                                    Text("걸음수")
+                                        .font(.subheadline)
+                                }
+                                Spacer()
                             }
                         }
-                        
                         Spacer()
+                        
+                        
+                        
+                        VStack {
+                            if !showDetailedInfo {
+                                
+                                if isStartPressed {
+                                    Button("Delete tracking") {
+                                        showingDeleteAlert = true
+                                    }
+                                    .disabled(!isStopped) // 'isStopped'가 true일 때만 버튼을 활성화합니다.
+                                    .foregroundColor(isStopped ? .red : .gray) // 'isStopped'에 따라 색상을 변경합니다.
+                                    .padding(.bottom, 5)
+                                    .alert("삭제하시겠습니까?", isPresented: $showingDeleteAlert) {
+                                        Button("Cancel", role: .cancel) { }
+                                        Button("삭제하기", role: .destructive) {
+                                            deleteRecordingState()
+                                        }
+                                    }
+                                    
+                                    Divider()
+                                }
+                                
+                                HStack(spacing: 20) {
+                                    if !isRecording && !isStopped {
+                                        // 시작 버튼: 녹화가 시작되지 않았고, 완전히 중지되지 않았을 때만 표시
+                                        CustomButton(title: "Start", systemImage: "play.fill", color: Color("MainColor"), isDisabled: isRecording) {
+                                            isRecording = true
+                                            isPaused = false
+                                            isStopped = false
+                                            self.walkStartTime = Date()
+                                            stopwatchViewModel.activeStopWatch()
+                                            overlayHeight = 120 // 오버레이 뷰의 높이를 줄임
+                                            showDetailedInfo = true // 상세 정보 표시
+                                            isStartPressed = true // "Start" 버튼이 눌렸음을 표시
+                                        }
+                                    } else if isRecording && !isPaused {
+                                        // 정지 버튼: 녹화 중이고 일시 정지 상태가 아닐 때만 표시
+                                        CustomButton(title: "Stop", systemImage: "pause.fill", color: Color("MainColor"), isDisabled: !isRecording) {
+                                            isPaused = true
+                                            stopwatchViewModel.toggleStopWatch()
+                                            isStopped = true // "Stop" 버튼을 누르면 isStopped를 true로 설정
+                                            isDeleteTrackingEnabled = true // "Delete tracking" 버튼 활성화
+                                        }
+                                    } else if isPaused {
+                                        // 일시 정지 상태일 때 Resume과 Save 버튼 표시
+                                        CustomButton(title: "Resume", systemImage: "play.fill", color: Color(UIColor.systemGray5), isDisabled: !isPaused) {
+                                            isPaused = false
+                                            isRecording = true
+                                            stopwatchViewModel.toggleStopWatch()
+                                        }
+                                        
+                                        CustomButton(title: "Save", systemImage: "stop.fill", color: Color("MainColor"), isDisabled: !isPaused) {
+                                            showingSaveAlert = true
+                                        }
+                                        .alert(isPresented: $showingSaveAlert) { // 알림창을 표시하는 조건
+                                            Alert(
+                                                title: Text("이 기록을 저장하시겠습니까?"),
+                                                primaryButton: .default(Text("저장하기")) {
+                                                    isStopped = true
+                                                    isRecording = false
+                                                    isPaused = false
+                                                    stopwatchViewModel.completeTask()
+                                                    saveRecording()
+                                                },
+                                                secondaryButton: .cancel()
+                                            )
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        .padding(.bottom, 20)
+                        
                     }
                 )
+                .animation(.easeInOut, value: overlayHeight) // 오버레이 뷰의 높이 변경에 애니메이션 적용
+                .gesture(
+                    DragGesture()
+                        .onEnded({ value in
+                            // 드래그가 끝났을 때 실행할 코드
+                            if value.translation.height > 0 {
+                                // 아래로 드래그할 때 상세 정보 표시
+                                withAnimation {
+                                    showDetailedInfo = true // 상세 정보 표시
+                                    overlayHeight = 120 // 오버레이 뷰의 높이를 확대
+                                }
+                            }
+                        })
+                )
+            
         }
         .onAppear {
             // HealthKit 접근 권한 요청
@@ -88,19 +246,24 @@ struct RecordState: View {
                 }
             }
         }
-        .sheet(isPresented: $isRecordCompleteViewPresented) {
+        .fullScreenCover(isPresented: $isRecordCompleteViewPresented) {
             let _ = print("\(stopwatchViewModel.secondsElapsed)")
             RecordCompleteView(
                 duration: stopwatchViewModel.secondsElapsed,
                 distanceTraveled: self.locationManager.distanceTraveled,
                 coordinates: self.locationManager.coordinates,
                 route: self.$route,
-                healthManager: healthManager,   
+                healthManager: healthManager,
                 locationManager: locationManager,
                 walkStartTime: self.walkStartTime ?? Date(), // 산책 시작 시간
-                walkEndTime: Date() // 산책 종료 시간
+                walkEndTime: Date(), // 산책 종료 시간
+                deleteRecordingAction: {
+                    self.deleteRecordingState()
+                }
             )
+            
         }
+        
     }
     // 산책 기록을 저장하는 로직
     private func saveRecording() {
@@ -163,172 +326,30 @@ struct RecordState: View {
                     } else {
                         print("현재 위치 정보가 없어 주소 변환을 수행할 수 없습니다.")
                     }
-                    
-                    //        self.stopwatchViewModel.secondsElapsed = 0 // 저장 후 elapsedTime을 0으로 리셋
                 }
             }
         }
     }
+    
+    private func deleteRecordingState() {
+        // 스톱워치 초기화
+        stopwatchViewModel.resetStopwatch()
+        
+        // 위치 데이터 초기화
+        locationManager.resetData() // 이 메서드는 LocationManager 클래스에 구현되어 있어야 합니다.
+        
+        // 기타 상태 변수 초기화
+        isRecording = false
+        isPaused = false
+        isStopped = false
+        isStartPressed = false
+        showDetailedInfo = false
+        currentMeter = "0"
+        overlayHeight = 170 // 초기 설정값으로 변경
+        route.stepsCount = 0
+        // 기타 필요한 상태 변수들을 여기서 초기화합니다.
+        
+        print("Tracking deleted and data reset")
+    }
 }
-    // MARK: - ViewBuilder
-    // ..
-    // MARK: - stateRecordButton
-//    @ViewBuilder
-//    private func stateRecordButton() -> some View {
-//        VStack(spacing: 0) {
-//            
-//            // 산책 중이 아니고, 일시정지 상태도 아닐 때만 '산책하기' 버튼 표시
-//            if !isRecording && !isPaused {
-//                
-//                Button(action: {
-//                    startRecording()
-//                    timerViewModel.startTimer()
-//                }) {
-//                    Text("산책하기")
-//                }
-//                .padding(.horizontal)
-//                // 버튼을 가운데 정렬하기 위해
-//                
-//            } else {
-//                // 산책 중이거나 일시정지 상태일 때 나타날 버튼들
-//                HStack(alignment: .center, spacing: 10) {
-//                    if isPaused {
-//                        Button(action: {
-//                            resumeRecording()
-//                        }) {
-//                            Text("이어하기")
-//                        }
-//                    } else {
-//                        Button(action: {
-//                            pauseRecording()
-//                            timerViewModel.stopTimer()
-//                        }) {
-//                            Text("산책정지")
-//                        }
-//                        .disabled(!isRecording) // isRecording이 false일 때 비활성화
-//                    }
-//                    
-//                    Button(action: {
-//                        saveRecording()
-//                    }) {
-//                        Text("저장")
-//                        
-//                    }
-//                    .disabled(!isPaused) // 산책이 일시정지 상태가 아니라면 비활성화
-//                    
-//                    Button(action: {
-//                        resetRecording()
-//                    }) {
-//                        Text("초기화")
-//                    }
-//                    .disabled(!isPaused) // 산책이 일시정지 상태가 아니라면 비활성화
-//                }
-//                .padding(.horizontal)
-//            }
-//        }
-//    }
-//    
-//    // 산책 시작 로직
-//    private func startRecording() {
-//        self.isRecording = true
-//        self.isPaused = false
-//        self.timerViewModel.startTimer() // TimerViewModel을 사용하여 타이머 시작
-//    }
-//    
-//    // 일시정지 로직
-//    private func pauseRecording() {
-//        self.isPaused = true
-//        self.isRecording = false
-//        self.timerViewModel.stopTimer() // TimerViewModel을 사용하여 타이머 중지
-//    }
-//    
-//    // 이어하기 로직
-//    private func resumeRecording() {
-//        self.isPaused = false
-//        self.isRecording = true
-//        self.locationManager.resumeLocationUpdates()
-//        timerViewModel.startTimer() // TimerViewModel을 사용하여 타이머 재시작
-//    }
-//    
-//   // 저장 로직
-//    private func saveRecording() {
-//        self.isRecordCompleteViewPresented = true
-//        self.isRecording = false
-//        self.isPaused = false
-//        self.timerViewModel.stopTimer()
-//        // 저장 시점의 elapsedTime을 사용하여 최종 시간을 기록
-//        print("Save button clicked")
-//        print("Coordinates saved: \(self.locationManager.tempCoordinates.count)")
-//        print("Duration saved: \(self.timerViewModel.formatTime(timerViewModel.elapsedTime))")
-//        print("Distance saved: \(self.locationManager.tempDistanceTraveled)")
-//        // 데이터 검증 로직
-//        if locationManager.tempCoordinates.count != 0 {
-//            print("데이터가 준비되었습니다.")
-//            self.isRecordCompleteViewPresented = true
-//        } else {
-//            print("데이터가 준비되지 않았습니다. 데이터를 확인해주세요.")
-//        }
-//        
-//        if let currentLocation = self.locationManager.currentLocation {
-//            
-//            // 주소변환부분
-//            LocationManager.changeToAddress(location: CLLocation(latitude:  currentLocation.latitude, longitude: currentLocation.longitude)) { address in
-//                DispatchQueue.main.async {
-//                    // 디버깅: 변환된 주소 출력
-//                    print("변환된 주소: \(address)")
-//                    //                        self.globalAddress = address
-//                    route = Route(
-//                        title: "", // RecordCompleteView에서 설정
-//                        coordinates: self.locationManager.tempCoordinates, // 실제 좌표 데이터
-//                        imageUrls: [], // RecordCompleteView에서 이미지 업로드 후 설정
-//                        address: address, // 조회된 주소
-//                        memo: "", // RecordCompleteView에서 설정
-//                        types: [], // RecordCompleteView에서 설정
-//                        duration: timerViewModel.elapsedTime, // 타이머 정보
-//                        distanceTraveled: self.locationManager.distanceTraveled, // 이동 거리 정보
-//                        recordedDate: Date() // 기록 날짜
-//                    )
-//                    // RecordCompleteView를 표시하고, newRoute에 주소 포함하여 전달
-//                    self.isRecordCompleteViewPresented = true
-//                    // RecordCompleteView 초기화 시 newRoute 전달
-//                }
-//            }
-//        } else {
-//            print("현재 위치 정보가 없어 주소 변환을 수행할 수 없습니다.")
-//        }
-//        
-//        self.timerViewModel.elapsedTime = 0 // 저장 후 elapsedTime을 0으로 리셋
-//        self.timerViewModel.timerString = "00:00" // 타이머 문자열도 리셋
-//    }
-//    
-//    // 초기화 로직
-//    private func resetRecording() {
-//        self.timerViewModel.resetData()
-//        self.isRecording = false
-//        self.isPaused = false
-//        self.timerViewModel.stopTimer()
-////        self.timer?.invalidate() // 타이머를 중지
-////        self.timer = nil // 타이머 인스턴스를 nil로 설정
-//        self.timerViewModel.elapsedTime = 0 // 타이머 누적 시간 초기화
-//        self.timerViewModel.timerString = "00:00" // 타이머 문자열 리셋
-//    }
 
-
-
-
-
-
-//extension Int {
-//    // MARK: - asTimestamp
-//    var asTimestamp: String {
-//        let hour = self / 3600
-//        let minute = self / 60 % 60
-//        let second = self % 60
-//
-//        if hour > 0 {
-//            return String(format: "%02i:%02i:%02i", hour, minute, second)
-//        } else {
-//            return String(format: "%02i:%02i", minute, second)
-//        }
-//    }
-//}

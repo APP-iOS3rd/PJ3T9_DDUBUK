@@ -13,8 +13,6 @@ struct Main: View {
     var route: Route
     @EnvironmentObject var viewModel: RecordViewModel
     
-
-    
     var body: some View {
         TabView {
             NavigationView {
@@ -27,7 +25,7 @@ struct Main: View {
             }
 
 //            NavigationView {
-//                StopwatchView()
+//                CommunityView()
 //                    .navigationBarTitle("커뮤니티")
 //            }
 //            .tabItem {
@@ -45,7 +43,9 @@ struct Main: View {
             }
 
             NavigationView {
+
                 MapView()
+
             }
             .tabItem {
                 Image(systemName: "map.fill")
@@ -60,7 +60,7 @@ struct Main: View {
                 Image(systemName: "person.fill")
                 Text("프로필")
             }
-        }.background(Color.white)
+        }
     }
 }
 
