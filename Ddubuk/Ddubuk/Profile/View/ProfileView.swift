@@ -37,8 +37,6 @@ struct ProfileView: View {
         imageURL: "photo.fill",
         bookMark: 5
     )
-
-
     var body: some View {
         
             ScrollView(.vertical) {
