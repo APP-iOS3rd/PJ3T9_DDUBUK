@@ -27,7 +27,7 @@ class TimerViewModel: ObservableObject {
     func resetData() {
             stopTimer()
             elapsedTime = 0
-            timerString = "00:00" 
+            timerString = "00:00"
         }
     
     func stopTimer() {

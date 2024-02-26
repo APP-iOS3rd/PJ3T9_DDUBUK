@@ -42,7 +42,7 @@ struct RecordCompleteView: View {
     
     var walkStartTime: Date // 산책 시작 시간
     var walkEndTime: Date // 산책 종료 시간
-    @State private var stepsCount: Int = 0
+    var stepsCount: Int
     
     var deleteRecordingAction: (() -> Void)?
     
@@ -82,7 +82,7 @@ struct RecordCompleteView: View {
                         }
                         Spacer()
                         VStack {
-                            Text("\(route.distanceTraveled, specifier: "%.2f")M")
+                            Text("\(distanceTraveled, specifier: "%.2f")m")
                                 .font(.system(size: 24))
                                 .fontWeight(.bold)
                             Text("산책거리")
@@ -251,7 +251,8 @@ struct RecordCompleteView: View {
                         return Alert(
                             title: Text("기록을 완료하시겠습니까?"),
                             primaryButton: .default(Text("기록하기")) {
-                                self.saveRoute()
+                                self.saveRoute() // 비동기처리 계획
+                                
                             },
                             secondaryButton: .cancel()
                         )
@@ -291,7 +292,7 @@ struct RecordCompleteView: View {
             )
         }
         .onAppear {
-            loadStepsData()
+//            loadStepsData()
         }
     }
     func loadImage() {
@@ -435,21 +436,6 @@ struct RecordCompleteView: View {
         let minutes = seconds / 60
         let seconds = seconds % 60
         return String(format: "%02d:%02d", minutes, seconds)
-    }
-    
-    // 걸음수 데이터를 읽는 함수
-    func loadStepsData() {
-        healthManager.readStepCount(startDate: walkStartTime, endDate: walkEndTime) { steps, error in
-            DispatchQueue.main.async {
-                // 임의로 걸음수 데이터 생성
-                //            stepsCount = 1
-                if let error = error {
-                    print("걸음수 조회 실패: \(error.localizedDescription)")
-                } else {
-                    self.stepsCount = Int(steps)
-                }
-            }
-        }
     }
     
     //    private func deleteRecording() {
