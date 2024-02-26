@@ -26,22 +26,21 @@ struct Main: View {
             }
             .tag(0)
             Text("로딩중...")
-                       .tabItem {
-                           Image(systemName: "figure.walk.circle.fill")
-                           Text("기록")
-                           
-                       }
-//                       .onAppear {
-//                           showingRecordView = true
-//                       }
-                       .fullScreenCover(isPresented: $showingRecordView) {
-                           RecordView(selectedTab: $selectedTab).environmentObject(viewModel)
-                       }
-                       .tag(1)
+                .tabItem {
+                    Image(systemName: "figure.walk.circle.fill")
+                    Text("기록")
+                    
+                }
+            //                       .onAppear {
+            //                           showingRecordView = true
+            //                       }
+                .fullScreenCover(isPresented: $showingRecordView) {
+                    RecordView(selectedTab: $selectedTab).environmentObject(viewModel)
+                }
+                .tag(1)
             
             NavigationView {
-                RecordMap(userLocations: viewModel.userLocations, isRecording:
-                            viewModel.isRecording, timerState: viewModel.timerState)
+                MapView()
             }
             .tabItem {
                 Image(systemName: "map.fill")

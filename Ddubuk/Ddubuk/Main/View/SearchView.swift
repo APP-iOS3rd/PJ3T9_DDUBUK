@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct SearchView: View {
+    @ObservedObject var routes = FireStoreManager.shared
     @State private var title: String = ""
     @State private var isSearchDetailViewActive = false
     let tags = ["야경", "강아지", "비오는날", "달리기", "조용한", "붐비는", "건강에 좋은", "자전거"]
@@ -89,6 +90,9 @@ struct SearchView: View {
                     }
                     .padding()
                 }
+            }
+            .onAppear {
+                routes.fetchRoutes()
             }
         }
         .padding()
