@@ -43,9 +43,9 @@ struct Main: View {
             }
 
             NavigationView {
-                RecordMap(userLocations: viewModel.userLocations, isRecording:
-                            viewModel.isRecording, timerState: viewModel.timerState)
-                    .navigationBarTitle("지도")
+
+                MapView()
+
             }
             .tabItem {
                 Image(systemName: "map.fill")

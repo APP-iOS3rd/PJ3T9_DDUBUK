@@ -92,6 +92,11 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     }
     
     
+    func getCurrentLocation() {
+            locationManager.startUpdatingLocation()
+            lastLocation = locationManager.location
+        }
+    
     
     func resumeLocationUpdates() {
         print("위치 업데이트 재개 및 타이머 재시작")
