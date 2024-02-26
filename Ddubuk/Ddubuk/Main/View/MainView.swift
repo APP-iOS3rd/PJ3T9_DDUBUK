@@ -40,8 +40,7 @@ struct Main: View {
                        .tag(1)
             
             NavigationView {
-                RecordMap(userLocations: viewModel.userLocations, isRecording:
-                            viewModel.isRecording, timerState: viewModel.timerState)
+                MapView()
             }
             .tabItem {
                 Image(systemName: "map.fill")
