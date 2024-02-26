@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C05C6EA2B8CE29000DB0C2E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0C05C6E92B8CE29000DB0C2E /* GoogleService-Info.plist */; };
 		0C0FFE0E2B6CB7E9004BACF9 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 0C0FFE0D2B6CB7E9004BACF9 /* FirebaseAnalytics */; };
 		0C0FFE102B6CB7E9004BACF9 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 0C0FFE0F2B6CB7E9004BACF9 /* FirebaseAnalyticsOnDeviceConversion */; };
 		0C0FFE122B6CB7E9004BACF9 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0C0FFE112B6CB7E9004BACF9 /* FirebaseAnalyticsSwift */; };
@@ -124,6 +125,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0C05C6E92B8CE29000DB0C2E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0C0FFE452B6CB916004BACF9 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		0C0FFE472B6CB94C004BACF9 /* Coordinate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinate.swift; sourceTree = "<group>"; };
 		0C0FFE492B6CB977004BACF9 /* WalkingType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkingType.swift; sourceTree = "<group>"; };
@@ -173,7 +175,6 @@
 		4EFA01542B882A72009F1028 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		4EFA01562B8A3CA7009F1028 /* SearchClickView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchClickView.swift; sourceTree = "<group>"; };
 		4EFA01582B8A5237009F1028 /* SearchDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDetailView.swift; sourceTree = "<group>"; };
-		A49EB8122B8C717D00F5E083 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A4D1A92B2B71EC8600746262 /* TagLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagLayout.swift; sourceTree = "<group>"; };
 		A4D1A9762B7B01CD00746262 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		A4E3BDFC2B688BF50007E38A /* DetailTrailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTrailView.swift; sourceTree = "<group>"; };

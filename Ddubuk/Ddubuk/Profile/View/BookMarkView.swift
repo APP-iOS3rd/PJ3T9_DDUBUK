@@ -17,10 +17,10 @@ struct BookMarkView: View {
         imageUrls: ["images-1", "images-2"],
         address: "어딘가의 주소",
         memo: "산책로 메모",
-        types: [WalkingType.A],
+        types: [WalkingType.Dog],
         duration: 0,
         distanceTraveled: 823,
-        recordedDate: Date(),
+            recordedDate: Date(),
         stepsCount: 0
     )
 
