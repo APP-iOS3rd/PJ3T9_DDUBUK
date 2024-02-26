@@ -30,35 +30,28 @@ struct SearchDetailView: View {
     
     var body: some View {
         HStack {
-            
-            ZStack(alignment: .topTrailing) {
-                Rectangle()
-                    .frame(width: 150,height: 150)
-                    .cornerRadius(10)
-                    .foregroundColor(.gray)
+            Rectangle()
+                .frame(width: 150,height: 150)
+                .cornerRadius(10)
+                .foregroundColor(.gray)
                 
-//                Button {
-//                    starclicked.toggle()
-//                } label: {
-//                    Image(systemName: starclicked ? "star.fill" : "star")
-//                            .foregroundColor(.yellow )
-//                            .padding()
-//                }
-
-            }
             VStack(alignment:.leading){
             Text(dummyData2.Title)
-                .fontWeight(.bold)
+                    .font(.custom("NotoSansKR-Bold", size: 16))
             Text(dummyData2.Description)
+                    .font(.custom("NotoSansKR-Medium", size: 16))
             
                 HStack(spacing: 6) {
                     Text("\(dummyData2.Distance)km")
+                        .font(.custom("NotoSansKR-Bold", size: 16))
                     Text("\(dummyData2.EstimatedTime)분")
+                        .font(.custom("NotoSansKR-Bold", size: 16))
                     Image(systemName: "star.fill")
                     Text(dummyData2.Star)
+                        .font(.custom("NotoSansKR-Bold", size: 16))
                 }
             }
-            .padding(.top, -70)
+            .padding(.top, -60)
         }
         .padding()
     }

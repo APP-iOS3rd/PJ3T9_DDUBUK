@@ -43,9 +43,9 @@ struct SettingView: View {
                     Text("프로필 수정")
                 }
                 
-                NavigationLink(destination: LoginView()) {
-                    Text("로그인테스트")
-                }
+//                NavigationLink(destination: LoginView()) {
+//                    Text("로그인테스트")
+//                }
             }
 
             Section(header: Text("계정").font(.headline).padding(.leading, -10)) {

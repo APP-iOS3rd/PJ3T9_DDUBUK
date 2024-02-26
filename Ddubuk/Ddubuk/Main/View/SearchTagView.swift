@@ -21,9 +21,9 @@ struct SearchTagView: View {
                     .foregroundColor(Color.secondary)
                     .overlay(
                             Text(name)
-                           .font(.system(size: 16))
-                           .fontWeight(.bold)
+                                .font(.custom("NotoSansKR-Medium", size: 13))
                            .foregroundColor(.black)
+                           .cornerRadius(10)
                        )
                     .border(isPressed ? Color.green : Color.clear, width: 4)
                     .cornerRadius(10)

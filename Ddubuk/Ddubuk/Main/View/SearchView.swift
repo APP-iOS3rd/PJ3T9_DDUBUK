@@ -4,18 +4,27 @@ struct SearchView: View {
     @ObservedObject var routes = FireStoreManager.shared
     @State private var title: String = ""
     @State private var isSearchDetailViewActive = false
+    let tags = ["야경", "강아지", "비오는날", "달리기", "조용한", "붐비는", "건강에 좋은", "자전거"]
     
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
                 HStack {
-                    Image(systemName: "magnifyingglass")
+                    VStack(alignment: .leading){
+                        Text("테마별로 산책하고 싶을땐?")
+                            .font(.custom("NotoSansKR-Bold", size: 24))
+                        Text("DDUBUK")
+                            .font(.custom("NotoSansKR-Bold", size: 24))
+                    }
+                    .padding()
+                }
+                
+                HStack {
                     
                     VStack(alignment: .leading, spacing: 2) {
-                        TextField("산책하는 지역명을 검색해주세요", text: $title)
+                        TextField("원하는 지역명이나 산책로를 입력해주세요.", text: $title)
                                 .onTapGesture {
                                     isSearchDetailViewActive = true
-                                    endEditing()
                                 }
                    }
                     
@@ -24,8 +33,8 @@ struct SearchView: View {
                     Button {
                         
                     } label: {
-                        Image(systemName: "line.3.horizontal.decrease.circle")
-                            .foregroundColor(Color.primary)
+                        Image(systemName: "magnifyingglass")
+                            .foregroundColor(Color.black)
                     }
 
                 }
@@ -39,18 +48,45 @@ struct SearchView: View {
                 }
                 .padding()
                 
+                LazyVGrid(columns: [
+                               GridItem(.flexible(), spacing: 10),
+                               GridItem(.flexible(), spacing: 10),
+                               GridItem(.flexible(), spacing: 10),
+                               GridItem(.flexible(), spacing: 10)
+                           ], spacing: 10) {
+                               ForEach(tags, id: \.self) { tag in
+                                   SearchTagView(name: tag)
+                               }
+                           }
+                           .padding()
+                
                 Spacer()
                 
+                VStack(alignment: .leading) {
+                    Text("최근 산책길")
+                        .font(.custom("NotoSansKR-Bold", size: 24))
+                        .padding()
+                        .padding(.bottom, -50)
+                }
                 ScrollView(.horizontal) {
                     LazyHStack(spacing: 10) {
                         MainListView()
+                            .padding(.leading, -20)
                     }
                     .padding()
                 }
                 
+                
+                VStack(alignment: .leading) {
+                    Text("새로운 산책길")
+                        .font(.custom("NotoSansKR-Bold", size: 24))
+                        .padding()
+                        .padding(.bottom, -50)
+                }
                 ScrollView(.horizontal) {
                     LazyHStack(spacing: 10) {
                         MainListView()
+                            .padding(.leading, -20)
                     }
                     .padding()
                 }
@@ -69,7 +105,10 @@ struct SearchView: View {
         .onTapGesture {
             endEditing()
         }
+        .background(LinearGradient(gradient: Gradient(colors: [Color("MainColor").opacity(0.5), Color.white]), startPoint: .top, endPoint: .bottom))
     }
+    
+    
 
     private func endEditing() {
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
