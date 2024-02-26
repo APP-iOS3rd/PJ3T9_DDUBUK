@@ -35,14 +35,15 @@ struct MainListView: View {
             ZStack(alignment: .topTrailing) {
                 Rectangle()
                     .frame(height: 200)
+                    .cornerRadius(10)
                     .foregroundColor(.gray)
                 
                 Button {
                     starclicked.toggle()
                 } label: {
                     Image(systemName: starclicked ? "star.fill" : "star")
-                                            .foregroundColor(.yellow )
-                                            .padding()
+                            .foregroundColor(.yellow )
+                            .padding()
                 }
 
             }

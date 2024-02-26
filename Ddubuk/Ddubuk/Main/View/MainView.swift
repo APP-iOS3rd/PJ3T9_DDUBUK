@@ -61,6 +61,7 @@ struct Main: View {
                 Text("프로필")
             }
         }
+        .background(Color.white)
     }
 }
 

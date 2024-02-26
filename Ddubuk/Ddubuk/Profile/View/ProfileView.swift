@@ -8,46 +8,62 @@
 import SwiftUI
 import SDWebImageSwiftUI
 
+enum ProfileSubView {
+    case myRoutes
+    case savedRoutes
+}
+
+class ProfileEnvironment: ObservableObject {
+    @Published var isSearchDetailViewActive = false
+}
+
 struct ProfileView: View {
-    
     @ObservedObject var routes = FireStoreManager.shared
+    @EnvironmentObject var profileEnvironment: ProfileEnvironment
+    @State private var selectedView: ProfileSubView? = nil
     
-    // 더미 데이터 모델
     struct UserProfile {
         var username: String
-        var bio: String
+        var walkStep: Int
         var walkCount: Int
         var imageURL: String
-        var walkRoutes: [String]
-        var instagramID: String
+        var bookMark: Int
     }
-    
-    // 더미 데이터
+
     let dummyData1: UserProfile = UserProfile(
-        username: "H.Methew",
-        bio: "안녕하세요 산책을 좋아하는 20대 남성입니다.",
-        walkCount: 11,
+        username: "김키키",
+        walkStep: 95,
+        walkCount: 19,
         imageURL: "photo.fill",
-        walkRoutes: ["Route A", "Route B", "Route C"],
-        instagramID: "sisi"
+        bookMark: 5
     )
-    
+
+
     var body: some View {
         
-        ScrollView(.vertical) {
-            VStack {
-                profileHeader(data: dummyData1)
+            ScrollView(.vertical) {
+                VStack {
+                    profileHeader(data: dummyData1)
+                    switch selectedView {
+                    case .myRoutes:
+                        SearchDetailView()
+                    case .savedRoutes:
+                        BookMarkView()
+                    case nil:
+                        EmptyView()
+                    }
+                }
+                .padding()
+                .background(LinearGradient(gradient: Gradient(colors: [Color("MainColor").opacity(0.5), Color.white]), startPoint: .top, endPoint: .center))
             }
-            .padding()
+            .navigationBarTitle("프로필")
+            .navigationBarItems(trailing: NavigationLink(destination: SettingView()) {
+                Image(systemName: "gearshape.fill")
+                    .imageScale(.large)
+                    .foregroundColor(.primary)
+            })
         }
-        .navigationBarTitle("프로필")
-        .navigationBarItems(trailing: NavigationLink(destination: SettingView()) {
-            Image(systemName: "gearshape.fill")
-                .imageScale(.large)
-                .foregroundColor(.primary)
-        })
-        
-    }
+    
     
     private func profileHeader(data: UserProfile) -> some View {
         VStack {
@@ -66,73 +82,67 @@ struct ProfileView: View {
                 Text(data.username)
                     .padding(.top, -30)
                     .fontWeight(.bold)
+                HStack(spacing: 90){
+                    VStack {
+                        Text("\(data.walkStep)K")
+                            .fontWeight(.bold)
+                        
+                        Text("총 걸음수")
+                            .fontWeight(.bold)
+                    }
+                    
+                    VStack {
+                        Text("\(data.walkCount)")
+                            .fontWeight(.bold)
+                        
+                        Text("산책수")
+                            .fontWeight(.bold)
+                    }
+                    
+                    VStack {
+                        Text("\(data.bookMark)")
+                            .fontWeight(.bold)
+                        
+                        Text("북마크")
+                            .fontWeight(.bold)
+                    }
+                }
                 
                 
-                Text("산책수")
-                    .fontWeight(.bold)
-                Image(systemName: "arrowtriangle.left.fill")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 100, height: 100)
-                    .foregroundColor(.init(red: 155, green: 188, blue: 14))
-                Text("\(data.walkCount)")
-                    .fontWeight(.bold)
             }
             
-            VStack(spacing: 10) {
-                HStack(spacing: 190) {
-                    Text("나의 산책로")
-                    NavigationLink(destination: FullView()) {
-                        Text("전체보기")
-                            .foregroundColor(.primary)
+            Divider()
+                .frame(height: 3)
+                .background(.black)
+            
+            HStack(spacing: 150) {
+                VStack{
+                    Button {
+                        selectedView = .myRoutes
+                    } label: {
+                        Text("나의 산책로")
+                            .foregroundColor(.black)
+                            .fontWeight(selectedView == .myRoutes ? .bold : .regular)
                     }
                 }
-                .padding()
-                ScrollView(.horizontal) {
-                    LazyHStack(spacing: 20) { // 간격을 20으로 조정
-                        ForEach(routes.routes, id: \.self) { route in
-                            VStack(alignment: .center) {
-                                ListingView(route: route, showEllipsis: false)
-                                    .frame(width: 250, height: 350)
-//                                    .clipShape(RoundedRectangle(cornerRadius: 10))
-                            }
-                        }
+
+                VStack{
+                    Button {
+                        selectedView = .savedRoutes
+                    } label: {
+                        Text("저장한 산책로")
+                            .foregroundColor(.black)
+                            .fontWeight(selectedView == .savedRoutes ? .bold : .regular)
                     }
-                    .padding(.horizontal, 15) // 좌우 패딩을 15로 조정
-                    .accentColor(.primary)
-                    .onAppear {
-                        routes.fetchRoutes()
-                    }
-                }
-                
-                Divider()
-                    .frame(height: 3)
-                    .background(.black)
-                
-                VStack(spacing: 10) {
-                    HStack(spacing: 190) {
-                        Text("저장목록")
-                        NavigationLink(destination: BookMarkView()) {
-                            Text("전체보기")
-                                .foregroundColor(.primary)
-                        }
-                    }
-                    .padding()
-                    ScrollView(.horizontal) {
-                        LazyHStack(spacing: 20) { // 간격을 20으로 조정
-                            ForEach(routes.routes, id: \.self) { route in
-                                VStack(alignment: .center) {
-                                    ListingView(route: route, showEllipsis: false)
-                                        .frame(width: 250, height: 350)
-//                                        .clipShape(RoundedRectangle(cornerRadius: 10))
-                                }
-                            }
-                        }
-                        .padding(.horizontal, 15) // 좌우 패딩을 15로 조정
-                        .accentColor(.primary)
-                    }
+                    
                 }
             }
+            .padding(.top, 10)
+            
+            Divider()
+                .frame(height: 3)
+                .background(.black)
+        
         }
     }
 }
