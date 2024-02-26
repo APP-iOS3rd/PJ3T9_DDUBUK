@@ -46,7 +46,7 @@ class StopwatchViewViewModel: ObservableObject {
 //    init() {
 //        setupLifecycleObserver()
 //    }
-//    
+//
 //    deinit {
 //        cleanupLifecycleObserver()
 //    }
@@ -132,6 +132,19 @@ extension StopwatchViewViewModel {
             pauseTimer()
         }
     }
+    
+    func resetStopwatch() {
+           // 스톱워치의 시간을 0으로 초기화합니다.
+           secondsElapsed = 0
+           
+           // 스톱워치의 상태를 초기화합니다.
+           isActive = false
+           isPause = false
+           isDone = false
+           
+           // 현재 진행 중인 타이머가 있다면 중지합니다.
+           stopTimer()
+       }
     
     private func pauseTimer() {
         isPause = true
