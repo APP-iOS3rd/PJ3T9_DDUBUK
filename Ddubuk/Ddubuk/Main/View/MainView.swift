@@ -17,7 +17,7 @@ struct Main: View {
         TabView {
             NavigationView {
                 SearchView()
-                    .navigationBarTitle("검색")
+//                    .navigationBarTitle("검색")
             }
             .tabItem {
                 Image(systemName: "magnifyingglass.circle.fill")

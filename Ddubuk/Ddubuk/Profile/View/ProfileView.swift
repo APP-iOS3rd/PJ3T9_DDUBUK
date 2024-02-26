@@ -38,7 +38,6 @@ struct ProfileView: View {
         bookMark: 5
     )
     var body: some View {
-        
             ScrollView(.vertical) {
                 VStack {
                     profileHeader(data: dummyData1)
@@ -46,7 +45,7 @@ struct ProfileView: View {
                     case .myRoutes:
                         SearchDetailView()
                     case .savedRoutes:
-                        BookMarkView()
+                        SearchDetailView()
                     case nil:
                         EmptyView()
                     }
@@ -68,41 +67,42 @@ struct ProfileView: View {
             
             Image(systemName: data.imageURL)
                 .resizable()
-                .frame(width: 120, height: 120)
+                .frame(width: 80, height: 80)
                 .clipShape(Circle())
                 .overlay(Circle().stroke(Color.white, lineWidth: 4))
                 .shadow(radius: 5)
                 .padding(.bottom, 20)
                 .padding()
             
-            VStack {
+            VStack(spacing: 10) {
                 
                 Text(data.username)
                     .padding(.top, -30)
-                    .fontWeight(.bold)
-                HStack(spacing: 90){
-                    VStack {
+                    .font(.custom("NotoSansKR-Medium", size: 24))
+                HStack(spacing: 70){
+                    VStack(spacing: 5) {
                         Text("\(data.walkStep)K")
-                            .fontWeight(.bold)
+                            .font(.custom("NotoSansKR-Bold", size: 24))
+                            
                         
                         Text("총 걸음수")
-                            .fontWeight(.bold)
+                            .font(.custom("NotoSansKR-Medium", size: 16))
                     }
                     
-                    VStack {
+                    VStack(spacing: 5) {
                         Text("\(data.walkCount)")
-                            .fontWeight(.bold)
+                            .font(.custom("NotoSansKR-Bold", size: 24))
                         
                         Text("산책수")
-                            .fontWeight(.bold)
+                            .font(.custom("NotoSansKR-Medium", size: 16))
                     }
                     
-                    VStack {
+                    VStack(spacing: 5) {
                         Text("\(data.bookMark)")
-                            .fontWeight(.bold)
+                            .font(.custom("NotoSansKR-Bold", size: 24))
                         
                         Text("북마크")
-                            .fontWeight(.bold)
+                            .font(.custom("NotoSansKR-Medium", size: 16))
                     }
                 }
                 
@@ -110,10 +110,10 @@ struct ProfileView: View {
             }
             
             Divider()
-                .frame(height: 3)
-                .background(.black)
+                .frame(height: 1)
+                .background(.gray)
             
-            HStack(spacing: 150) {
+            HStack(spacing: 100) {
                 VStack{
                     Button {
                         selectedView = .myRoutes
@@ -138,8 +138,8 @@ struct ProfileView: View {
             .padding(.top, 10)
             
             Divider()
-                .frame(height: 3)
-                .background(.black)
+                .frame(height: 1)
+                .background(.gray)
         
         }
     }

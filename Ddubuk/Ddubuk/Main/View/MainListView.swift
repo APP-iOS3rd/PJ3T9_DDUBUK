@@ -9,52 +9,31 @@ import SwiftUI
 
 struct MainListView: View {
     
-    @State private var starclicked: Bool = false
+//    @State private var starclicked: Bool = false
     
     struct Data {
         var Title: String
         var Description: String
-        var Star: String
-        var Distance: String
-        
     }
 
     let dummyData2: Data = Data(
         Title: "중랑천을 따라 걷는 강아지 코스",
-        Description: "서울특별시 광진구 능동로 261",
-        Star: "4.2",
-        Distance: "2.9km"
+        Description: "서울특별시 광진구"
+
     )
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text("Best 강아지와 산책코스")
-                .fontWeight(.bold)
-            
-            
-            ZStack(alignment: .topTrailing) {
                 Rectangle()
-                    .frame(height: 200)
+                    .frame(width: 200,height: 200)
                     .cornerRadius(10)
                     .foregroundColor(.gray)
-                
-                Button {
-                    starclicked.toggle()
-                } label: {
-                    Image(systemName: starclicked ? "star.fill" : "star")
-                            .foregroundColor(.yellow )
-                            .padding()
-                }
-
-            }
             Text(dummyData2.Title)
-                .fontWeight(.bold)
+                .font(.custom("NotoSansKR-Bold", size: 16))
+                .multilineTextAlignment(.leading)
+                .lineLimit(2)
             Text(dummyData2.Description)
-            
-            HStack {
-                Text(dummyData2.Star)
-                Text(dummyData2.Distance)
-            }
+                .font(.custom("NotoSansKR-Medium", size: 16))
         }
         .padding()
     }

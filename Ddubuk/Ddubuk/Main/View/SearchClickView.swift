@@ -25,6 +25,9 @@ struct SearchClickView: View {
                 TextField("", text: $emptyText)
                     .padding()
                     .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .onTapGesture {
+                        endEditing()
+                    }
                     .overlay(
                         HStack {
                             Spacer()
@@ -33,7 +36,7 @@ struct SearchClickView: View {
                                     .onTapGesture {
                                         emptyText = ""
                                     }
-                                    .padding(.trailing, 8)
+                                    .padding(.trailing, 25)
                             }
                         }
                     )
@@ -59,13 +62,22 @@ struct SearchClickView: View {
             
             Divider()
                 .frame(height: 1)
-                .background(.black)
+                .background(.gray)
             SearchDetailView()
+                .padding(.leading, -12)
+            
             
             Spacer()
         }
         .navigationBarBackButtonHidden(true)
         .padding()
+        .onTapGesture {
+            endEditing()
+        }
+    }
+    
+    private func endEditing() {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
 }
 
