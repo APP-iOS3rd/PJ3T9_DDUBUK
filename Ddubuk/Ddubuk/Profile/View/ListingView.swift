@@ -38,7 +38,7 @@ struct ListingView: View {
     var body: some View {
         
         GeometryReader { geometry in
-            VStack(spacing: 10) {
+            HStack(spacing: 10) {
                 NavigationLink(destination: DetailTrailView(route: route)) {
                     VStack(alignment: .leading) {
                         if let firstImageUrl = route.imageUrls.first, let url = URL(string: firstImageUrl) {
@@ -48,7 +48,7 @@ struct ListingView: View {
                                 .transition(.fade(duration: 0.5))
                                 .scaledToFit()
                                 .padding(5)
-                                .frame(width: geometry.size.width, height: geometry.size.width * 0.6) // 너비에 맞춰 높이 조정
+//                                .frame(width: geometry.size.width, height: geometry.size.width * 0.6) // 너비에 맞춰 높이 조정
                                 .background(Color(UIColor.systemGray5))
                         } else {
                             Image(systemName: "photo")
@@ -56,7 +56,7 @@ struct ListingView: View {
                                 .foregroundStyle(Color.gray)
                                 .scaledToFit()
                                 .padding()
-                                .frame(width: geometry.size.width, height: geometry.size.width * 0.6) // 너비에 맞춰 높이 조정
+//                                .frame(width: geometry.size.width, height: geometry.size.width * 0.6) // 너비에 맞춰 높이 조정
                                 .background(Color(UIColor.systemGray5))
                         }
                         
@@ -67,14 +67,14 @@ struct ListingView: View {
                             .lineLimit(1)
                             .truncationMode(.tail)
                             .foregroundColor(.black)
-                            .frame(maxWidth: .infinity, alignment: .leading)
+//                            .frame(maxWidth: .infinity, alignment: .leading)
                             .padding(.leading, 10)
                         
                         Text(route.memo)
                             .font(.subheadline)
                             .lineLimit(1)
                             .foregroundColor(.secondary)
-                            .frame(maxWidth: .infinity, alignment: .leading)
+//                            .frame(maxWidth: .infinity, alignment: .leading)
                             .padding(.leading, 10)
                         
                     }
@@ -97,7 +97,7 @@ struct ListingView: View {
                         Text("99,999")
                     }
                 }
-                .frame(maxWidth: .infinity) // HStack을 화면 너비에 맞게 확장
+//                .frame(maxWidth: .infinity) // HStack을 화면 너비에 맞게 확장
                 .font(.subheadline)
             }
             .background(RoundedRectangle(cornerRadius: 5)
@@ -107,6 +107,7 @@ struct ListingView: View {
             .overlay(RoundedRectangle(cornerRadius: 5).stroke(Color.white, lineWidth: 1))
             .padding()
         }
+//        .padding(.leading, -199)
     }
 }
     #Preview {

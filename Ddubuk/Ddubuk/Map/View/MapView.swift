@@ -16,6 +16,7 @@ struct MapView: View {
     @StateObject var locationManager = LocationManager()
     @State private var currentPosition: CLLocationCoordinate2D?
     @State private var selection: UUID?
+    @State private var showingTrailView = false
     @State private var position: MapCameraPosition = .automatic
     @EnvironmentObject var viewModel: RecordViewModel
     
@@ -27,14 +28,17 @@ struct MapView: View {
 //                    Marker("marker", coordinate: currentPosition)
 //                }
                 ForEach(routes.routes) { location in
-//                    Marker("", image: "mapmarker",coordinate: CLLocationCoordinate2D(latitude: location.coordinates[0].latitude, longitude: location.coordinates[0].longitude))
-//                        .tint(Color.MainColor)
-                    Annotation("", coordinate: CLLocationCoordinate2D(latitude: location.coordinates[0].latitude, longitude: location.coordinates[0].longitude)) {
-                        Image("mapmarker")
-                            .resizable()
-                            .frame(width: 30, height: 30)
-                    }
-                    .tint(Color.MainColor)
+
+                    Marker("", image: "mapmarker",coordinate: CLLocationCoordinate2D(latitude: location.coordinates[0].latitude, longitude: location.coordinates[0].longitude))
+                        .tint(Color.TagColor)
+//                    Annotation("", coordinate: CLLocationCoordinate2D(latitude: location.coordinates[0].latitude, longitude: location.coordinates[0].longitude)) {
+//                        Image("mapmarker")
+//                            .resizable()
+//                            .frame(width: 30, height: 30)
+//                            
+//                    }
+//                    .tint(Color.MainColor)
+
                 
                     
                 }
@@ -58,20 +62,23 @@ struct MapView: View {
                     if let item = routes.routes.first(where: { $0.id == selection }) {
                         RoundedRectangle(cornerRadius: 10)
                             .padding(.bottom)
-                            .frame(width: 360, height: 165)
+                            .frame(width: 360, height: 162)
                             .foregroundColor(.white)
                             .shadow(radius: 10)
                             .overlay (
-                                MapMarkerDetail(seletedResult: item)
-                                    .frame(width: 395,height: 182)
+                                MapMarkerDetail(seletedResult: item, showingTrailView: $showingTrailView)
+                                    .frame(width: 360,height: 160)
                                     .padding(.bottom)
                             )
+                            .onTapGesture {
+                                showingTrailView = true
+                            }
                     }
                 }
             }
         }
         .onAppear {
-            routes.fetchRoutes()
+//            routes.fetchRoutes()
             locationManager.getCurrentLocation()
         }
         .onChange(of: locationManager.currentLocation) {
