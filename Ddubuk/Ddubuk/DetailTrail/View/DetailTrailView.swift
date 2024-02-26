@@ -100,16 +100,8 @@ struct DetailTrailView: View {
                         Text("\(route.distanceTraveled, specifier: "%.2f")M    \(formatDuration(route.duration))")
                             .font(.custom("NotoSansKR-Medium", size: 14))
                     }
-                    .onAppear {
-                        
-                        for family: String in UIFont.familyNames {
-                                        print(family)
-                                        for names : String in UIFont.fontNames(forFamilyName: family){
-                                            print("=== \(names)")
-                                        }
-                                    }
-                    }
                     .padding(.leading, 11)
+                    
                     VStack {
                         // 프로필
                         Image("user1")
