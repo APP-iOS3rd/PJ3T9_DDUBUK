@@ -2,6 +2,7 @@ import SwiftUI
 
 struct SearchView: View {
     @State private var title: String = ""
+    @State private var isSearchDetailViewActive = false
     
     var body: some View {
         ScrollView {
@@ -11,10 +12,11 @@ struct SearchView: View {
                     
                     VStack(alignment: .leading, spacing: 2) {
                         TextField("산책하는 지역명을 검색해주세요", text: $title)
-                            .onTapGesture {
-                                endEditing()
-                            }
-                    }
+                                .onTapGesture {
+                                    isSearchDetailViewActive = true
+                                    endEditing()
+                                }
+                   }
                     
                     Spacer()
                     
@@ -54,6 +56,12 @@ struct SearchView: View {
             }
         }
         .padding()
+//        .navigationBarHidden(true)
+                    .background(
+                        NavigationLink("", destination: SearchClickView(), isActive: $isSearchDetailViewActive)
+                            .hidden()
+                    )
+
         .onTapGesture {
             endEditing()
         }

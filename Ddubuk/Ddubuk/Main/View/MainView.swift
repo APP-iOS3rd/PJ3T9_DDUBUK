@@ -61,7 +61,8 @@ struct Main: View {
                 Image(systemName: "person.fill")
                 Text("프로필")
             }
-        }.background(Color.white)
+        }
+        .background(Color.white)
     }
 }
 

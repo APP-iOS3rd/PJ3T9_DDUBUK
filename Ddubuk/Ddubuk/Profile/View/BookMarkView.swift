@@ -23,26 +23,18 @@ struct BookMarkView: View {
         recordedDate: Date(),
         stepsCount: 0
     )
-    
-    var exploreViewRoutes: [String] = ["Route A", "Route B", "Route C"]
 
     var body: some View {
         ScrollView {
-            VStack {
-                // 제목
-                VStack(alignment: .leading, spacing: 200) {
-                    
-                    Spacer().frame(height: 20)
-                    
-                    ForEach(routes.routes, id: \.self) { route in
-                        ListingView(route: route, showEllipsis: true)
-                            .frame(height: 300)
-                            .padding(.bottom, 10)
-                    }
-                }
-                .padding()
+            LazyVGrid(columns: [GridItem(.flexible(), spacing: 10), GridItem(.flexible(), spacing: 10)], spacing: 10) {
+                ForEach(routes.routes, id: \.self) { route in
+                    ListingView(route: route, showEllipsis: true)
+                        .frame(height: 300)
+            }
+            .padding()
             }
         }
+        .background(LinearGradient(gradient: Gradient(colors: [Color("MainColor").opacity(0.5), Color.white]), startPoint: .top, endPoint: .center))
         .navigationBarTitle("저장목록")
     }
 }
