@@ -101,6 +101,7 @@ struct DetailTrailView: View {
                             .font(.custom("NotoSansKR-Medium", size: 14))
                     }
                     .padding(.leading, 11)
+                    
                     VStack {
                         // 프로필
                         Image("user1")
