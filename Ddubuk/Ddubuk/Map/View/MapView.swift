@@ -13,10 +13,10 @@ import Firebase
 struct MapView: View {
     
     @ObservedObject var routes = FireStoreManager.shared
+    @StateObject var locationManager = LocationManager()
     @State private var currentPosition: CLLocationCoordinate2D?
     @State private var selection: UUID?
     @State private var position: MapCameraPosition = .automatic
-    @StateObject var locationManager = LocationManager()
     @EnvironmentObject var viewModel: RecordViewModel
     
     var body: some View {
@@ -33,7 +33,6 @@ struct MapView: View {
                         Image("mapmarker")
                             .resizable()
                             .frame(width: 30, height: 30)
-                            
                     }
                     .tint(Color.MainColor)
                 
