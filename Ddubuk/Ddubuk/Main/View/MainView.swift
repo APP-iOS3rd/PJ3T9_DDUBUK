@@ -7,60 +7,61 @@
 
 
 import SwiftUI
-import MapKit
 
 struct Main: View {
+    
     var route: Route
     @EnvironmentObject var viewModel: RecordViewModel
+    @State private var showingRecordView = false
+    @State private var selectedTab = 0
     
     var body: some View {
-        TabView {
+        TabView(selection: $selectedTab) {
             NavigationView {
                 SearchView()
-                    .navigationBarTitle("검색")
             }
             .tabItem {
                 Image(systemName: "magnifyingglass.circle.fill")
                 Text("검색")
             }
-
-//            NavigationView {
-//                CommunityView()
-//                    .navigationBarTitle("커뮤니티")
-//            }
-//            .tabItem {
-//                Image(systemName: "person.3")
-//                Text("커뮤니티")
-//            }
-
+            .tag(0)
+            Text("로딩중...")
+                       .tabItem {
+                           Image(systemName: "figure.walk.circle.fill")
+                           Text("기록")
+                           
+                       }
+//                       .onAppear {
+//                           showingRecordView = true
+//                       }
+                       .fullScreenCover(isPresented: $showingRecordView) {
+                           RecordView(selectedTab: $selectedTab).environmentObject(viewModel)
+                       }
+                       .tag(1)
+            
             NavigationView {
-                RecordView()
-                    .navigationBarTitle("기록")
-            }
-            .tabItem {
-                Image(systemName: "figure.walk.circle.fill")
-                Text("기록")
-            }
-
-            NavigationView {
-
-                MapView()
-
+                RecordMap(userLocations: viewModel.userLocations, isRecording:
+                            viewModel.isRecording, timerState: viewModel.timerState)
             }
             .tabItem {
                 Image(systemName: "map.fill")
                 Text("지도")
             }
-        
+            .tag(2)
             NavigationView {
                 ProfileView()
-                    .navigationBarTitle("프로필")
             }
             .tabItem {
                 Image(systemName: "person.fill")
                 Text("프로필")
             }
-        }
+            .tag(3)
+        }.background(Color.white)
+            .onChange(of: selectedTab) {
+                if selectedTab == 1 {
+                    showingRecordView = true
+                }
+            }
     }
 }
 

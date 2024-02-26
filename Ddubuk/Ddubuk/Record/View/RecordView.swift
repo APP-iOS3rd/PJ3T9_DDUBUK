@@ -27,6 +27,8 @@ struct RecordView: View {
     @State var selectedRoute: Route? = nil
     @State private var isRecordCompleteViewPresented = false
     
+    @Binding var selectedTab: Int
+    
     @State private var hideTabBar = false
     
     // MARK: - View
@@ -61,6 +63,7 @@ struct RecordView: View {
                 .padding(.bottom, -32) // 하단에 여백 추가
             }
             .navigationBarItems(leading: Button(action: {
+                selectedTab = 0
                 self.presentationMode.wrappedValue.dismiss()
             }) {
                 Image(systemName: "chevron.down")
