@@ -61,20 +61,32 @@ struct SearchDetailView: View {
                 Text(searchRoute.address ?? "")
                     .font(.custom("NotoSansKR-Medium", size: 16))
             
-                HStack(spacing: 6) {
-                    Text("\(searchRoute.distanceTraveled)km")
-                        .font(.custom("NotoSansKR-Bold", size: 16))
-                    Text("\(searchRoute.duration)분")
-                        .font(.custom("NotoSansKR-Bold", size: 16))
-                    Image(systemName: "star.fill")
-                    Text(dummyData2.Star)
-                        .font(.custom("NotoSansKR-Bold", size: 16))
+                HStack(spacing: 7) {
+                        // 거리 표시 방식 변경
+                        Text(searchRoute.distanceTraveled >= 1000 ? String(format: "%.2fkm", searchRoute.distanceTraveled / 1000) : String(format: "%.0fm", searchRoute.distanceTraveled))
+                            .font(.custom("NotoSansKR-Bold", size: 11))
+                        Text(formatDuration(searchRoute.duration))
+                            .font(.custom("NotoSansKR-Bold", size: 11))
+                        Text("\(searchRoute.stepsCount)걸음")
+                            .font(.custom("NotoSansKR-Bold", size: 11))
+                    }
                 }
-            }
         }
         .padding()
         .fullScreenCover(isPresented: $showingTrailView) {
             DetailTrailView(route: searchRoute)
+        }
+    }
+    func formatDuration(_ duration: Int) -> String {
+        let hours = duration / 3600
+        let minutes = (duration % 3600) / 60
+        let seconds = duration % 60
+        if duration < 60 {
+            return String(format: "%02d초", seconds)
+        } else if duration < 3600 {
+            return String(format: "%2d분 %02d초", minutes, seconds)
+        } else {
+            return String(format: "%2d시 %02d분", hours, minutes)
         }
     }
 }

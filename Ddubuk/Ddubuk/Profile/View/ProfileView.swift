@@ -55,7 +55,11 @@ struct ProfileView: View {
                     switch selectedView {
                     case .myRoutes:
                         ForEach(routes.routes) { route in
-                            SearchDetailView(searchRoute: route, showingTrailView: $showingTrailView)
+                            NavigationLink(destination: DetailTrailView(route: route)) {
+                                SearchDetailView(searchRoute: route, showingTrailView: $showingTrailView)
+                            }
+                            .buttonStyle(PlainButtonStyle()) // 버튼 스타일 제거
+                            .foregroundColor(.black) // 텍스트 색상 지정
                         }
                         .onTapGesture {
                             showingTrailView = true

@@ -142,6 +142,7 @@ struct RecordState: View {
                                 
                                 Spacer()
                                 
+                                
                                 VStack {
                                     Text("\(route.stepsCount)")
                                         .font(.custom("NotoSansKR-Bold", size: 24))

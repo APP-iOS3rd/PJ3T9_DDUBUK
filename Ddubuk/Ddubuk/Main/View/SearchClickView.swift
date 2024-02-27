@@ -108,16 +108,19 @@ struct SearchClickView: View {
 //                    Text(route)
 //                }
                 
-                ForEach(routes.routes) { route in
-                    if route.title.hasPrefix(emptyText) {
-//                        Text(route.title)
-                        SearchDetailView(searchRoute: route, showingTrailView: $showingTrailView)
-                            .padding(.leading, -12)
+                    
+                    ForEach(routes.routes) { route in
+                        NavigationLink(destination: DetailTrailView(route: route)) {
+                            SearchDetailView(searchRoute: route, showingTrailView: $showingTrailView)
+                        }
+                        .buttonStyle(PlainButtonStyle()) // 버튼 스타일 제거
+                        .foregroundColor(.black) // 텍스트 색상 지정
+                    }
                             .onTapGesture {
                                 showingTrailView = true
                             }
-                    }
-                }
+                    
+                
                 //            ForEach(titleArray.filter{$0.hasPrefix(emptyText) || emptyText == ""},   id: \.self){ route in Text(route)
                 //
                 //            }

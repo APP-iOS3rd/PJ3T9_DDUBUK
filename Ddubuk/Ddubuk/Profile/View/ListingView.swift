@@ -94,7 +94,7 @@ struct ListingView: View {
                     Divider().frame(height: 50)
                     VStack {
                         Text("걸음 수")
-                        Text("99,999")
+                        Text("\(route.stepsCount)")
                     }
                 }
 //                .frame(maxWidth: .infinity) // HStack을 화면 너비에 맞게 확장
