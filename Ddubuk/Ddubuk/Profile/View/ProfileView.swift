@@ -41,17 +41,19 @@ struct ProfileView: View {
     var body: some View {
             ScrollView(.vertical) {
                 VStack {
-                    HStack {
-                        Spacer()
-                        
-                        NavigationLink(destination: SettingView()) {
-                            Image(systemName: "gearshape.fill")
-                                .imageScale(.large)
-                                .foregroundColor(.primary)
+                    VStack {
+                        HStack {
+                            Spacer()
+                            
+                            NavigationLink(destination: SettingView()) {
+                                Image(systemName: "gearshape.fill")
+                                    .imageScale(.large)
+                                    .foregroundColor(.primary)
+                            }
+                            .padding(.top, 40)
                         }
-                        .padding(.top, 40)
-                    }
-                    profileHeader(data: dummyData1)
+                        profileHeader(data: dummyData1)
+                    }.background(LinearGradient(gradient: Gradient(colors: [Color("MainColor").opacity(0.5), Color.white]), startPoint: .top, endPoint: .center))
                     switch selectedView {
                     case .myRoutes:
                         ForEach(routes.routes) { route in
@@ -75,9 +77,10 @@ struct ProfileView: View {
                     }
                 }
                 .padding()
-                .background(LinearGradient(gradient: Gradient(colors: [Color("MainColor").opacity(0.5), Color.white]), startPoint: .top, endPoint: .center))
+                
             }
             .ignoresSafeArea()
+            .background(LinearGradient(gradient: Gradient(colors: [Color("MainColor").opacity(0.5), Color.white]), startPoint: .top, endPoint: .center))
         }
     
     
