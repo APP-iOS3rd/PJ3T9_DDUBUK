@@ -10,29 +10,27 @@ import SwiftUI
 struct SearchTagView: View {
     @State private var isPressed = false
     var name: String
+    var ImageView: String
 
     var body: some View {
         VStack {
             Button {
                 isPressed.toggle()
             } label: {
-                Rectangle()
+                Image(ImageView)
+                    .resizable()
                     .frame(width: 60,height: 50)
                     .foregroundColor(Color.secondary)
-                    .overlay(
-                            Text(name)
-                                .font(.custom("NotoSansKR-Medium", size: 13))
-                           .foregroundColor(.black)
-                           .cornerRadius(10)
-                       )
                     .border(isPressed ? Color.green : Color.clear, width: 4)
                     .cornerRadius(10)
             }
-            
+            Text(name)
+                .font(.custom("NotoSansKR-Medium", size: 10))
+           .foregroundColor(.black)
         }
     }
 }
 
 #Preview {
-    SearchTagView(name:"야경")
+    SearchTagView(name:"야경", ImageView: "NightView")
 }
