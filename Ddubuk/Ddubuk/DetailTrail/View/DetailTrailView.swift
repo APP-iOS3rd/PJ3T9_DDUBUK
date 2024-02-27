@@ -64,21 +64,35 @@ struct DetailTrailView: View {
                 ScrollView() {
                     VStack {
                         Spacer()
-//                        ZStack {
-                            //산책로 대표사진
-                            TabView {
-                                ForEach(trailDummy.trailPhoto, id: \.self) { photo in
-                                    Image(photo)
-                                        .resizable()                                }
-                                
+                        //                        ZStack {
+                        //산책로 대표사진
+                        TabView {
+                            ForEach(route.imageUrls, id: \.self) { imageUrlString in
+                                if let imageUrl = URL(string: imageUrlString) {
+                                    AsyncImage(url: imageUrl) { phase in
+                                        if case .success(let image) = phase {
+                                            image.resizable()
+                                                .aspectRatio(contentMode: .fill)
+                                                .frame(width: geo.size.width, height: geo.size.height/3)
+                                                .clipped()
+                                        } else {
+                                            // 로딩 중이거나 실패했을 때 표시할 기본 이미지 또는 뷰
+                                            ProgressView()
+                                                .frame(width: geo.size.width, height: geo.size.height/3)
+                                                .progressViewStyle(CircularProgressViewStyle())
+                                        }
+                                    }
+                                }
                             }
-                            .frame(width: geo.size.width, height: geo.size.height/3)
-                            .tabViewStyle(.page)
-//                            VStack {
-//                                
-//                               
-//                                
-//                            }
+                        }
+                        .frame(width: geo.size.width, height: geo.size.height/3) // TabView의 높이를 이미지와 동일하게 설정
+                        .tabViewStyle(.page)
+                        
+                        //                            VStack {
+                        //
+                        //
+                        //
+                        //                            }
                         
                         
                         
@@ -86,7 +100,7 @@ struct DetailTrailView: View {
                         HStack {
                             VStack(alignment: .leading, spacing: 3) {
                                 // 산책로 정보
-                                Text("어린이대공원 - 벚꽃 나들이")
+                                Text("\(route.title)")
                                     .bold()
                                     .font(.custom("NotoSansKR-Bold", size: 24))
                                     .padding(.bottom, 2)
@@ -94,11 +108,15 @@ struct DetailTrailView: View {
                                 Text("주소 : \(route.address ?? "")")
                                     .font(.custom("NotoSansKR-Medium", size: 14))
                                     .padding(.bottom, 2)
-                                Text("평점 : \(trailDummy.rating)")
-                                    .font(.custom("NotoSansKR-Medium", size: 14))
-                                    .padding(.bottom, 2)
-                                Text("\(route.distanceTraveled, specifier: "%.2f")M    \(formatDuration(route.duration))")
-                                    .font(.custom("NotoSansKR-Medium", size: 14))
+                                HStack{
+                                    Text(route.distanceTraveled >= 1000 ? String(format: "%.2fkm", route.distanceTraveled / 1000) : String(format: "%.0fm", route.distanceTraveled))
+                                        .font(.custom("NotoSansKR-Medium", size: 14))
+                                    Text("\(route.stepsCount)걸음")
+                                        .font(.custom("NotoSansKR-Medium", size: 14))
+                                        .padding(.bottom, 2)
+                                    Text("\(formatDuration(route.duration))")
+                                        .font(.custom("NotoSansKR-Medium", size: 14))
+                                }
                             }
                             .padding(.leading, 11)
                             
@@ -132,14 +150,14 @@ struct DetailTrailView: View {
                         //
                         //                    Spacer()
                         //                }
-                        expandedView(text: trailDummy.trailNote)
+                        expandedView(text: route.memo)
                             .padding(.top, 13)
                         // 테마
                         
                         ScrollView(.horizontal) {
                             HStack(spacing: 10) {
-                                ForEach(trailDummy.trailTheme, id: \.self) {tag in
-                                    TagView(tag, Color.TagColor)
+                                ForEach(route.types, id: \.self) {tag in
+                                    TagView(tag.rawValue, Color.TagColor)
                                 }
                             }
                         }
@@ -217,7 +235,7 @@ struct DetailTrailView: View {
                         }
                         .alert(isPresented: $showingAlert) {
                             Alert(title: Text(""), message: Text("추후 개발 예정이에요 ;-;"),
-                                              dismissButton: .default(Text("확인")))
+                                  dismissButton: .default(Text("확인")))
                         }
                         
                         Button(action: {
@@ -235,7 +253,7 @@ struct DetailTrailView: View {
                         }
                         .alert(isPresented: $showingAlert) {
                             Alert(title: Text(""), message: Text("추후 개발 예정이에요 ;-;"),
-                                              dismissButton: .default(Text("확인")))
+                                  dismissButton: .default(Text("확인")))
                         }
                     }
                 }
@@ -246,9 +264,13 @@ struct DetailTrailView: View {
         let hours = duration / 3600
         let minutes = (duration % 3600) / 60
         let seconds = duration % 60
-        // 시간이 포함되어야 하는 경우 아래 형식 사용
-        // return String(format: "%02d:%02d:%02d", hours, minutes, seconds)
-        return String(format: "%02d시간 %02분", hours, minutes)
+        if duration < 60 {
+            return String(format: "%02d초", seconds)
+        } else if duration < 3600 {
+            return String(format: "%2d분 %02d초", minutes, seconds)
+        } else {
+            return String(format: "%2d시 %02d분", hours, minutes)
+        }
     }
     
     @ViewBuilder
