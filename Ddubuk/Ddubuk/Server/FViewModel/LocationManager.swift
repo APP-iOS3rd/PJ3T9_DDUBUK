@@ -12,6 +12,10 @@ import FirebaseFirestoreSwift
 
 class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     
+    @objc private func updateLocation() {
+          self.locationManager.startUpdatingLocation()
+      }
+    
     @Published var currentLocation: Coordinate?
     @Published var durationString: String = ""
     @Published var distanceTraveled: Double = 0
@@ -51,22 +55,15 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let location = locations.last else { return }
         
+        // 콘솔에 현재 위치 출력
         print("현재 위치: \(location.coordinate.latitude), \(location.coordinate.longitude)")
-        
-        if let lastLocation = lastLocation {
-            let distance = location.distance(from: lastLocation)
-            distanceTraveled += distance
-        }
-        
-        lastLocation = location
-        
-        let newCoordinate = Coordinate(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude, timestamp: Date())
-        self.currentLocation = newCoordinate
-        self.saveLocation(location)
         
         // 임시로 현재 위치를 tempCoordinate에 저장
         let temp = Coordinate(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude, timestamp: Date())
         tempCoordinates.append(temp)
+        
+        let newCoordinate = Coordinate(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude, timestamp: Date())
+            self.coordinates.append(newCoordinate) // 좌표 배열에 새 위치 추가
         
         // 필요한 처리를 한 후에 currentLocation 업데이트
         self.currentLocation = temp
@@ -98,51 +95,51 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         }
     
     
-    func resumeLocationUpdates() {
-        print("위치 업데이트 재개 및 타이머 재시작")
-        print("\(durationString)")
-        guard !isUpdatingLocation else { return }
-        isUpdatingLocation = true
-        locationManager.startUpdatingLocation()
-        
-        // 필요한 경우 타이머 재설정
-        //        self.timer = Timer.scheduledTimer(withTimeInterval: self.interval, repeats: true) { [weak self] _ in
-        //            self?.locationManager.startUpdatingLocation()
-        //        }
-    }
-    //    func startTimer() {
-    //        print("타이머 시작")
-    //        print("\(durationString)")
-    //        guard !isUpdatingLocation else { return }
-    //        isUpdatingLocation = true
-    //        startTime = Date() // 타이머 시작 시간을 기록
-    //        self.timer = Timer.scheduledTimer(withTimeInterval: self.interval, repeats: true) { [weak self] _ in
-    //            self?.locationManager.startUpdatingLocation()
-    //        }
-    //    }
-    //
-    //    func stopTimer() {
-    //        print("타이머 중지")
-    //        print("\(durationString)")
-    //            guard isUpdatingLocation, let startTime = self.startTime else { return }
-    //            isUpdatingLocation = false
-    //            endTime = Date() // 타이머 종료 시간을 기록
-    //            self.timer?.invalidate()
-    //            self.timer = nil
-    //            self.locationManager.stopUpdatingLocation()
-    //
-    //            let durationSeconds = Int(endTime!.timeIntervalSince(startTime))
-    //            let minutes = durationSeconds / 60
-    //            let seconds = durationSeconds % 60
-    //            self.durationString = String(format: "%02d:%02d", minutes, seconds)
-    //
-    //            // 임시 이동 거리 저장
-    //            self.tempDistanceTraveled = self.distanceTraveled
-    //
-    //            self.elapsedTime = Int(endTime!.timeIntervalSince(startTime)) // 업데이트
-    //        }
-    //
-    //
+//    func resumeLocationUpdates() {
+//        print("위치 업데이트 재개 및 타이머 재시작")
+//        print("\(durationString)")
+//        guard !isUpdatingLocation else { return }
+//        isUpdatingLocation = true
+//        locationManager.startUpdatingLocation()
+//        
+//        // 필요한 경우 타이머 재설정
+//        //        self.timer = Timer.scheduledTimer(withTimeInterval: self.interval, repeats: true) { [weak self] _ in
+//        //            self?.locationManager.startUpdatingLocation()
+//        //        }
+//    }
+        func startTimer() {
+            print("타이머 시작")
+            print("\(durationString)")
+            guard !isUpdatingLocation else { return }
+            isUpdatingLocation = true
+            startTime = Date() // 타이머 시작 시간을 기록
+            self.timer = Timer.scheduledTimer(withTimeInterval: self.interval, repeats: true) { [weak self] _ in
+                self?.locationManager.startUpdatingLocation()
+            }
+        }
+    
+        func stopTimer() {
+            print("타이머 중지")
+            print("\(durationString)")
+                guard isUpdatingLocation, let startTime = self.startTime else { return }
+                isUpdatingLocation = false
+                endTime = Date() // 타이머 종료 시간을 기록
+                self.timer?.invalidate()
+                self.timer = nil
+                self.locationManager.stopUpdatingLocation()
+    
+                let durationSeconds = Int(endTime!.timeIntervalSince(startTime))
+                let minutes = durationSeconds / 60
+                let seconds = durationSeconds % 60
+                self.durationString = String(format: "%02d:%02d", minutes, seconds)
+    
+                // 임시 이동 거리 저장
+                self.tempDistanceTraveled = self.distanceTraveled
+    
+//                self.elapsedTime = Int(endTime!.timeIntervalSince(startTime)) // 업데이트
+            }
+    
+    
     func updateTitle(title: String) {
         self.title = title
     }
@@ -171,6 +168,7 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         self.startTime = nil
         self.endTime = nil
         self.isUpdatingLocation = false
+        self.timer = Timer.scheduledTimer(timeInterval: interval, target: self, selector: #selector(updateLocation), userInfo: nil, repeats: true)
     }
     //
     //    func resetTimer() {
@@ -186,6 +184,41 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         return CLLocation(latitude: latitude, longitude: longitude)
     }
     
+
+    func startLocationUpdates() {
+        locationManager.startUpdatingLocation()
+        self.timer = Timer.scheduledTimer(withTimeInterval: self.interval, repeats: true) { [weak self] _ in
+            self?.updateCurrentLocation()
+        }
+    }
+    
+    func stopLocationUpdates() {
+            self.locationManager.stopUpdatingLocation()
+            self.timer?.invalidate()
+            self.timer = nil
+        }
+    
+    func pauseLocationUpdates() {
+           // 타이머 일시 정지
+           self.timer?.invalidate()
+           self.timer = nil
+       }
+
+       func resumeLocationUpdates() {
+           // 타이머 재시작
+           self.timer = Timer.scheduledTimer(withTimeInterval: self.interval, repeats: true) { [weak self] _ in
+               self?.updateCurrentLocation()
+           }
+       }
+    
+        private func updateCurrentLocation() {
+                guard let currentLocation = self.locationManager.location else { return }
+                let newCoordinate = Coordinate(latitude: currentLocation.coordinate.latitude, longitude: currentLocation.coordinate.longitude, timestamp: Date())
+                DispatchQueue.main.async {
+                    self.tempCoordinates.append(newCoordinate)
+                }
+            }
+
     static func changeToAddress(location: CLLocation?, completion: @escaping (String) -> Void) {
         if let location = location {
             CLGeocoder().reverseGeocodeLocation(location, completionHandler: { placemarks, error in
@@ -211,6 +244,7 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         }
     }
 }
+
 extension LocationManager {
     func convertCoordinateToCLLocation(coordinate: Coordinate?) -> CLLocation? {
         guard let coordinate = coordinate else { return nil }

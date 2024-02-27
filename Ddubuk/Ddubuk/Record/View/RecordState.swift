@@ -190,6 +190,7 @@ struct RecordState: View {
                                             overlayHeight = 120 // 오버레이 뷰의 높이를 줄임
                                             showDetailedInfo = true // 상세 정보 표시
                                             isStartPressed = true // "Start" 버튼이 눌렸음을 표시
+                                            locationManager.startLocationUpdates() // 위치 업데이트 시작
                                         }
                                     } else if isRecording && !isPaused {
                                         // 정지 버튼: 녹화 중이고 일시 정지 상태가 아닐 때만 표시
@@ -198,6 +199,7 @@ struct RecordState: View {
                                             stopwatchViewModel.toggleStopWatch()
                                             isStopped = true // "Stop" 버튼을 누르면 isStopped를 true로 설정
                                             isDeleteTrackingEnabled = true // "Delete tracking" 버튼 활성화
+                                            locationManager.pauseLocationUpdates()
                                         }
                                     } else if isPaused {
                                         // 일시 정지 상태일 때 Resume과 Save 버튼 표시
@@ -205,10 +207,12 @@ struct RecordState: View {
                                             isPaused = false
                                             isRecording = true
                                             stopwatchViewModel.toggleStopWatch()
+                                            locationManager.resumeLocationUpdates()
                                         }
                                         
                                         CustomButton(title: "Save", systemImage: "stop.fill", color: Color("MainColor"), isDisabled: !isPaused) {
                                             showingSaveAlert = true
+                                            
                                         }
                                         .alert(isPresented: $showingSaveAlert) { // 알림창을 표시하는 조건
                                             Alert(
@@ -219,6 +223,7 @@ struct RecordState: View {
                                                     isPaused = false
                                                     stopwatchViewModel.completeTask()
                                                     saveRecording()
+                                                    locationManager.stopLocationUpdates()
                                                 },
                                                 secondaryButton: .cancel()
                                             )
@@ -377,5 +382,6 @@ struct RecordState: View {
             }
         }
     }
+    
 }
 

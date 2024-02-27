@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0C05C6F92B8D2F5100DB0C2E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0C05C6F82B8D2F5100DB0C2E /* GoogleService-Info.plist */; };
 		0C0FFE0E2B6CB7E9004BACF9 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 0C0FFE0D2B6CB7E9004BACF9 /* FirebaseAnalytics */; };
 		0C0FFE102B6CB7E9004BACF9 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 0C0FFE0F2B6CB7E9004BACF9 /* FirebaseAnalyticsOnDeviceConversion */; };
 		0C0FFE122B6CB7E9004BACF9 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0C0FFE112B6CB7E9004BACF9 /* FirebaseAnalyticsSwift */; };
@@ -51,6 +50,8 @@
 		0C3C5C402B7EEAB800030A2E /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 0C3C5C3F2B7EEAB800030A2E /* SDWebImageSwiftUI */; };
 		0C3C5C472B7F202E00030A2E /* HealthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3C5C462B7F202E00030A2E /* HealthManager.swift */; };
 		0C3C5C492B7F39A000030A2E /* TimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3C5C482B7F39A000030A2E /* TimerViewModel.swift */; };
+		0C47FB032B8D8AFF0075A6FB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0C47FB022B8D8AFF0075A6FB /* GoogleService-Info.plist */; };
+		0C47FB052B8DC6630075A6FB /* MapViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C47FB042B8DC6630075A6FB /* MapViewRepresentable.swift */; };
 		0C8D75BE2B70C309004B2784 /* CommunityDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8D75BD2B70C309004B2784 /* CommunityDetailView.swift */; };
 		0CAF798D2B830E8B004B6D92 /* StopwatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAF798C2B830E8B004B6D92 /* StopwatchView.swift */; };
 		0CAF798F2B831095004B6D92 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAF798E2B831095004B6D92 /* CustomButton.swift */; };
@@ -119,15 +120,12 @@
 		A4E3BE162B6C6FF20007E38A /* TagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E3BE152B6C6FF20007E38A /* TagView.swift */; };
 		A4E3BE1B2B6C70820007E38A /* TagViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E3BE1A2B6C70820007E38A /* TagViewModel.swift */; };
 		A4ECF9082B7F015E005BFFB7 /* MapMarkerDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4ECF9072B7F015E005BFFB7 /* MapMarkerDetail.swift */; };
-		A4F07D0F2B8D264400CBE17D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A4F07D0E2B8D264400CBE17D /* GoogleService-Info.plist */; };
 		A4FFA38A2B8911B7008E8D84 /* extension+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FFA3892B8911B7008E8D84 /* extension+.swift */; };
 		A4FFA38C2B8914D3008E8D84 /* CustomAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FFA38B2B8914D3008E8D84 /* CustomAnnotation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0C05C6E92B8CE29000DB0C2E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		0C05C6F02B8D2DAB00DB0C2E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		0C05C6F82B8D2F5100DB0C2E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		0C05C6F02B8D2DAB00DB0C2E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Record/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0C0FFE452B6CB916004BACF9 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		0C0FFE472B6CB94C004BACF9 /* Coordinate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinate.swift; sourceTree = "<group>"; };
 		0C0FFE492B6CB977004BACF9 /* WalkingType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkingType.swift; sourceTree = "<group>"; };
@@ -146,6 +144,8 @@
 		0C3C5C452B7F1F5B00030A2E /* DdubukDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DdubukDebug.entitlements; sourceTree = "<group>"; };
 		0C3C5C462B7F202E00030A2E /* HealthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthManager.swift; sourceTree = "<group>"; };
 		0C3C5C482B7F39A000030A2E /* TimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewModel.swift; sourceTree = "<group>"; };
+		0C47FB022B8D8AFF0075A6FB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../GoogleService-Info.plist"; sourceTree = "<group>"; };
+		0C47FB042B8DC6630075A6FB /* MapViewRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewRepresentable.swift; sourceTree = "<group>"; };
 		0C8D75BD2B70C309004B2784 /* CommunityDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityDetailView.swift; sourceTree = "<group>"; };
 		0CA301542B862F1100B95F28 /* NotoSansKR-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Bold.ttf"; sourceTree = "<group>"; };
 		0CA301552B862F1A00B95F28 /* NotoSansKR-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Medium.ttf"; sourceTree = "<group>"; };
@@ -186,7 +186,6 @@
 		A4E3BE152B6C6FF20007E38A /* TagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagView.swift; sourceTree = "<group>"; };
 		A4E3BE1A2B6C70820007E38A /* TagViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagViewModel.swift; sourceTree = "<group>"; };
 		A4ECF9072B7F015E005BFFB7 /* MapMarkerDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapMarkerDetail.swift; sourceTree = "<group>"; };
-		A4F07D0E2B8D264400CBE17D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A4FFA3892B8911B7008E8D84 /* extension+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "extension+.swift"; sourceTree = "<group>"; };
 		A4FFA38B2B8914D3008E8D84 /* CustomAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CustomAnnotation.swift; path = Ddubuk/Extension/CustomAnnotation.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -259,14 +258,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0C05C6EF2B8D2CC000DB0C2E /* Recovered References */ = {
-			isa = PBXGroup;
-			children = (
-				0C05C6E92B8CE29000DB0C2E /* GoogleService-Info.plist */,
-			);
-			name = "Recovered References";
-			sourceTree = "<group>";
-		};
 		0C0FFE442B6CB8F1004BACF9 /* FModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -306,7 +297,6 @@
 				0C2F8B362B57B548009AF236 /* Ddubuk */,
 				0C2F8B352B57B548009AF236 /* Products */,
 				A4F07D0D2B8D1DDE00CBE17D /* Recovered References */,
-
 			);
 			sourceTree = "<group>";
 		};
@@ -337,7 +327,8 @@
 				4E6AD7AC2B67936B00F0F596 /* Record */,
 				0C2F8B482B57B6E7009AF236 /* Info.plist */,
 				0C2F8B472B57B666009AF236 /* Ddubuk.entitlements */,
-				A4F07D0E2B8D264400CBE17D /* GoogleService-Info.plist */,
+				0C47FB022B8D8AFF0075A6FB /* GoogleService-Info.plist */,
+				0C05C6F02B8D2DAB00DB0C2E /* GoogleService-Info.plist */,
 				0C2F8B372B57B548009AF236 /* DdubukApp.swift */,
 				0C2F8B392B57B548009AF236 /* ContentView.swift */,
 				0C2F8B3B2B57B548009AF236 /* Item.swift */,
@@ -383,18 +374,9 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		4E0EE4752B8D2774008DEE16 /* Recovered References */ = {
-			isa = PBXGroup;
-			children = (
-				A49EB8122B8C717D00F5E083 /* GoogleService-Info.plist */,
-			);
-			name = "Recovered References";
-			sourceTree = "<group>";
-		};
 		4E6AD7AC2B67936B00F0F596 /* Record */ = {
 			isa = PBXGroup;
 			children = (
-				0C05C6F02B8D2DAB00DB0C2E /* GoogleService-Info.plist */,
 				4E6AD7AE2B67937D00F0F596 /* ViewModel */,
 				4E6AD7AD2B67937500F0F596 /* View */,
 			);
@@ -552,6 +534,7 @@
 			children = (
 				A4D1A9762B7B01CD00746262 /* MapView.swift */,
 				A4ECF9072B7F015E005BFFB7 /* MapMarkerDetail.swift */,
+				0C47FB042B8DC6630075A6FB /* MapViewRepresentable.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -620,7 +603,6 @@
 		A4F07D0D2B8D1DDE00CBE17D /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
-				A49EB8122B8C717D00F5E083 /* GoogleService-Info.plist */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -759,7 +741,7 @@
 				A49EB8142B8C83AC00F5E083 /* NotoSansKR-Medium.ttf in Resources */,
 				0C2F8B3E2B57B54B009AF236 /* Assets.xcassets in Resources */,
 				A49EB8152B8C83AE00F5E083 /* NotoSansKR-Bold.ttf in Resources */,
-				A4F07D0F2B8D264400CBE17D /* GoogleService-Info.plist in Resources */,
+				0C47FB032B8D8AFF0075A6FB /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -776,6 +758,7 @@
 				A4FFA38A2B8911B7008E8D84 /* extension+.swift in Sources */,
 				4E6AD7C02B68CADF00F0F596 /* RecordCompleteView.swift in Sources */,
 				4E6AD7B02B6793A400F0F596 /* RecordState.swift in Sources */,
+				0C47FB052B8DC6630075A6FB /* MapViewRepresentable.swift in Sources */,
 				4EF138A92B6B36A000C06A97 /* MainListView.swift in Sources */,
 				4E6AD7BA2B67947400F0F596 /* RecordMap.swift in Sources */,
 				4EFA01572B8A3CA7009F1028 /* SearchClickView.swift in Sources */,

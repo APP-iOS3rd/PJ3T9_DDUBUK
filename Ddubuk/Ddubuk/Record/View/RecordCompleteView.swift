@@ -8,6 +8,7 @@
 import SwiftUI
 import FirebaseStorage
 import FirebaseFirestoreSwift
+import MapKit
 
 enum ActiveAlert {
     case saveConfirmation, warning
@@ -40,6 +41,9 @@ struct RecordCompleteView: View {
     @State private var selectedTypes: [WalkingType] = []
     @State private var editingImageIndex: Int? = nil
     
+    @State private var position: MapCameraPosition = .automatic
+    @State private var currentPosition: CLLocationCoordinate2D?
+    
     var walkStartTime: Date // 산책 시작 시간
     var walkEndTime: Date // 산책 종료 시간
     var stepsCount: Int
@@ -52,15 +56,18 @@ struct RecordCompleteView: View {
     
     private let columns: [GridItem] = Array(repeating: .init(.flexible()), count: 3)
     
+    
     var body: some View {
         NavigationView {
             ScrollView(.vertical) {
                 
-                RecordMap(
-                    userLocations: viewModel.userLocations,
-                    isRecording: viewModel.isRecording,
-                    timerState: viewModel.timerState
-                )
+//                let coordinates = route.coordinates.map { CLLocationCoordinate2D(latitude: $0.latitude, longitude: $0.longitude) }
+//                Map(position: $position) {
+//                    MapPolyline(coordinates: coordinates)
+//                        .stroke(.blue, lineWidth: 4.0)
+//                }
+                MapViewRepresentable(coordinates: route.coordinates.map { CLLocationCoordinate2D(latitude: $0.latitude, longitude: $0.longitude) })
+                    .frame(height: 300)
                 .frame(height: 300)
                 Divider()
                     .padding(-9)
@@ -280,9 +287,14 @@ struct RecordCompleteView: View {
             )
         }
         .onAppear {
-//            loadStepsData()
+            let lat = route.coordinates[0].latitude
+            let lon = route.coordinates[0].longitude
+            self.currentPosition = CLLocationCoordinate2D(latitude: lat, longitude: lon)
+            position = .item(MKMapItem(placemark: .init(coordinate: currentPosition!)))
+            
         }
     }
+        
     func loadImage() {
         // 이미지 선택 후 처리 로직
     }
@@ -386,8 +398,8 @@ struct RecordCompleteView: View {
                             address: address,
                             memo: self.memo,
                             types: self.selectedTypes,
-                            duration: self.route.duration,
-                            distanceTraveled: self.route.distanceTraveled,
+                            duration: self.stopwatchViewModel.secondsElapsed,
+                            distanceTraveled: self.locationManager.distanceTraveled,
                             recordedDate: Date() ,
                             stepsCount: self.stepsCount
                         )
@@ -407,8 +419,8 @@ struct RecordCompleteView: View {
                     address: address,
                     memo: self.memo,
                     types: self.selectedTypes,
-                    duration: self.route.duration,
-                    distanceTraveled: self.route.distanceTraveled,
+                    duration: self.stopwatchViewModel.secondsElapsed, // 사용자가 기록한 실제 시간으로 업데이트
+                    distanceTraveled: self.locationManager.distanceTraveled, // 사용자가 기록한 실제 거리로 업데이트
                     recordedDate: Date(),
                     stepsCount: self.stepsCount
                 )

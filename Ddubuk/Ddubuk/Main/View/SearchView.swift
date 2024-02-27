@@ -112,7 +112,7 @@ struct SearchView: View {
 //        )
         .onAppear {
             routes.fetchRoutes()
-            locationManager.getCurrentLocation()
+//            $locationManager.getCurrentLocation()
         }
         
         .onTapGesture {
