@@ -78,7 +78,7 @@ struct MapView: View {
             }
         }
         .onAppear {
-//            routes.fetchRoutes()
+            routes.fetchRoutes()
             locationManager.getCurrentLocation()
         }
         .onChange(of: locationManager.currentLocation) {

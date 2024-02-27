@@ -20,7 +20,7 @@ class ProfileEnvironment: ObservableObject {
 struct ProfileView: View {
     @ObservedObject var routes = FireStoreManager.shared
     @EnvironmentObject var profileEnvironment: ProfileEnvironment
-    @State private var selectedView: ProfileSubView? = nil
+    @State private var selectedView: ProfileSubView = .myRoutes
     
     struct UserProfile {
         var username: String
@@ -40,6 +40,16 @@ struct ProfileView: View {
     var body: some View {
             ScrollView(.vertical) {
                 VStack {
+                    HStack {
+                        Spacer()
+                        
+                        NavigationLink(destination: SettingView()) {
+                            Image(systemName: "gearshape.fill")
+                                .imageScale(.large)
+                                .foregroundColor(.primary)
+                        }
+                        .padding(.top, 40)
+                    }
                     profileHeader(data: dummyData1)
                     switch selectedView {
                     case .myRoutes:
@@ -53,12 +63,7 @@ struct ProfileView: View {
                 .padding()
                 .background(LinearGradient(gradient: Gradient(colors: [Color("MainColor").opacity(0.5), Color.white]), startPoint: .top, endPoint: .center))
             }
-            .navigationBarTitle("프로필")
-            .navigationBarItems(trailing: NavigationLink(destination: SettingView()) {
-                Image(systemName: "gearshape.fill")
-                    .imageScale(.large)
-                    .foregroundColor(.primary)
-            })
+            .ignoresSafeArea()
         }
     
     
