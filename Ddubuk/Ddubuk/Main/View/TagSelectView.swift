@@ -32,7 +32,7 @@ struct TagSelectView: View {
                 .frame(height: 3)
                 .foregroundColor(.gray)
             
-            SearchDetailView()
+//            SearchDetailView()
             
             Spacer()
         }
