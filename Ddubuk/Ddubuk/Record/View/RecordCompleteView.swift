@@ -75,26 +75,23 @@ struct RecordCompleteView: View {
                         Spacer()
                         VStack {
                             Text("\(formatTime(duration))")
-                                .font(.system(size: 24))
-                                .fontWeight(.bold)
+                                .font(.custom("NotoSansKR-Bold", size: 24))
                             Text("총 시간")
-                                .font(.system(size: 16))
+                                .font(.custom("NotoSansKR-Medium", size: 16))
                         }
                         Spacer()
                         VStack {
                             Text("\(distanceTraveled, specifier: "%.2f")m")
-                                .font(.system(size: 24))
-                                .fontWeight(.bold)
+                                .font(.custom("NotoSansKR-Bold", size: 24))
                             Text("산책거리")
-                                .font(.system(size: 16))
+                                .font(.custom("NotoSansKR-Medium", size: 16))
                         }
                         Spacer()
                         VStack {
                             Text("\(stepsCount)걸음")
-                                .font(.system(size: 24))
-                                .fontWeight(.bold)
+                                .font(.custom("NotoSansKR-Bold", size: 24))
                             Text("걸음수")
-                                .font(.system(size: 16))
+                                .font(.custom("NotoSansKR-Medium", size: 16))
                         }
                         Spacer()
                     }
@@ -104,67 +101,54 @@ struct RecordCompleteView: View {
                     
                     VStack{
                         Text("제목")
-                            .font(.system(size: 16))
+                            .font(.custom("NotoSansKR-Medium", size: 16))
                             .frame(maxWidth: .infinity, alignment: .leading)
-                        TextField("제목을 입력해 주세요.", text: $title)
-                            .textFieldStyle(RoundedBorderTextFieldStyle())
-                            .cornerRadius(5)
-                            .border(Color.black, width: 1)
+                        TextField("산책로 제목을 입력해 주세요.", text: $title)
+                            .font(.custom("NotoSansKR-Medium", size: 16))
                             .multilineTextAlignment(.leading)
+                            .padding(10)
+                            .overlay (
+                                RoundedRectangle(cornerRadius: 5)
+                                    .stroke(Color.black, lineWidth: 1)
+                            )
+                            .padding(.bottom, 15)
                     }
                     
                     
-                    //                    HStack{
-                    //                        Text("날짜:")
-                    //                            .fontWeight(.bold)
-                    //                        Spacer()
-                    //                        Text("\(getCurrentDateTime())")
-                    //                    }
-                    //
-                    //                    // 주소 정보를 표시하는 부분 추가
-                    //                    HStack {
-                    //                        Text("주소:")
-                    //                            .fontWeight(.bold)
-                    //                            .padding(.top, 5)
-                    //                        Spacer()
-                    //                        Text(route.address ?? "주소 정보 없음")
-                    //                            .padding(.top, 5)
-                    //                    }
-                    
-                    
-                    // 타입 표시 추가
-                    //                    HStack{
-                    //                        ForEach(route.types, id: \.self) { type in
-                    //                            Text(type.rawValue)
-                    //                        }
-                    //                    }
-                    
                     Text("테마 (최대 5개 까지 선택)")
-                        .font(.system(size: 16))
+                        .font(.custom("NotoSansKR-Medium", size: 16))
                         .frame(maxWidth: .infinity, alignment: .leading)
                     ScrollView(.horizontal) {
                         LazyHGrid(rows: [GridItem()]) {
                             ForEach(WalkingType.allCases, id: \.self) { type in
-                                Rectangle()
-                                    .frame(width: 50, height: 20)
-                                    .cornerRadius(5)
-                                    .border(Color.black, width: 1)
-                                    .foregroundColor(self.selectedTypes.contains(type) ? Color("MainColor") : Color.white)
-                                    .onTapGesture {
-                                        if self.selectedTypes.contains(type) {
-                                            self.selectedTypes.removeAll { $0 == type }
-                                        } else {
-                                            self.selectedTypes.append(type)
-                                        }
+                                HStack(spacing: 10) {
+                                    Text(type.rawValue)
+                                        .font(.custom("NotoSansKR-Bold", size: 14))
+                                }
+                                .frame(height: 35)
+                                .foregroundStyle(self.selectedTypes.contains(type) ? Color.white : Color.black)
+                                .padding(.horizontal, 10)
+                                .onTapGesture {
+                                    if self.selectedTypes.contains(type) {
+                                        self.selectedTypes.removeAll { $0 == type }
+                                    } else {
+                                        self.selectedTypes.append(type)
                                     }
-                                    .padding()
+                                }
+                                .background {
+                                    RoundedRectangle(cornerRadius: 10)
+                                        .fill(self.selectedTypes.contains(type) ? Color.TagColor : Color.white)
+                                        .stroke(self.selectedTypes.contains(type) ? Color.white : Color.black)
+                                }
                             }
                         }
-                        .padding(.leading, -16)
+                        .padding(.leading, 5)
                     }
+                    .padding(.bottom, 15)
+                    
                     VStack{
                         Text("사진(최대 9장)")
-                            .font(.system(size: 16))
+                            .font(.custom("NotoSansKR-Medium", size: 16))
                             .frame(maxWidth: .infinity, alignment: .leading)
                         LazyVGrid(columns: columns, spacing: 10) {
                             // 이미지가 채워진 사각형 표시
@@ -213,13 +197,17 @@ struct RecordCompleteView: View {
                     
                     VStack{
                         Text("메모")
-                            .font(.system(size: 16))
+                            .font(.custom("NotoSansKR-Medium", size: 16))
                             .frame(maxWidth: .infinity, alignment: .leading)
                         TextField("산책로에 대한 설명을 적어주세요", text: $memo)
-                            .textFieldStyle(RoundedBorderTextFieldStyle())
-                            .cornerRadius(5)
-                            .border(Color.black, width: 1)
+                            .font(.custom("NotoSansKR-Medium", size: 16))
                             .multilineTextAlignment(.leading)
+                            .padding(10)
+                            .overlay (
+                                RoundedRectangle(cornerRadius: 5)
+                                    .stroke(Color.black, lineWidth: 1)
+                            )
+                            .padding(.bottom, 15)
                     }
                 }
                 .padding(24)

@@ -119,6 +119,7 @@
 		A4E3BE162B6C6FF20007E38A /* TagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E3BE152B6C6FF20007E38A /* TagView.swift */; };
 		A4E3BE1B2B6C70820007E38A /* TagViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E3BE1A2B6C70820007E38A /* TagViewModel.swift */; };
 		A4ECF9082B7F015E005BFFB7 /* MapMarkerDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4ECF9072B7F015E005BFFB7 /* MapMarkerDetail.swift */; };
+		A4F07D0F2B8D264400CBE17D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A4F07D0E2B8D264400CBE17D /* GoogleService-Info.plist */; };
 		A4FFA38A2B8911B7008E8D84 /* extension+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FFA3892B8911B7008E8D84 /* extension+.swift */; };
 		A4FFA38C2B8914D3008E8D84 /* CustomAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FFA38B2B8914D3008E8D84 /* CustomAnnotation.swift */; };
 /* End PBXBuildFile section */
@@ -185,6 +186,7 @@
 		A4E3BE152B6C6FF20007E38A /* TagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagView.swift; sourceTree = "<group>"; };
 		A4E3BE1A2B6C70820007E38A /* TagViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagViewModel.swift; sourceTree = "<group>"; };
 		A4ECF9072B7F015E005BFFB7 /* MapMarkerDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapMarkerDetail.swift; sourceTree = "<group>"; };
+		A4F07D0E2B8D264400CBE17D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A4FFA3892B8911B7008E8D84 /* extension+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "extension+.swift"; sourceTree = "<group>"; };
 		A4FFA38B2B8914D3008E8D84 /* CustomAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CustomAnnotation.swift; path = Ddubuk/Extension/CustomAnnotation.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -303,7 +305,8 @@
 			children = (
 				0C2F8B362B57B548009AF236 /* Ddubuk */,
 				0C2F8B352B57B548009AF236 /* Products */,
-				0C05C6EF2B8D2CC000DB0C2E /* Recovered References */,
+				A4F07D0D2B8D1DDE00CBE17D /* Recovered References */,
+
 			);
 			sourceTree = "<group>";
 		};
@@ -333,8 +336,8 @@
 				A4E3BDFE2B68CACB0007E38A /* DetailTrail */,
 				4E6AD7AC2B67936B00F0F596 /* Record */,
 				0C2F8B482B57B6E7009AF236 /* Info.plist */,
-				0C05C6F82B8D2F5100DB0C2E /* GoogleService-Info.plist */,
 				0C2F8B472B57B666009AF236 /* Ddubuk.entitlements */,
+				A4F07D0E2B8D264400CBE17D /* GoogleService-Info.plist */,
 				0C2F8B372B57B548009AF236 /* DdubukApp.swift */,
 				0C2F8B392B57B548009AF236 /* ContentView.swift */,
 				0C2F8B3B2B57B548009AF236 /* Item.swift */,
@@ -378,6 +381,14 @@
 				4EAA77432B8371CB00277113 /* onBoardingView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		4E0EE4752B8D2774008DEE16 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				A49EB8122B8C717D00F5E083 /* GoogleService-Info.plist */,
+			);
+			name = "Recovered References";
 			sourceTree = "<group>";
 		};
 		4E6AD7AC2B67936B00F0F596 /* Record */ = {
@@ -606,6 +617,14 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		A4F07D0D2B8D1DDE00CBE17D /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				A49EB8122B8C717D00F5E083 /* GoogleService-Info.plist */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
 		A4FFA3882B8911A1008E8D84 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -737,10 +756,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				0C2F8B412B57B54B009AF236 /* Preview Assets.xcassets in Resources */,
-				0C05C6F92B8D2F5100DB0C2E /* GoogleService-Info.plist in Resources */,
 				A49EB8142B8C83AC00F5E083 /* NotoSansKR-Medium.ttf in Resources */,
 				0C2F8B3E2B57B54B009AF236 /* Assets.xcassets in Resources */,
 				A49EB8152B8C83AE00F5E083 /* NotoSansKR-Bold.ttf in Resources */,
+				A4F07D0F2B8D264400CBE17D /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
