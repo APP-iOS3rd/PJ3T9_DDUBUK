@@ -32,15 +32,15 @@ struct SearchView: View {
                     
                     VStack(alignment: .leading, spacing: 2) {
                         TextField("원하는 지역명이나 산책로를 입력해주세요.", text: $title)
-                                .onTapGesture {
-                                    isSearchDetailViewActive = true
-                                }
+//                                .onTapGesture {
+//                                    isSearchDetailViewActive = true
+//                                }
                    }
                     
                     Spacer()
                     
                     Button {
-                        
+                        isSearchDetailViewActive = true
                     } label: {
                         Image(systemName: "magnifyingglass")
                             .foregroundColor(Color.black)
@@ -105,11 +105,11 @@ struct SearchView: View {
             }
         }
         .padding()
-//        .navigationBarHidden(true)
-//        .background(
-//            NavigationLink("", destination: SearchClickView(searchResults: searchResults), isActive: $isSearchDetailViewActive)
-//                .hidden()
-//        )
+        .navigationBarHidden(true)
+        .background(
+            NavigationLink("", destination: SearchClickView(emptyText: title), isActive: $isSearchDetailViewActive)
+                .hidden()
+        )
         .onAppear {
             routes.fetchRoutes()
             locationManager.getCurrentLocation()

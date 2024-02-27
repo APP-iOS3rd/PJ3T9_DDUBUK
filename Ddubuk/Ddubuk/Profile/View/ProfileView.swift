@@ -21,6 +21,7 @@ struct ProfileView: View {
     @ObservedObject var routes = FireStoreManager.shared
     @EnvironmentObject var profileEnvironment: ProfileEnvironment
     @State private var selectedView: ProfileSubView = .myRoutes
+    @State private var showingTrailView = false
     
     struct UserProfile {
         var username: String
@@ -53,9 +54,18 @@ struct ProfileView: View {
                     profileHeader(data: dummyData1)
                     switch selectedView {
                     case .myRoutes:
-                        SearchDetailView()
+                        ForEach(routes.routes) { route in
+                            SearchDetailView(searchRoute: route, showingTrailView: $showingTrailView)
+                        }
+                        .onTapGesture {
+                            showingTrailView = true
+                        }
                     case .savedRoutes:
-                        SearchDetailView()
+                        ForEach(routes.routes) { route in
+                            SearchDetailView(searchRoute: route, showingTrailView: $showingTrailView)
+                        }.onTapGesture {
+                            showingTrailView = true
+                        }
                     case nil:
                         EmptyView()
                     }
