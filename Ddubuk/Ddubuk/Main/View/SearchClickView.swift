@@ -44,6 +44,7 @@ struct SearchClickView: View {
     @State var emptyText: String
     @ObservedObject var routes = FireStoreManager.shared
     @State private var showingTrailView = false
+    @State private var selectedTags: [Tags] = Tags.allCases
     
     
     let tags: [Tags] = Tags.allCases
@@ -91,9 +92,9 @@ struct SearchClickView: View {
                     GridItem(.flexible(), spacing: 10),
                     GridItem(.flexible(), spacing: 10)
                 ], spacing: 10) {
-                    ForEach(tags, id: \.self) { tag in
-                        SearchTagView(name: tag.rawValue, ImageView: tagImageName(for: tag))
-                    }
+                    ForEach(selectedTags, id: \.self) { tag in
+                                        TagButtonView(tag: tag)
+                                    }
                 }
                 .padding()
                 
