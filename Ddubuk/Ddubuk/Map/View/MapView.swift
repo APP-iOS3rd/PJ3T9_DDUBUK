@@ -13,11 +13,11 @@ import Firebase
 struct MapView: View {
     
     @ObservedObject var routes = FireStoreManager.shared
+    @StateObject var locationManager = LocationManager()
     @State private var currentPosition: CLLocationCoordinate2D?
     @State private var selection: UUID?
     @State private var showingTrailView = false
     @State private var position: MapCameraPosition = .automatic
-    @StateObject var locationManager = LocationManager()
     @EnvironmentObject var viewModel: RecordViewModel
     
     var body: some View {
@@ -28,6 +28,7 @@ struct MapView: View {
 //                    Marker("marker", coordinate: currentPosition)
 //                }
                 ForEach(routes.routes) { location in
+
                     Marker("", image: "mapmarker",coordinate: CLLocationCoordinate2D(latitude: location.coordinates[0].latitude, longitude: location.coordinates[0].longitude))
                         .tint(Color.TagColor)
 //                    Annotation("", coordinate: CLLocationCoordinate2D(latitude: location.coordinates[0].latitude, longitude: location.coordinates[0].longitude)) {
@@ -37,6 +38,7 @@ struct MapView: View {
 //                            
 //                    }
 //                    .tint(Color.MainColor)
+
                 
                     
                 }
@@ -76,7 +78,7 @@ struct MapView: View {
             }
         }
         .onAppear {
-//            routes.fetchRoutes()
+            routes.fetchRoutes()
             locationManager.getCurrentLocation()
         }
         .onChange(of: locationManager.currentLocation) {

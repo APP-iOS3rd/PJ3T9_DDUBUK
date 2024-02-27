@@ -34,8 +34,12 @@ struct RecordState: View {
     @State private var isStartPressed: Bool = false // "Start" 버튼이 눌렸는지 여부
     @State private var showingDeleteAlert = false
     @State private var showingSaveAlert = false
+    @State private var stepsCount: Int = 0
+    
+    @State private var resetStateCallback: (() -> Void)?
     
     @GestureState private var dragAmount = CGSize.zero // 드래그 양을 추적하는 상태 변수
+    
     
     @State var route: Route = Route(
         title: "아름다운 산책로",
@@ -43,7 +47,7 @@ struct RecordState: View {
         imageUrls: ["images-1", "images-2"],
         address: "서울특별시 중구",
         memo: "맑은 날 산책하기 좋음",
-        types: [WalkingType.A],
+        types: [WalkingType.Dog],
         duration: 30,
         distanceTraveled: 1.5,
         recordedDate: Date(),
@@ -67,7 +71,7 @@ struct RecordState: View {
                             Rectangle()
                                 .frame(width: 24, height: 5)
                                 .foregroundColor(Color(UIColor.systemGray5))
-                            
+                                .cornerRadius(3)
                                 .padding(8)
                             Spacer()
                             
@@ -114,32 +118,41 @@ struct RecordState: View {
                             Rectangle()
                                 .frame(width: 24, height: 5)
                                 .foregroundColor(Color(UIColor.systemGray))
+                                .cornerRadius(3)
                                 .padding(5)
                             Spacer()
-                            HStack{
+                            HStack {
                                 Spacer()
+                                
                                 VStack {
                                     Stopwatch(secondsElapsed: stopwatchViewModel.secondsElapsed)
                                     Text("시간")
                                         .font(.subheadline)
-                                    
                                 }
+                                .frame(minWidth: 0, maxWidth: .infinity) // 최대한의 공간을 차지하도록 설정
+                                
                                 Spacer()
-                                VStack{
+                                
+                                VStack {
                                     Text("\(locationManager.distanceTraveled, specifier: "%.2f")m")
                                         .font(.system(size: 24))
                                         .fontWeight(.bold)
                                     Text("거리")
                                         .font(.subheadline)
                                 }
+                                .frame(minWidth: 0, maxWidth: .infinity) // 최대한의 공간을 차지하도록 설정
+                                
                                 Spacer()
-                                VStack{
+                                
+                                VStack {
                                     Text("\(route.stepsCount)")
                                         .font(.system(size: 24))
                                         .fontWeight(.bold)
                                     Text("걸음수")
                                         .font(.subheadline)
                                 }
+                                .frame(minWidth: 0, maxWidth: .infinity) // 최대한의 공간을 차지하도록 설정
+                                
                                 Spacer()
                             }
                         }
@@ -246,8 +259,10 @@ struct RecordState: View {
                 }
             }
         }
-        .fullScreenCover(isPresented: $isRecordCompleteViewPresented) {
-            let _ = print("\(stopwatchViewModel.secondsElapsed)")
+        .fullScreenCover(isPresented: $isRecordCompleteViewPresented, onDismiss: {
+            self.deleteRecordingState()
+        }) {
+            // RecordCompleteView 호출 시, stepsCount를 전달
             RecordCompleteView(
                 duration: stopwatchViewModel.secondsElapsed,
                 distanceTraveled: self.locationManager.distanceTraveled,
@@ -255,15 +270,14 @@ struct RecordState: View {
                 route: self.$route,
                 healthManager: healthManager,
                 locationManager: locationManager,
-                walkStartTime: self.walkStartTime ?? Date(), // 산책 시작 시간
-                walkEndTime: Date(), // 산책 종료 시간
-                deleteRecordingAction: {
-                    self.deleteRecordingState()
-                }
+                walkStartTime: self.walkStartTime ?? Date(),
+                walkEndTime: Date(),
+                stepsCount: self.stepsCount, // 걸음수 전달
+                    deleteRecordingAction: {
+                        self.deleteRecordingState()
+                    }
             )
-            
         }
-        
     }
     // 산책 기록을 저장하는 로직
     private func saveRecording() {
@@ -350,6 +364,20 @@ struct RecordState: View {
         // 기타 필요한 상태 변수들을 여기서 초기화합니다.
         
         print("Tracking deleted and data reset")
+    }
+    
+    func loadStepsData() {
+        guard let walkStartTime = self.walkStartTime else { return }
+        
+        healthManager.readStepCount(startDate: walkStartTime, endDate: Date()) { steps, error in
+            if let error = error {
+                print("걸음수 조회 실패: \(error.localizedDescription)")
+            } else {
+                DispatchQueue.main.async {
+                    self.stepsCount = Int(steps)
+                }
+            }
+        }
     }
 }
 

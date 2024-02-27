@@ -29,7 +29,7 @@ struct ListingView: View {
         imageUrls: ["images-1", "images-2"], // 프리뷰에서 사용할 이미지 이름 또는 URL
         address: "서울특별시 중구",
         memo: "맑은 날 산책하기 좋음",
-        types: [WalkingType.A], // WalkingType에 따라 변경
+        types: [WalkingType.Dog], // WalkingType에 따라 변경
         duration: 30,
         distanceTraveled: 1.5,
         recordedDate: Date(),
@@ -117,7 +117,7 @@ struct ListingView: View {
             imageUrls: ["images-1", "images-2"], // 프리뷰에서 사용할 이미지 이름 또는 URL
             address: "서울특별시 중구",
             memo: "맑은 날 산책하기 좋음",
-            types: [WalkingType.A], // WalkingType에 따라 변경
+            types: [WalkingType.Dog], // WalkingType에 따라 변경
             duration: 0,
             distanceTraveled: 1.5,
             recordedDate: Date(),

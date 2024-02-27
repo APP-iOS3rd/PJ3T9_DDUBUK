@@ -1,11 +1,15 @@
 import SwiftUI
+import FirebaseFirestore
 
 
 
 struct SearchView: View {
+    
     @ObservedObject var routes = FireStoreManager.shared
+    @StateObject var locationManager = LocationManager()
     @State private var title: String = ""
     @State private var isSearchDetailViewActive = false
+
     
     let tags: [Tags] = Tags.allCases
     
@@ -101,11 +105,15 @@ struct SearchView: View {
         }
         .padding()
 //        .navigationBarHidden(true)
-                    .background(
-                        NavigationLink("", destination: SearchClickView(), isActive: $isSearchDetailViewActive)
-                            .hidden()
-                    )
-
+//        .background(
+//            NavigationLink("", destination: SearchClickView(searchResults: searchResults), isActive: $isSearchDetailViewActive)
+//                .hidden()
+//        )
+        .onAppear {
+            routes.fetchRoutes()
+            locationManager.getCurrentLocation()
+        }
+        
         .onTapGesture {
             endEditing()
         }
@@ -136,6 +144,29 @@ struct SearchView: View {
 
     private func endEditing() {
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+    }
+    
+    private func performSearch() {
+        let db = Firestore.firestore()
+        db.collection("places").whereField("name", isEqualTo: title)
+            .getDocuments { (querySnapshot, err) in
+                if let err = err {
+                    print("Error getting documents: \(err)")
+                } else {
+                    var results: [String] = []
+                    for document in querySnapshot!.documents {
+                        // 예제에서는 name 필드만 추출합니다.
+                        if let name = document.data()["name"] as? String {
+                            results.append(name)
+                        }
+                    }
+                    // 검색 결과를 SearchClickView로 전달하기 위해 상태 업데이트
+                    DispatchQueue.main.async {
+//                        self.searchResults = results
+                        self.isSearchDetailViewActive = true
+                    }
+                }
+            }
     }
 }
 
