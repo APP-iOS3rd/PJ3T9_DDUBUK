@@ -1,10 +1,14 @@
 import SwiftUI
 
+
+
 struct SearchView: View {
     @ObservedObject var routes = FireStoreManager.shared
     @State private var title: String = ""
     @State private var isSearchDetailViewActive = false
-    let tags = ["야경", "강아지", "비오는날", "달리기", "조용한", "붐비는", "건강에 좋은", "자전거"]
+    
+    let tags: [Tags] = Tags.allCases
+    
     
     var body: some View {
         ScrollView {
@@ -55,8 +59,8 @@ struct SearchView: View {
                                GridItem(.flexible(), spacing: 10)
                            ], spacing: 10) {
                                ForEach(tags, id: \.self) { tag in
-                                   SearchTagView(name: tag)
-                               }
+                                               SearchTagView(name: tag.rawValue, ImageView: tag.imageName)
+                                           }
                            }
                            .padding()
                 
@@ -108,7 +112,27 @@ struct SearchView: View {
         .background(LinearGradient(gradient: Gradient(colors: [Color("MainColor").opacity(0.5), Color.white]), startPoint: .top, endPoint: .bottom))
     }
     
-    
+    private func tagImageName(for tag: Tags) -> String {
+            switch tag {
+            case .NightView:
+                return "NightView"
+            case .Day:
+                return "Afternoon"
+            // 나머지 태그에 대한 이미지 이름도 추가할 수 있습니다.
+            case .Dog:
+                return "Dog"
+            case .Child:
+                return "Child"
+            case .Trees:
+                return "Tree"
+            case .Water:
+                return "Water"
+            case .Hill:
+                return "Hill"
+            case .Alley:
+                return "Alley"
+            }
+        }
 
     private func endEditing() {
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
