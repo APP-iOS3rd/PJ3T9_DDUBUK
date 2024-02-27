@@ -13,21 +13,30 @@ struct SearchTagView: View {
     var ImageView: String
 
     var body: some View {
-        VStack {
-            Button {
-                isPressed.toggle()
-            } label: {
-                Image(ImageView)
-                    .resizable()
-                    .frame(width: 60,height: 50)
-                    .foregroundColor(Color.secondary)
-                    .border(isPressed ? Color.green : Color.clear, width: 4)
-                    .cornerRadius(10)
+        NavigationLink(
+            destination: TagSelectView(tagName: name),
+            isActive: $isPressed,
+            label: {
+                VStack {
+                    Button {
+                        isPressed.toggle()
+                    } label: {
+                        Image(ImageView)
+                            .resizable()
+                            .frame(width: 60,height: 50)
+                            .foregroundColor(Color.secondary)
+                            .overlay(
+                                    RoundedRectangle(cornerRadius: 10)
+                                        .strokeBorder(isPressed ? Color.green : Color.black, lineWidth: 3)
+                                    )
+                            .cornerRadius(10)
+                    }
+                    Text(name)
+                        .font(.custom("NotoSansKR-Medium", size: 10))
+                        .foregroundColor(.black)
+                }
             }
-            Text(name)
-                .font(.custom("NotoSansKR-Medium", size: 10))
-           .foregroundColor(.black)
-        }
+        )
     }
 }
 

@@ -150,7 +150,7 @@ struct SearchClickView: View {
             case .Hill:
                 return "Hill"
             case .Alley:
-                return "Alley"
+                return "City"
             }
         }
     
