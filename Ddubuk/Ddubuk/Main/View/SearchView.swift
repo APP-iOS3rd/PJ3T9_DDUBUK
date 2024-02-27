@@ -17,29 +17,30 @@ struct SearchView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
-                HStack {
-                    VStack(alignment: .leading){
-                        Text("테마별로 산책하고 싶을땐?")
-                            .font(.custom("NotoSansKR-Bold", size: 24))
-                        Text("DDUBUK")
-                            .font(.custom("NotoSansKR-Bold", size: 24))
-                    }
-                    .padding()
-                }
+//                HStack {
+//                    VStack(alignment: .leading){
+//                        Text("테마별로 산책하고 싶을땐?")
+//                            .font(.custom("NotoSansKR-Bold", size: 24))
+//                        Text("DDUBUK")
+//                            .font(.custom("NotoSansKR-Bold", size: 24))
+//                    }
+//                    .padding()
+//                }
+                Image("MainTheme")
                 
                 HStack {
                     
                     VStack(alignment: .leading, spacing: 2) {
                         TextField("원하는 지역명이나 산책로를 입력해주세요.", text: $title)
-                                .onTapGesture {
-                                    isSearchDetailViewActive = true
-                                }
+//                                .onTapGesture {
+//                                    isSearchDetailViewActive = true
+//                                }
                    }
                     
                     Spacer()
                     
                     Button {
-                        
+                        isSearchDetailViewActive = true
                     } label: {
                         Image(systemName: "magnifyingglass")
                             .foregroundColor(Color.black)
@@ -104,11 +105,11 @@ struct SearchView: View {
             }
         }
         .padding()
-//        .navigationBarHidden(true)
-//        .background(
-//            NavigationLink("", destination: SearchClickView(searchResults: searchResults), isActive: $isSearchDetailViewActive)
-//                .hidden()
-//        )
+        .navigationBarHidden(true)
+        .background(
+            NavigationLink("", destination: SearchClickView(emptyText: title), isActive: $isSearchDetailViewActive)
+                .hidden()
+        )
         .onAppear {
             routes.fetchRoutes()
             locationManager.getCurrentLocation()
@@ -117,7 +118,8 @@ struct SearchView: View {
         .onTapGesture {
             endEditing()
         }
-        .background(LinearGradient(gradient: Gradient(colors: [Color("MainColor").opacity(0.5), Color.white]), startPoint: .top, endPoint: .bottom))
+        .ignoresSafeArea()
+//        .background(LinearGradient(gradient: Gradient(colors: [Color("MainColor").opacity(0.5), Color.white]), startPoint: .top, endPoint: .bottom))
     }
     
     private func tagImageName(for tag: Tags) -> String {

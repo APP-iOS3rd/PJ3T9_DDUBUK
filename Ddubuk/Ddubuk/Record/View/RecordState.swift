@@ -80,8 +80,7 @@ struct RecordState: View {
                                 Stopwatch(secondsElapsed: stopwatchViewModel.secondsElapsed)
                                 Spacer()
                                 Text("\(locationManager.distanceTraveled, specifier: "%.2f")m")
-                                    .font(.system(size: 24))
-                                    .fontWeight(.bold)
+                                    .font(.custom("NotoSansKR-Bold", size: 24))
                                 Spacer()
                                 Button(action: {
                                     showDetailedInfo = false
@@ -127,7 +126,7 @@ struct RecordState: View {
                                 VStack {
                                     Stopwatch(secondsElapsed: stopwatchViewModel.secondsElapsed)
                                     Text("시간")
-                                        .font(.subheadline)
+                                        .font(.custom("NotoSansKR-Medium", size: 16))
                                 }
                                 .frame(minWidth: 0, maxWidth: .infinity) // 최대한의 공간을 차지하도록 설정
                                 
@@ -135,10 +134,9 @@ struct RecordState: View {
                                 
                                 VStack {
                                     Text("\(locationManager.distanceTraveled, specifier: "%.2f")m")
-                                        .font(.system(size: 24))
-                                        .fontWeight(.bold)
+                                        .font(.custom("NotoSansKR-Bold", size: 24))
                                     Text("거리")
-                                        .font(.subheadline)
+                                        .font(.custom("NotoSansKR-Medium", size: 16))
                                 }
                                 .frame(minWidth: 0, maxWidth: .infinity) // 최대한의 공간을 차지하도록 설정
                                 
@@ -146,10 +144,9 @@ struct RecordState: View {
                                 
                                 VStack {
                                     Text("\(route.stepsCount)")
-                                        .font(.system(size: 24))
-                                        .fontWeight(.bold)
+                                        .font(.custom("NotoSansKR-Bold", size: 24))
                                     Text("걸음수")
-                                        .font(.subheadline)
+                                        .font(.custom("NotoSansKR-Medium", size: 16))
                                 }
                                 .frame(minWidth: 0, maxWidth: .infinity) // 최대한의 공간을 차지하도록 설정
                                 
@@ -167,6 +164,7 @@ struct RecordState: View {
                                     Button("Delete tracking") {
                                         showingDeleteAlert = true
                                     }
+                                    .font(.custom("NotoSansKR-Medium", size: 16))
                                     .disabled(!isStopped) // 'isStopped'가 true일 때만 버튼을 활성화합니다.
                                     .foregroundColor(isStopped ? .red : .gray) // 'isStopped'에 따라 색상을 변경합니다.
                                     .padding(.bottom, 5)

@@ -23,8 +23,7 @@ struct Stopwatch: View {
 
     var body: some View {
         Text(formatTime(secondsElapsed))
-            .font(.system(size: 24))
-            .fontWeight(.bold)
+            .font(.custom("NotoSansKR-Bold", size: 24))
     }
 }
 

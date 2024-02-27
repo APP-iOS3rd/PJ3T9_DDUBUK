@@ -41,72 +41,95 @@ enum Tags: String, CaseIterable {
 
 struct SearchClickView: View {
     @Environment(\.presentationMode) var presentationMode
-    @State var emptyText: String = ""
-//    let tags = ["야경", "강아지", "비오는날", "달리기", "조용한", "붐비는", "건강에 좋은", "자전거"]
+    @State var emptyText: String
+    @ObservedObject var routes = FireStoreManager.shared
+    @State private var showingTrailView = false
+    
     
     let tags: [Tags] = Tags.allCases
 
     var body: some View {
         VStack {
-            HStack {
-                Button {
-                    presentationMode.wrappedValue.dismiss()
-                } label: {
-                    Image(systemName: "chevron.left")
+            ScrollView {
+                HStack {
+                    Button {
+                        presentationMode.wrappedValue.dismiss()
+                    } label: {
+                        Image(systemName: "chevron.left")
                         
-                }
-                
-                TextField("", text: $emptyText)
-                    .padding()
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .onTapGesture {
-                        endEditing()
                     }
-                    .overlay(
-                        HStack {
-                            Spacer()
-                            if !emptyText.isEmpty {
-                                Image(systemName: "x.circle.fill")
-                                    .onTapGesture {
-                                        emptyText = ""
-                                    }
-                                    .padding(.trailing, 25)
-                            }
+                    
+                    TextField("", text: $emptyText)
+                        .padding()
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .onTapGesture {
+                            endEditing()
                         }
-                    )
-                    .shadow(radius: 2)
+                        .overlay(
+                            HStack {
+                                Spacer()
+                                if !emptyText.isEmpty {
+                                    Image(systemName: "x.circle.fill")
+                                        .onTapGesture {
+                                            emptyText = ""
+                                        }
+                                        .padding(.trailing, 25)
+                                }
+                            }
+                        )
+                        .shadow(radius: 2)
+                    
+                    
+                }
+                Divider()
+                    .frame(height: 1)
+                    .background(.black)
+                
+                LazyVGrid(columns: [
+                    GridItem(.flexible(), spacing: 10),
+                    GridItem(.flexible(), spacing: 10),
+                    GridItem(.flexible(), spacing: 10),
+                    GridItem(.flexible(), spacing: 10)
+                ], spacing: 10) {
+                    ForEach(tags, id: \.self) { tag in
+                        SearchTagView(name: tag.rawValue, ImageView: tagImageName(for: tag))
+                    }
+                }
+                .padding()
+                
+                Divider()
+                    .frame(height: 1)
+                    .background(.gray)
+                //            ForEach(routes.routes) { route in
+                //                route.filter
+                //            }
+//                ForEach(routes.routes.map { $0.title }.filter{$0.hasPrefix(emptyText) || emptyText == ""},   id: \.self) { route in
+//                    Text(route)
+//                }
+                
+                ForEach(routes.routes) { route in
+                    if route.title.hasPrefix(emptyText) {
+//                        Text(route.title)
+                        SearchDetailView(searchRoute: route, showingTrailView: $showingTrailView)
+                            .padding(.leading, -12)
+                            .onTapGesture {
+                                showingTrailView = true
+                            }
+                    }
+                }
+                //            ForEach(titleArray.filter{$0.hasPrefix(emptyText) || emptyText == ""},   id: \.self){ route in Text(route)
+                //
+                //            }
                 
                 
+                
+                Spacer()
             }
-            Divider()
-                .frame(height: 1)
-                .background(.black)
-            
-            LazyVGrid(columns: [
-                           GridItem(.flexible(), spacing: 10),
-                           GridItem(.flexible(), spacing: 10),
-                           GridItem(.flexible(), spacing: 10),
-                           GridItem(.flexible(), spacing: 10)
-                       ], spacing: 10) {
-                           ForEach(tags, id: \.self) { tag in
-                               SearchTagView(name: tag.rawValue, ImageView: tagImageName(for: tag))
-                                           }
-                       }
-                       .padding()
-            
-            Divider()
-                .frame(height: 1)
-                .background(.gray)
-            SearchDetailView()
-                .padding(.leading, -12)
-            
-            
-            Spacer()
-        }
-        .navigationBarBackButtonHidden(true)
-        .padding()
-        .onTapGesture {
-            endEditing()
+            .navigationBarBackButtonHidden(true)
+            .padding()
+            .onTapGesture {
+                endEditing()
+            }
         }
     }
     
@@ -136,7 +159,7 @@ struct SearchClickView: View {
     }
 }
 
-
-#Preview {
-    SearchClickView()
-}
+//
+//#Preview {
+//    SearchClickView(emptyText: "")
+//}
