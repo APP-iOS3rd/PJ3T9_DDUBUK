@@ -48,6 +48,14 @@ struct TagSelectView: View {
                     Spacer()
                 }
             }
+            .padding()
+            Divider()
+                .frame(height: 3)
+                .foregroundColor(.gray)
+
+            
+            Spacer()
+
         }
         .navigationBarTitle("테마선택")
         .navigationBarBackButtonHidden(true)
