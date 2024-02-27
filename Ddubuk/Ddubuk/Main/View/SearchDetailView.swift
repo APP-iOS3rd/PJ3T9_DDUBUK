@@ -6,10 +6,15 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 struct SearchDetailView: View {
     
+    
 //    @State private var starclicked: Bool = false
+    
+    var searchRoute: Route
+    @Binding var showingTrailView: Bool
     
     struct Data {
         var Title: String
@@ -30,33 +35,50 @@ struct SearchDetailView: View {
     
     var body: some View {
         HStack {
-            Rectangle()
-                .frame(width: 150,height: 150)
-                .cornerRadius(10)
-                .foregroundColor(.gray)
+            if let firstImageUrl = searchRoute.imageUrls.first, let url = URL(string: firstImageUrl) {
+                WebImage(url: url)
+                    .resizable()
+                    .indicator(.activity)
+                    .transition(.fade(duration: 0.5))
+                    .frame(height: 150) // 너비에 맞춰 높이 조정
+                    .background(Color(UIColor.systemGray5))
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
+      
+                  
+            } else {
+                Image(systemName: "photo")
+                    .resizable()
+                    .foregroundStyle(Color.gray)
+                    .scaledToFit()
+                    .padding()
+                    .frame(width: 150, height: 110) // 너비에 맞춰 높이 조정
+                    .background(Color(UIColor.systemGray5))
+            }
                 
             VStack(alignment:.leading){
-            Text(dummyData2.Title)
+                Text(searchRoute.title)
                     .font(.custom("NotoSansKR-Bold", size: 16))
-            Text(dummyData2.Description)
+                Text(searchRoute.address ?? "")
                     .font(.custom("NotoSansKR-Medium", size: 16))
             
                 HStack(spacing: 6) {
-                    Text("\(dummyData2.Distance)km")
+                    Text("\(searchRoute.distanceTraveled)km")
                         .font(.custom("NotoSansKR-Bold", size: 16))
-                    Text("\(dummyData2.EstimatedTime)분")
+                    Text("\(searchRoute.duration)분")
                         .font(.custom("NotoSansKR-Bold", size: 16))
                     Image(systemName: "star.fill")
                     Text(dummyData2.Star)
                         .font(.custom("NotoSansKR-Bold", size: 16))
                 }
             }
-            .padding(.top, -60)
         }
         .padding()
+        .fullScreenCover(isPresented: $showingTrailView) {
+            DetailTrailView(route: searchRoute)
+        }
     }
 }
 
-#Preview {
-    SearchDetailView()
-}
+//#Preview {
+//    SearchDetailView()
+//}
