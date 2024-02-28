@@ -5,8 +5,8 @@
 
 #### 👨‍👨‍👦‍👦 팀원
 
-|Leader|Member|Member|Member|
-|:-----------:|:-----------:|:-----------:|
+|Leader|Member|Member|
+|:-----------:|:-----------:|:-----------:|:-----------:|
 |[조민식](https://github.com/mongsik98)|[김재완](https://github.com/jaewan0091)|[박호건](https://github.com//ghrjs1998)|
 |<img src="https://avatars.githubusercontent.com/u/56242414?v=4" width="100">|<img src="https://avatars.githubusercontent.com/u/144413519?v=4" width="100">|<img src="https://avatars.githubusercontent.com/u/75073299?v=4" width="100">|
 
