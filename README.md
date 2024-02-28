@@ -1,6 +1,7 @@
-# **<u>DDUBUK: 뚜벅</u>**
+# ![DDUBUK icon](https://github.com/APP-iOS3rd/PJ3T9_DDUBUK/assets/75073299/95a7772f-7c96-4f37-93db-7e7223b3c32e)
+**<u>DDUBUK: 뚜벅</u>**
 > 내가 가보지 않은 길을 찾아보고 나만의 산책로를 공유해보자!
-![Uploading DDUBUK icon.png…]()
+
 
 
 #### 👨‍👨‍👦‍👦 팀원
